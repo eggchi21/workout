@@ -27,6 +27,19 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
+  desc 'upload master.key'
+  task :upload do
+    on roles(:app) do |host|
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
+      upload!('config/master.key', "#{shared_path}/config/master.key")
+    end
+  end
+#excuteの例外処理が書かれているので「もしshared/config/master.keyファイル無ければ作るよ」って書いてるのですが、作られないのが原因だったのかな？
+#先ほどの手順で本番環境下にmaster.keyファイルを作成したのでローカルのmaster.keyファイル内の記述はuploadされるはず
+  before :starting, 'deploy:upload'
+  after :finishing, 'deploy:cleanup'
 end
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
