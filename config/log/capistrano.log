@@ -951,3 +951,257 @@ In Gemfile:
   INFO [0e999c41] Running /usr/bin/env echo "Branch master (at 46594b1b17064febe24e07bcf084c90b1b29384f) deployed as release 20191021101848 by eguchikeita" >> /var/www/workout/revisions.log as ec2-user@3.115.172.75
  DEBUG [0e999c41] Command: cd /var/www/workout/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env echo "Branch master (at 46594b1b17064febe24e07bcf084c90b1b29384f) deployed as release 20191021101848 by eguchikeita" >> /var/www/workout/revisions.log )
   INFO [0e999c41] Finished in 0.141 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-10-21 19:19:19 +0900 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [f1660d8a] Running [ -d $HOME/.rbenv/versions/2.5.1 ] as ec2-user@3.115.172.75
+ DEBUG [f1660d8a] Command: [ -d $HOME/.rbenv/versions/2.5.1 ]
+ DEBUG [f1660d8a] Finished in 0.379 seconds with exit status 0 (successful).
+  INFO [5dafbb6e] Running /usr/bin/env mkdir -p /tmp as ec2-user@3.115.172.75
+ DEBUG [5dafbb6e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env mkdir -p /tmp )
+  INFO [5dafbb6e] Finished in 0.101 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-workout-production-eguchikeita.sh 0.0%
+  INFO Uploading /tmp/git-ssh-workout-production-eguchikeita.sh 100.0%
+  INFO [19504304] Running /usr/bin/env chmod 700 /tmp/git-ssh-workout-production-eguchikeita.sh as ec2-user@3.115.172.75
+ DEBUG [19504304] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env chmod 700 /tmp/git-ssh-workout-production-eguchikeita.sh )
+  INFO [19504304] Finished in 0.115 seconds with exit status 0 (successful).
+  INFO [3f1c7d2a] Running /usr/bin/env git ls-remote git@github.com:eggchi21/workout.git HEAD as ec2-user@3.115.172.75
+ DEBUG [3f1c7d2a] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-workout-production-eguchikeita.sh" ; /usr/bin/env git ls-remote git@github.com:eggchi21/workout.git HEAD )
+ DEBUG [3f1c7d2a] 	7a07367eda4e80cd6c1628a6f4cc1e639c9c2f7d	HEAD
+  INFO [3f1c7d2a] Finished in 1.957 seconds with exit status 0 (successful).
+  INFO [4ddec590] Running /usr/bin/env mkdir -p /var/www/workout/shared /var/www/workout/releases as ec2-user@3.115.172.75
+ DEBUG [4ddec590] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env mkdir -p /var/www/workout/shared /var/www/workout/releases )
+  INFO [4ddec590] Finished in 0.131 seconds with exit status 0 (successful).
+  INFO [8aabf6b1] Running /usr/bin/env mkdir -p /var/www/workout/shared/log /var/www/workout/shared/tmp/pids /var/www/workout/shared/tmp/cache /var/www/workout/shared/tmp/sockets /var/www/workout/shared/vendor/bundle /var/www/workout/shared/public/system /var/www/workout/shared/public/uploads /var/www/workout/shared/public/assets as ec2-user@3.115.172.75
+ DEBUG [8aabf6b1] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env mkdir -p /var/www/workout/shared/log /var/www/workout/shared/tmp/pids /var/www/workout/shared/tmp/cache /var/www/workout/shared/tmp/sockets /var/www/workout/shared/vendor/bundle /var/www/workout/shared/public/system /var/www/workout/shared/public/uploads /var/www/workout/shared/public/assets )
+  INFO [8aabf6b1] Finished in 0.112 seconds with exit status 0 (successful).
+ DEBUG [e8f495d5] Running [ -f /var/www/workout/current/REVISION ] as ec2-user@3.115.172.75
+ DEBUG [e8f495d5] Command: [ -f /var/www/workout/current/REVISION ]
+ DEBUG [e8f495d5] Finished in 0.114 seconds with exit status 0 (successful).
+ DEBUG [a9e566da] Running /usr/bin/env cat /var/www/workout/current/REVISION 2>/dev/null as ec2-user@3.115.172.75
+ DEBUG [a9e566da] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env cat /var/www/workout/current/REVISION 2>/dev/null )
+ DEBUG [a9e566da] 	46594b1b17064febe24e07bcf084c90b1b29384f
+ DEBUG [a9e566da] Finished in 0.105 seconds with exit status 0 (successful).
+ DEBUG [ec1f4a58] Running [ -f /var/www/workout/repo/HEAD ] as ec2-user@3.115.172.75
+ DEBUG [ec1f4a58] Command: [ -f /var/www/workout/repo/HEAD ]
+ DEBUG [ec1f4a58] Finished in 0.151 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/workout/repo
+ DEBUG [bd7c39e8] Running if test ! -d /var/www/workout/repo; then echo "Directory does not exist '/var/www/workout/repo'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [bd7c39e8] Command: if test ! -d /var/www/workout/repo; then echo "Directory does not exist '/var/www/workout/repo'" 1>&2; false; fi
+ DEBUG [bd7c39e8] Finished in 0.107 seconds with exit status 0 (successful).
+  INFO [1da6cc11] Running /usr/bin/env git remote set-url origin git@github.com:eggchi21/workout.git as ec2-user@3.115.172.75
+ DEBUG [1da6cc11] Command: cd /var/www/workout/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-workout-production-eguchikeita.sh" ; /usr/bin/env git remote set-url origin git@github.com:eggchi21/workout.git )
+  INFO [1da6cc11] Finished in 0.117 seconds with exit status 0 (successful).
+  INFO [986d9340] Running /usr/bin/env git remote update --prune as ec2-user@3.115.172.75
+ DEBUG [986d9340] Command: cd /var/www/workout/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-workout-production-eguchikeita.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [986d9340] 	Fetching origin
+ DEBUG [986d9340] 	From github.com:eggchi21/workout
+   46594b1..7a07367  master     -> master
+  INFO [986d9340] Finished in 2.088 seconds with exit status 0 (successful).
+ DEBUG [8dd1514a] Running if test ! -d /var/www/workout/repo; then echo "Directory does not exist '/var/www/workout/repo'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [8dd1514a] Command: if test ! -d /var/www/workout/repo; then echo "Directory does not exist '/var/www/workout/repo'" 1>&2; false; fi
+ DEBUG [8dd1514a] Finished in 0.119 seconds with exit status 0 (successful).
+  INFO [7f160caf] Running /usr/bin/env mkdir -p /var/www/workout/releases/20191021101922 as ec2-user@3.115.172.75
+ DEBUG [7f160caf] Command: cd /var/www/workout/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-workout-production-eguchikeita.sh" ; /usr/bin/env mkdir -p /var/www/workout/releases/20191021101922 )
+  INFO [7f160caf] Finished in 0.137 seconds with exit status 0 (successful).
+  INFO [5c36ed60] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/workout/releases/20191021101922 as ec2-user@3.115.172.75
+ DEBUG [5c36ed60] Command: cd /var/www/workout/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-workout-production-eguchikeita.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/workout/releases/20191021101922 )
+  INFO [5c36ed60] Finished in 0.112 seconds with exit status 0 (successful).
+ DEBUG [ce094af7] Running if test ! -d /var/www/workout/repo; then echo "Directory does not exist '/var/www/workout/repo'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [ce094af7] Command: if test ! -d /var/www/workout/repo; then echo "Directory does not exist '/var/www/workout/repo'" 1>&2; false; fi
+ DEBUG [ce094af7] Finished in 0.116 seconds with exit status 0 (successful).
+ DEBUG [276d3aa4] Running /usr/bin/env git rev-list --max-count=1 master as ec2-user@3.115.172.75
+ DEBUG [276d3aa4] Command: cd /var/www/workout/repo && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-workout-production-eguchikeita.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [276d3aa4] 	7a07367eda4e80cd6c1628a6f4cc1e639c9c2f7d
+ DEBUG [276d3aa4] Finished in 0.202 seconds with exit status 0 (successful).
+ DEBUG [8ac9c052] Running if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [8ac9c052] Command: if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi
+ DEBUG [8ac9c052] Finished in 0.101 seconds with exit status 0 (successful).
+  INFO [a25b9baf] Running /usr/bin/env echo "7a07367eda4e80cd6c1628a6f4cc1e639c9c2f7d" > REVISION as ec2-user@3.115.172.75
+ DEBUG [a25b9baf] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env echo "7a07367eda4e80cd6c1628a6f4cc1e639c9c2f7d" > REVISION )
+  INFO [a25b9baf] Finished in 0.106 seconds with exit status 0 (successful).
+  INFO [c7aa0aaa] Running /usr/bin/env mkdir -p /var/www/workout/releases/20191021101922 /var/www/workout/releases/20191021101922/tmp /var/www/workout/releases/20191021101922/vendor /var/www/workout/releases/20191021101922/public as ec2-user@3.115.172.75
+ DEBUG [c7aa0aaa] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env mkdir -p /var/www/workout/releases/20191021101922 /var/www/workout/releases/20191021101922/tmp /var/www/workout/releases/20191021101922/vendor /var/www/workout/releases/20191021101922/public )
+  INFO [c7aa0aaa] Finished in 0.123 seconds with exit status 0 (successful).
+ DEBUG [229e0d98] Running [ -L /var/www/workout/releases/20191021101922/log ] as ec2-user@3.115.172.75
+ DEBUG [229e0d98] Command: [ -L /var/www/workout/releases/20191021101922/log ]
+ DEBUG [229e0d98] Finished in 0.138 seconds with exit status 1 (failed).
+ DEBUG [8458abd8] Running [ -d /var/www/workout/releases/20191021101922/log ] as ec2-user@3.115.172.75
+ DEBUG [8458abd8] Command: [ -d /var/www/workout/releases/20191021101922/log ]
+ DEBUG [8458abd8] Finished in 0.137 seconds with exit status 0 (successful).
+  INFO [98e4073f] Running /usr/bin/env rm -rf /var/www/workout/releases/20191021101922/log as ec2-user@3.115.172.75
+ DEBUG [98e4073f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env rm -rf /var/www/workout/releases/20191021101922/log )
+  INFO [98e4073f] Finished in 0.110 seconds with exit status 0 (successful).
+  INFO [01209dbd] Running /usr/bin/env ln -s /var/www/workout/shared/log /var/www/workout/releases/20191021101922/log as ec2-user@3.115.172.75
+ DEBUG [01209dbd] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/log /var/www/workout/releases/20191021101922/log )
+  INFO [01209dbd] Finished in 0.167 seconds with exit status 0 (successful).
+ DEBUG [bc90b894] Running [ -L /var/www/workout/releases/20191021101922/tmp/pids ] as ec2-user@3.115.172.75
+ DEBUG [bc90b894] Command: [ -L /var/www/workout/releases/20191021101922/tmp/pids ]
+ DEBUG [bc90b894] Finished in 0.115 seconds with exit status 1 (failed).
+ DEBUG [0b436835] Running [ -d /var/www/workout/releases/20191021101922/tmp/pids ] as ec2-user@3.115.172.75
+ DEBUG [0b436835] Command: [ -d /var/www/workout/releases/20191021101922/tmp/pids ]
+ DEBUG [0b436835] Finished in 0.112 seconds with exit status 1 (failed).
+  INFO [7e1c1b88] Running /usr/bin/env ln -s /var/www/workout/shared/tmp/pids /var/www/workout/releases/20191021101922/tmp/pids as ec2-user@3.115.172.75
+ DEBUG [7e1c1b88] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/tmp/pids /var/www/workout/releases/20191021101922/tmp/pids )
+  INFO [7e1c1b88] Finished in 0.109 seconds with exit status 0 (successful).
+ DEBUG [ebf24aa1] Running [ -L /var/www/workout/releases/20191021101922/tmp/cache ] as ec2-user@3.115.172.75
+ DEBUG [ebf24aa1] Command: [ -L /var/www/workout/releases/20191021101922/tmp/cache ]
+ DEBUG [ebf24aa1] Finished in 0.101 seconds with exit status 1 (failed).
+ DEBUG [503fbe49] Running [ -d /var/www/workout/releases/20191021101922/tmp/cache ] as ec2-user@3.115.172.75
+ DEBUG [503fbe49] Command: [ -d /var/www/workout/releases/20191021101922/tmp/cache ]
+ DEBUG [503fbe49] Finished in 0.102 seconds with exit status 1 (failed).
+  INFO [6617fc6f] Running /usr/bin/env ln -s /var/www/workout/shared/tmp/cache /var/www/workout/releases/20191021101922/tmp/cache as ec2-user@3.115.172.75
+ DEBUG [6617fc6f] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/tmp/cache /var/www/workout/releases/20191021101922/tmp/cache )
+  INFO [6617fc6f] Finished in 0.104 seconds with exit status 0 (successful).
+ DEBUG [2e865c15] Running [ -L /var/www/workout/releases/20191021101922/tmp/sockets ] as ec2-user@3.115.172.75
+ DEBUG [2e865c15] Command: [ -L /var/www/workout/releases/20191021101922/tmp/sockets ]
+ DEBUG [2e865c15] Finished in 0.101 seconds with exit status 1 (failed).
+ DEBUG [3f02a257] Running [ -d /var/www/workout/releases/20191021101922/tmp/sockets ] as ec2-user@3.115.172.75
+ DEBUG [3f02a257] Command: [ -d /var/www/workout/releases/20191021101922/tmp/sockets ]
+ DEBUG [3f02a257] Finished in 0.159 seconds with exit status 1 (failed).
+  INFO [03e793e8] Running /usr/bin/env ln -s /var/www/workout/shared/tmp/sockets /var/www/workout/releases/20191021101922/tmp/sockets as ec2-user@3.115.172.75
+ DEBUG [03e793e8] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/tmp/sockets /var/www/workout/releases/20191021101922/tmp/sockets )
+  INFO [03e793e8] Finished in 0.119 seconds with exit status 0 (successful).
+ DEBUG [7f23b312] Running [ -L /var/www/workout/releases/20191021101922/vendor/bundle ] as ec2-user@3.115.172.75
+ DEBUG [7f23b312] Command: [ -L /var/www/workout/releases/20191021101922/vendor/bundle ]
+ DEBUG [7f23b312] Finished in 0.103 seconds with exit status 1 (failed).
+ DEBUG [fe655deb] Running [ -d /var/www/workout/releases/20191021101922/vendor/bundle ] as ec2-user@3.115.172.75
+ DEBUG [fe655deb] Command: [ -d /var/www/workout/releases/20191021101922/vendor/bundle ]
+ DEBUG [fe655deb] Finished in 0.103 seconds with exit status 1 (failed).
+  INFO [431b1745] Running /usr/bin/env ln -s /var/www/workout/shared/vendor/bundle /var/www/workout/releases/20191021101922/vendor/bundle as ec2-user@3.115.172.75
+ DEBUG [431b1745] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/vendor/bundle /var/www/workout/releases/20191021101922/vendor/bundle )
+  INFO [431b1745] Finished in 0.136 seconds with exit status 0 (successful).
+ DEBUG [50fd5cbb] Running [ -L /var/www/workout/releases/20191021101922/public/system ] as ec2-user@3.115.172.75
+ DEBUG [50fd5cbb] Command: [ -L /var/www/workout/releases/20191021101922/public/system ]
+ DEBUG [50fd5cbb] Finished in 0.188 seconds with exit status 1 (failed).
+ DEBUG [507dfcb7] Running [ -d /var/www/workout/releases/20191021101922/public/system ] as ec2-user@3.115.172.75
+ DEBUG [507dfcb7] Command: [ -d /var/www/workout/releases/20191021101922/public/system ]
+ DEBUG [507dfcb7] Finished in 0.122 seconds with exit status 1 (failed).
+  INFO [710c4125] Running /usr/bin/env ln -s /var/www/workout/shared/public/system /var/www/workout/releases/20191021101922/public/system as ec2-user@3.115.172.75
+ DEBUG [710c4125] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/public/system /var/www/workout/releases/20191021101922/public/system )
+  INFO [710c4125] Finished in 0.123 seconds with exit status 0 (successful).
+ DEBUG [a456ecf9] Running [ -L /var/www/workout/releases/20191021101922/public/uploads ] as ec2-user@3.115.172.75
+ DEBUG [a456ecf9] Command: [ -L /var/www/workout/releases/20191021101922/public/uploads ]
+ DEBUG [a456ecf9] Finished in 0.119 seconds with exit status 1 (failed).
+ DEBUG [9f13bd78] Running [ -d /var/www/workout/releases/20191021101922/public/uploads ] as ec2-user@3.115.172.75
+ DEBUG [9f13bd78] Command: [ -d /var/www/workout/releases/20191021101922/public/uploads ]
+ DEBUG [9f13bd78] Finished in 0.104 seconds with exit status 1 (failed).
+  INFO [3fe6db58] Running /usr/bin/env ln -s /var/www/workout/shared/public/uploads /var/www/workout/releases/20191021101922/public/uploads as ec2-user@3.115.172.75
+ DEBUG [3fe6db58] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/public/uploads /var/www/workout/releases/20191021101922/public/uploads )
+  INFO [3fe6db58] Finished in 0.122 seconds with exit status 0 (successful).
+ DEBUG [f5ef3e47] Running [ -L /var/www/workout/releases/20191021101922/public/assets ] as ec2-user@3.115.172.75
+ DEBUG [f5ef3e47] Command: [ -L /var/www/workout/releases/20191021101922/public/assets ]
+ DEBUG [f5ef3e47] Finished in 0.107 seconds with exit status 1 (failed).
+ DEBUG [93c59a89] Running [ -d /var/www/workout/releases/20191021101922/public/assets ] as ec2-user@3.115.172.75
+ DEBUG [93c59a89] Command: [ -d /var/www/workout/releases/20191021101922/public/assets ]
+ DEBUG [93c59a89] Finished in 0.123 seconds with exit status 1 (failed).
+  INFO [a7c91809] Running /usr/bin/env ln -s /var/www/workout/shared/public/assets /var/www/workout/releases/20191021101922/public/assets as ec2-user@3.115.172.75
+ DEBUG [a7c91809] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/shared/public/assets /var/www/workout/releases/20191021101922/public/assets )
+  INFO [a7c91809] Finished in 0.098 seconds with exit status 0 (successful).
+ DEBUG [8d3a3fa7] Running if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [8d3a3fa7] Command: if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi
+ DEBUG [8d3a3fa7] Finished in 0.108 seconds with exit status 0 (successful).
+ DEBUG [82d00b46] Running $HOME/.rbenv/bin/rbenv exec bundle check --path /var/www/workout/shared/bundle as ec2-user@3.115.172.75
+ DEBUG [82d00b46] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; $HOME/.rbenv/bin/rbenv exec bundle check --path /var/www/workout/shared/bundle )
+ DEBUG [82d00b46] 	The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+ DEBUG [82d00b46] 	The following gems are missing
+ DEBUG [82d00b46] 	 * public_suffix (4.0.1)
+ DEBUG [82d00b46] 	 * addressable (2.7.0)
+ DEBUG [82d00b46] 	 * net-ssh (5.2.0)
+ DEBUG [82d00b46] 	 * net-scp (2.0.0)
+ DEBUG [82d00b46] 	 * sshkit (1.20.0)
+ DEBUG [82d00b46] 	 * airbrussh (1.3.3)
+ DEBUG [82d00b46] 	 * io-like (0.3.0)
+ DEBUG [82d00b46] 	 * archive-zip (0.12.0)
+ DEBUG [82d00b46] 	 * bindex (0.8.1)
+ DEBUG [82d00b46] 	 * byebug (11.0.1)
+ DEBUG [82d00b46] 	 * capistrano (3.11.1)
+ DEBUG [82d00b46] 	 * capistrano-bundler (1.6.0)
+ DEBUG [82d00b46] 	 * capistrano-rails (1.4.0)
+ DEBUG [82d00b46] 	 * capistrano-rbenv (2.1.4)
+ DEBUG [82d00b46] 	 * capistrano3-unicorn (0.2.1)
+ DEBUG [82d00b46] 	 * regexp_parser (1.6.0)
+ DEBUG [82d00b46] 	 * xpath (3.2.0)
+ DEBUG [82d00b46] 	 * capybara (3.29.0)
+ DEBUG [82d00b46] 	 * childprocess (3.0.0)
+ DEBUG [82d00b46] 	 * chromedriver-helper (2.1.1)
+ DEBUG [82d00b46] 	 * ruby_dep (1.5.0)
+ DEBUG [82d00b46] 	 * listen (3.1.5)
+ DEBUG [82d00b46] 	 * rubyzip (2.0.0)
+ DEBUG [82d00b46] 	 * selenium-webdriver (3.142.6)
+ DEBUG [82d00b46] 	 * spring (2.1.0)
+ DEBUG [82d00b46] 	 * spring-watcher-listen (2.0.1)
+ DEBUG [82d00b46] 	 * web-console (3.7.0)
+ DEBUG [82d00b46] 	Install missing gems with `bundle install`
+ DEBUG [82d00b46] Finished in 0.372 seconds with exit status 1 (failed).
+  INFO [882712d3] Running $HOME/.rbenv/bin/rbenv exec bundle install --path /var/www/workout/shared/bundle --jobs 4 --without development test --deployment --quiet as ec2-user@3.115.172.75
+ DEBUG [882712d3] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; $HOME/.rbenv/bin/rbenv exec bundle install --path /var/www/workout/shared/bundle --jobs 4 --without development test --deployment --quiet )
+  INFO [882712d3] Finished in 0.497 seconds with exit status 0 (successful).
+ DEBUG [ac40efbf] Running if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [ac40efbf] Command: if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi
+ DEBUG [ac40efbf] Finished in 0.176 seconds with exit status 0 (successful).
+  INFO [f1f39cb9] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as ec2-user@3.115.172.75
+ DEBUG [f1f39cb9] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" RAILS_ENV="production" RAILS_GROUPS="" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [f1f39cb9] 	yarn install v1.19.1
+ DEBUG [f1f39cb9] 	info No lockfile found.
+ DEBUG [f1f39cb9] 	[1/4] Resolving packages...
+ DEBUG [f1f39cb9] 	[2/4] Fetching packages...
+ DEBUG [f1f39cb9] 	[3/4] Linking dependencies...
+ DEBUG [f1f39cb9] 	[4/4] Building fresh packages...
+ DEBUG [f1f39cb9] 	success Saved lockfile.
+ DEBUG [f1f39cb9] 	Done in 0.08s.
+  INFO [f1f39cb9] Finished in 1.960 seconds with exit status 0 (successful).
+ DEBUG [5b76cacf] Running if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [5b76cacf] Command: if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi
+ DEBUG [5b76cacf] Finished in 0.112 seconds with exit status 0 (successful).
+  INFO [51eda3be] Running /usr/bin/env mkdir -p /var/www/workout/releases/20191021101922/assets_manifest_backup as ec2-user@3.115.172.75
+ DEBUG [51eda3be] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env mkdir -p /var/www/workout/releases/20191021101922/assets_manifest_backup )
+  INFO [51eda3be] Finished in 0.131 seconds with exit status 0 (successful).
+ DEBUG [8ad98162] Running /usr/bin/env ls /var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest* as ec2-user@3.115.172.75
+ DEBUG [8ad98162] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ls /var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest* )
+ DEBUG [8ad98162] 	/var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest-d60eabe78c0765bfcacd1e11f15aeb03.json
+ DEBUG [8ad98162] Finished in 0.216 seconds with exit status 0 (successful).
+ DEBUG [6e1c6be2] Running /usr/bin/env ls /var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest* as ec2-user@3.115.172.75
+ DEBUG [6e1c6be2] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ls /var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest* )
+ DEBUG [6e1c6be2] 	/var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest-d60eabe78c0765bfcacd1e11f15aeb03.json
+ DEBUG [6e1c6be2] Finished in 0.120 seconds with exit status 0 (successful).
+  INFO [d253f2c4] Running /usr/bin/env cp /var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest-d60eabe78c0765bfcacd1e11f15aeb03.json /var/www/workout/releases/20191021101922/assets_manifest_backup as ec2-user@3.115.172.75
+ DEBUG [d253f2c4] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env cp /var/www/workout/releases/20191021101922/public/assets/.sprockets-manifest-d60eabe78c0765bfcacd1e11f15aeb03.json /var/www/workout/releases/20191021101922/assets_manifest_backup )
+  INFO [d253f2c4] Finished in 0.095 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [30a7d742] Running if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [30a7d742] Command: if test ! -d /var/www/workout/releases/20191021101922; then echo "Directory does not exist '/var/www/workout/releases/20191021101922'" 1>&2; false; fi
+ DEBUG [30a7d742] Finished in 0.096 seconds with exit status 0 (successful).
+  INFO [509e0494] Running $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as ec2-user@3.115.172.75
+ DEBUG [509e0494] Command: cd /var/www/workout/releases/20191021101922 && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" RAILS_ENV="production" ; $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+  INFO [509e0494] Finished in 1.444 seconds with exit status 0 (successful).
+  INFO [c98314fb] Running /usr/bin/env ln -s /var/www/workout/releases/20191021101922 /var/www/workout/releases/current as ec2-user@3.115.172.75
+ DEBUG [c98314fb] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ln -s /var/www/workout/releases/20191021101922 /var/www/workout/releases/current )
+  INFO [c98314fb] Finished in 0.184 seconds with exit status 0 (successful).
+  INFO [e542e112] Running /usr/bin/env mv /var/www/workout/releases/current /var/www/workout as ec2-user@3.115.172.75
+ DEBUG [e542e112] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env mv /var/www/workout/releases/current /var/www/workout )
+  INFO [e542e112] Finished in 0.129 seconds with exit status 0 (successful).
+ DEBUG [2c55f891] Running if test ! -d /var/www/workout/current; then echo "Directory does not exist '/var/www/workout/current'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [2c55f891] Command: if test ! -d /var/www/workout/current; then echo "Directory does not exist '/var/www/workout/current'" 1>&2; false; fi
+ DEBUG [2c55f891] Finished in 0.142 seconds with exit status 0 (successful).
+ DEBUG [7a564a02] Running [ -e /var/www/workout/shared/tmp/pids/unicorn.pid ] && kill -0 `cat /var/www/workout/shared/tmp/pids/unicorn.pid` as ec2-user@3.115.172.75
+ DEBUG [7a564a02] Command: [ -e /var/www/workout/shared/tmp/pids/unicorn.pid ] && kill -0 `cat /var/www/workout/shared/tmp/pids/unicorn.pid`
+ DEBUG [7a564a02] Finished in 0.148 seconds with exit status 0 (successful).
+  INFO unicorn is running...
+ DEBUG [6afe3a54] Running if test ! -d /var/www/workout/current; then echo "Directory does not exist '/var/www/workout/current'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [6afe3a54] Command: if test ! -d /var/www/workout/current; then echo "Directory does not exist '/var/www/workout/current'" 1>&2; false; fi
+ DEBUG [6afe3a54] Finished in 0.209 seconds with exit status 0 (successful).
+  INFO unicorn restarting...
+  INFO [b961de14] Running /usr/bin/env kill -s USR2 `cat /var/www/workout/shared/tmp/pids/unicorn.pid` as ec2-user@3.115.172.75
+ DEBUG [b961de14] Command: cd /var/www/workout/current && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env kill -s USR2 `cat /var/www/workout/shared/tmp/pids/unicorn.pid` )
+  INFO [b961de14] Finished in 0.195 seconds with exit status 0 (successful).
+ DEBUG [d0c4fe0e] Running /usr/bin/env ls -x /var/www/workout/releases as ec2-user@3.115.172.75
+ DEBUG [d0c4fe0e] Command: ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env ls -x /var/www/workout/releases )
+ DEBUG [d0c4fe0e] 	20191021101307	20191021101534	20191021101848	20191021101922
+ DEBUG [d0c4fe0e] Finished in 0.267 seconds with exit status 0 (successful).
+ DEBUG [c50eaa20] Running if test ! -d /var/www/workout/releases; then echo "Directory does not exist '/var/www/workout/releases'" 1>&2; false; fi as ec2-user@3.115.172.75
+ DEBUG [c50eaa20] Command: if test ! -d /var/www/workout/releases; then echo "Directory does not exist '/var/www/workout/releases'" 1>&2; false; fi
+ DEBUG [c50eaa20] Finished in 0.229 seconds with exit status 0 (successful).
+  INFO [2bcd8f66] Running /usr/bin/env echo "Branch master (at 7a07367eda4e80cd6c1628a6f4cc1e639c9c2f7d) deployed as release 20191021101922 by eguchikeita" >> /var/www/workout/revisions.log as ec2-user@3.115.172.75
+ DEBUG [2bcd8f66] Command: cd /var/www/workout/releases && ( export RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.5.1" ; /usr/bin/env echo "Branch master (at 7a07367eda4e80cd6c1628a6f4cc1e639c9c2f7d) deployed as release 20191021101922 by eguchikeita" >> /var/www/workout/revisions.log )
+  INFO [2bcd8f66] Finished in 0.157 seconds with exit status 0 (successful).
