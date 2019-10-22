@@ -47,7 +47,6 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
-  gem 'sqlite3' #do ~ end内部に追加。他のgemは残してください。
 end
 
 group :development do
