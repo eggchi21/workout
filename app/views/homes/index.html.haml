@@ -1,5 +1,11 @@
-%h1 Homes#index
-%p Find me in app/views/homes/index.html.haml
+%script{:src => "https://www.amcharts.com/lib/4/core.js"}
+%script{:src => "https://www.amcharts.com/lib/4/charts.js"}
+%script{:src => "https://www.amcharts.com/lib/4/plugins/wordCloud.js"}
+%script{:src => "https://www.amcharts.com/lib/4/themes/material.js"}
+%script{:src => "https://www.amcharts.com/lib/4/themes/animated.js"}
+#chartdiv
+
+
 .contents
   %ul.contents__list
-    = render partial:'homes/content', collection: items, as:'item'
+    = render partial:'homes/content', collection: contents, as:'content'

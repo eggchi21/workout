@@ -1,0 +1,28 @@
+%h2 step3
+= form_for @user, url: signup_index_path, method: :post, html: { class: 'registration-form' } do |f|
+  = f.fields_for :address do |d|
+    .new-member-registration-form-content
+      .new-member-registration-form-content__group
+        = f.label :郵便番号, { class: 'new-registration-label' }
+        = f.label :必須, { class: 'form-require' }
+        = d.text_field :postcode, placeholder: '例）1234567', class: "input-default"
+      .new-member-registration-form-content__group
+        = f.label :都道府県, { class: 'new-registration-label' }
+        = f.label :必須, { class: 'form-require' }
+        .prefecture-select-wrap
+          = d.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name
+          %i.prefecture.fas.fa-chevron-down
+      .new-member-registration-form-content__group
+        = f.label :市区町村, { class: 'new-registration-label' }
+        = f.label :必須, { class: 'form-require' }
+        = d.text_field :city, placeholder: '例）横浜市緑区', class: "input-default"
+      .new-member-registration-form-content__group
+        = f.label :番地, { class: 'new-registration-label' }
+        = f.label :必須, { class: 'form-require' }
+        = d.text_field :address1, placeholder: "例）青山1-1-1", class: "input-default"
+      .new-member-registration-form-content__group
+        = f.label :建物名, { class: 'new-registration-label' }
+        = f.label :任意, { class: 'adress-form-require' }
+        = d.text_field :address2, placeholder: "例）柳ビル103", class: "input-default"
+      .new-member-registration-form-content__group
+        = f.submit "登録する", class:"btn-default btn-red"

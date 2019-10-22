@@ -12,8 +12,7 @@ $(function(){
   }
 
   $(document).ready(function(){
-    console.log("ok")
-     repeat_show($(".contents__list-item"));
+     repeat_show($(".contents__list-box"));
   });
   $("li").hover(
     function () {

@@ -1,0 +1,19 @@
+.wrapper
+  -# %header.header
+  -#   %h1.header__logo
+  -#     =link_to "https://www.mercari.com/jp/", class: "header__logo__link" do
+  -#       = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?917505326", alt: "mercari", class: "header__logo__image"
+  %main.registration
+    %section.registration__container
+      %h2.registration__title 新規会員登録
+      .registration-form
+        .registration-form__content
+          =link_to reset_signup_index_path, class: "btn btn--mail" do
+            %i.fa.fa-envelope.fa-2x
+            メールアドレスで登録する
+          -# =link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn btn--facebook", id: "facebook-login" do
+          -#   .fab.fa-facebook-f.facebook-icon
+          -#   Facebookで登録
+          -# =link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn--google", id: "google-login" do
+          -#   Googleで登録する
+-# = render 'signup/shared/footer'

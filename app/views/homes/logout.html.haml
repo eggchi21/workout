@@ -1,0 +1,8 @@
+-# = render 'layouts/header'
+-# - breadcrumb :logout
+-# = render 'layouts/breadcrumbs'
+%main.container.clearfix
+  .logout-content
+    .logout-content__inner
+      =link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-red"
+  -# = render 'mypage/shared/sidemenus/sidemenu'
