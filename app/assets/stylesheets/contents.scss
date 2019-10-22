@@ -1,0 +1,30 @@
+.contents{
+  width: 100%;
+  margin: 40px 0px 40px 0;
+  &__list li {
+    border-top: 1px solid #eee;
+  }
+  &__list-item {
+    box-sizing: border-box;
+    position: relative;
+    display: none;
+    min-height: 48px;
+    padding: 16px;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+  }
+  &__list-icon{
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    color: #ccc;
+  }
+}
+@media screen and (min-width:800px){
+
+  .contents{
+    width: 700px;
+    margin: 40px auto;
+  }
+}

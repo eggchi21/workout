@@ -1,0 +1,5 @@
+%h1 Homes#index
+%p Find me in app/views/homes/index.html.haml
+.contents
+  %ul.contents__list
+    = render partial:'homes/content', collection: items, as:'item'
