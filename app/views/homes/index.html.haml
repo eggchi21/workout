@@ -2,15 +2,10 @@
 .MenuContainer
   %input#menu.HiddenCheckbox{:name => "menu", :type => "checkbox"}/
   %label.MenuIcon{:for => "menu"}
-  %h2.MenuHeader Profile Menu
+  %h2.MenuHeader Menu
   %nav.Menu
     %ul.Menu-list
-      %li.Menu-item
-        %a.Menu-link{:href => "https://codepen.io/rthor", :target => "_blank"} Visit Profile
-      %li.Menu-item
-        %a.Menu-link{:href => "http://rthor.is", :target => "_blank"} Read Blog
-      %li.Menu-item
-        %a.Menu-link{:href => "https://github.com/rthor", :target => "_blank"} Checkout Code
+      = render partial:'homes/sidemenu-content', collection: contents, as:'content'
 %script{:src => "https://www.amcharts.com/lib/4/core.js"}
 %script{:src => "https://www.amcharts.com/lib/4/charts.js"}
 %script{:src => "https://www.amcharts.com/lib/4/plugins/wordCloud.js"}
