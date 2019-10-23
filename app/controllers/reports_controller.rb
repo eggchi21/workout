@@ -20,5 +20,5 @@ end
 private
 
 def report_params
-  params.require(:report).permit(:weight,:entry_on,:text, images: [])
+  params.require(:report).permit(:weight,:entry_on,:text, images: []).merge(user_id: current_user.id)
 end
