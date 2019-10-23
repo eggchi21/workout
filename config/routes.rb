@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  resources :reports
+  resources :users, only: [:index,:show,:edit,:update] do
+    resources :reports
+  end
   resources :homes do
     collection do
       get "logout"

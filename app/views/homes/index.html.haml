@@ -1,11 +1,17 @@
+
+.MenuContainer
+  %input#menu.HiddenCheckbox{:name => "menu", :type => "checkbox"}/
+  %label.MenuIcon{:for => "menu"}
+  %h2.MenuHeader Menu
+  %nav.Menu
+    %ul.Menu-list
+      = render partial:'homes/sidemenu-content', collection: contents, as:'content'
 %script{:src => "https://www.amcharts.com/lib/4/core.js"}
 %script{:src => "https://www.amcharts.com/lib/4/charts.js"}
 %script{:src => "https://www.amcharts.com/lib/4/plugins/wordCloud.js"}
 %script{:src => "https://www.amcharts.com/lib/4/themes/material.js"}
 %script{:src => "https://www.amcharts.com/lib/4/themes/animated.js"}
 #chartdiv
-
-
 .contents
   %ul.contents__list
     = render partial:'homes/content', collection: contents, as:'content'
