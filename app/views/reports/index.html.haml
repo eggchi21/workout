@@ -2,3 +2,15 @@
 %p Find me in app/views/reports/index.html.haml
 - @reports.each do |report|
   = image_tag report.images.first
+
+%p user show
+%tr
+  %td
+  = current_user.nickname
+
+%script{:src => "https://www.amcharts.com/lib/4/core.js"}
+%script{:src => "https://www.amcharts.com/lib/4/charts.js"}
+%script{:src => "https://www.amcharts.com/lib/4/themes/kelly.js"}
+%script{:src => "https://www.amcharts.com/lib/4/themes/animated.js"}
+
+#chartdiv

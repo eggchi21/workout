@@ -12,6 +12,7 @@
 %script{:src => "https://www.amcharts.com/lib/4/themes/material.js"}
 %script{:src => "https://www.amcharts.com/lib/4/themes/animated.js"}
 #chartdiv
-.contents
-  %ul.contents__list
-    = render partial:'homes/content', collection: contents, as:'content'
+- if user_signed_in?
+  .contents
+    %ul.contents__list
+      = render partial:'homes/content', collection: contents, as:'content'

@@ -1,6 +1,6 @@
 %h1 Reports#new
 %p Find me in app/views/reports/new.html.haml
-= form_with model: @report, data: { remote: false }, class: "" do |report|
+= form_with model: [current_user ,@report], data: { remote: false }, class: "" do |report|
   = report.label '体重'
   = report.number_field :weight, placeholder:70, min:0
   = report.label '日付'

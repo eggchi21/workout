@@ -1,6 +1,9 @@
 class ReportsController < ApplicationController
   def index
-    @reports = Report.order('id DESC')
+    @reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
+    @ids = @reports.map(&:id)
+    @weights = @reports.map(&:weight)
+    @dates = @reports.map{|report| report.entry_on.strftime('%Y/%m/%d') }
   end
 
   def new
@@ -10,7 +13,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     if @report.save
-      redirect_to root_path
+      redirect_to user_reports_path
     else
       render :new
     end
