@@ -1,13 +1,10 @@
 %h1 Reports#new
 %p Find me in app/views/reports/new.html.haml
-= form_with model: @report, data: { remote: false }, class: "" do |report|
+= form_with model: [current_user ,@report], data: { remote: false }, class: "" do |report|
   = report.label '体重'
-  = report.number_field :weight, placeholder:70, min:0
+  = report.number_field :weight, placeholder:"70.0", step:"0.1", min:0
   = report.label '日付'
   = report.date_select :entry_on
   = report.label 'ファイル'
   = report.file_field :images, multiple: true
-  -# = report.fields_for :selfies do |selfy|
-  -#   = selfy.file_field :picture
-  -#   = selfy.file_field :picture
   = report.submit
