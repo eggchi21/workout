@@ -3,10 +3,8 @@
 - @reports.each do |report|
   = image_tag report.images.first
 
-%p user show
-%tr
-  %td
-  = current_user.nickname
+%table
+  = render @reports
 
 %script{:src => "https://www.amcharts.com/lib/4/core.js"}
 %script{:src => "https://www.amcharts.com/lib/4/charts.js"}
