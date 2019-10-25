@@ -4,7 +4,7 @@ $(function(){
       am4core.ready(function() {
 
       // Themes begin
-      am4core.useTheme(am4themes_kelly);
+      am4core.useTheme(am4themes_dataviz);
       am4core.useTheme(am4themes_animated);
       // Themes end
 
@@ -64,9 +64,9 @@ $(function(){
       // Make bullets grow on hover
       var bullet = series.bullets.push(new am4charts.CircleBullet());
       bullet.circle.strokeWidth = 2;
-      bullet.circle.radius = 20;
+      bullet.circle.radius = 10;
       bullet.circle.url =`/users/${user_id}/reports/{id.urlEncode()}`;
-      bullet.circle.fill = am4core.color("#15ff00");
+      bullet.circle.fill = am4core.color("#F26964");
 
       var bullethover = bullet.states.create("hover");
       bullethover.properties.scale = 1.3;
