@@ -70,7 +70,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 gem 'erb2haml'
-gem 'mini_magick'
+gem 'mini_magick', '~> 4.8'
 gem "aws-sdk-s3", require: false
 gem 'devise'
 gem "omniauth-rails_csrf_protection"

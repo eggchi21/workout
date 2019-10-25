@@ -1,7 +1,7 @@
 %h1 Reports#index
 %p Find me in app/views/reports/index.html.haml
--# - @reports.each do |report|
--#   = image_tag report.images.first
+- @reports.each do |report|
+  = image_tag report.images.first.variant(resize: '100x100')
 
 %table
   = render @reports
