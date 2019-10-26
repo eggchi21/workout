@@ -1,12 +1,3 @@
-
-.MenuContainer
-  %input#menu.HiddenCheckbox{:name => "menu", :type => "checkbox"}/
-  %label.MenuIcon{:for => "menu"}
-  %h2.MenuHeader Menu
-  %nav.Menu
-    %ul.Menu-list
-      = render partial:'homes/sidemenu-content', collection: contents, as:'content'
-
 - if user_signed_in?
   .contents
     %ul.contents__list
