@@ -1,0 +1,7 @@
+.MenuContainer
+  %input#menu.HiddenCheckbox{:name => "menu", :type => "checkbox"}/
+  %label.MenuIcon{:for => "menu"}
+  %h2.MenuHeader Menu
+  %nav.Menu
+    %ul.Menu-list
+      = render partial:'homes/sidemenu-content', collection: contents, as:'content'

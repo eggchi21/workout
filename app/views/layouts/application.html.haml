@@ -5,7 +5,6 @@
     %meta{content: "width=device-width, initial=1.0", name: "viewport"}/
     %link{href: "https://use.fontawesome.com/releases/v5.6.1/css/all.css", rel: "stylesheet"}/
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"}
-    %script{:src => "https://js.pay.jp/", :type => "text/javascript"}
 
     %title Workout
     = csrf_meta_tags
@@ -14,4 +13,5 @@
     = javascript_include_tag 'application'
     = include_gon
   %body
+    = render 'layouts/header'
     = yield

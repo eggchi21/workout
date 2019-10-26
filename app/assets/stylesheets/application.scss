@@ -15,5 +15,7 @@
  */
 
  @import "./reset";
- @import "layout.scss";
+ @import './modules/layouts/*';
  @import './modules/homes/*';
+ @import './modules/signup/*';
+ @import './modules/reports/*';

@@ -1,7 +1,72 @@
-.main WORK HARD SEE RESULTS!
-%script{src: "https://www.amcharts.com/lib/4/core.js"}
-%script{src: "https://www.amcharts.com/lib/4/charts.js"}
-%script{src: "https://www.amcharts.com/lib/4/plugins/wordCloud.js"}
-%script{src: "https://www.amcharts.com/lib/4/themes/material.js"}
-%script{src: "https://www.amcharts.com/lib/4/themes/animated.js"}
-#chartdiv
+%header
+  .main-header
+    .main-header--row
+      .main-header--content
+        %a.main-header--content__logo{:href => "#"} ABOUT
+        .main-header--content__mobile-toggle
+          %span
+          %span
+          %span
+        .main-header--nav
+          %ul
+            %li
+              %a{href: "#sec01"} INTRODUCTION
+            %li
+              %a{:href => "#sec02"} ABOUT THIS APP
+            %li
+              %a{:href => "#sec03"} LOGIN
+            %li
+              %a{:href => "#sec04"} OTHER
+  .sections
+    %section#letsgo
+      #sentence WORK HARD SEE RESULT!
+      %h1
+        %span This is eguchi's Portfolio
+        = succeed "LETS GO!" do
+          %br/
+      %div scroll down
+      .mouse
+        %span
+    %section#sec01.maincolor.section
+      .section__content
+        %h1 introduction
+        %p ご覧いただきありがとうございます。
+        %p 江口 恵太と申します。
+        %p 半年間、仕事をしながらTECH EXPERTに通い先日卒業しました。
+        %p このアプリはカリキュラムとは別に作成したものです。
+    %section#sec02.subcolor.section
+      .section__content
+        %h1 about this app
+        %p 世の中にはフィットネスの情報で溢れています。
+        %script{src: "https://www.amcharts.com/lib/4/core.js"}
+        %script{src: "https://www.amcharts.com/lib/4/charts.js"}
+        %script{src: "https://www.amcharts.com/lib/4/plugins/wordCloud.js"}
+        %script{src: "https://www.amcharts.com/lib/4/themes/material.js"}
+        %script{src: "https://www.amcharts.com/lib/4/themes/animated.js"}
+        #chartdiv
+        %p このアプリは手軽に体重を管理でき、回帰分析を使った将来体重の予測ができます。
+        %p ページ下部よりログインしてください。
+    %section#sec03.maincolor.section
+      .section__content
+        %h1 Login
+        = link_to new_user_session_path do
+          login
+        %p a
+        %p a
+        %p a
+        %p a
+        %p a
+        %p a
+        %p a
+        %p a
+    %section#sec04.subcolor.section
+      .section__content
+        %h1 Other
+        %p この↓にチャットスペースとかメルカリとかのリンクはる
+        %p github qiitaも！
+        %p a
+        %p a
+        %p a
+        %p a
+    %a.scrollup{href:"#"}
+      %i.fas.fa-arrow-alt-circle-up
