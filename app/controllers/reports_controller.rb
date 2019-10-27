@@ -1,11 +1,12 @@
 class ReportsController < ApplicationController
   def index
-    gon.reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
     @reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
+    gon.reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
     gon.ids = @reports.map(&:id)
     gon.weights = @reports.map(&:weight)
     gon.dates = @reports.map{|report| report.entry_on.strftime('%Y/%m/%d') }
     gon.user_id = current_user.id
+    @week_after = Report.ols(@reports)
   end
 
   def show
