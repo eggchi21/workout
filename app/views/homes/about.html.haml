@@ -14,12 +14,12 @@
             %li
               %a{:href => "#sec02"} ABOUT THIS APP
             %li
-              %a{:href => "#sec03"} LOGIN
+              %a{:href => "#sec03"} START
             %li
               %a{:href => "#sec04"} OTHER
   .sections
     %section#letsgo
-      #sentence WORK HARD SEE RESULT!
+      #sentence MAKE BODY!
       %h1
         %span This is eguchi's Portfolio
         = succeed "LETS GO!" do
@@ -48,25 +48,54 @@
         %p ページ下部よりログインしてください。
     %section#sec03.maincolor.section
       .section__content
-        %h1 Login
-        = link_to new_user_session_path do
-          login
-        %p a
-        %p a
-        %p a
-        %p a
-        %p a
-        %p a
-        %p a
-        %p a
+        %h1 Start
+        %p Start This APPよりアクセスしてください
+        .start-button
+          .start-button__svg-wrapper
+            %svg{height: "40", width: "200"}
+              %rect.start-button__shape{height: "40", width: "200"}
+              .start-button__text
+                = link_to new_user_session_path do
+                  Start This APP
     %section#sec04.subcolor.section
       .section__content
         %h1 Other
-        %p この↓にチャットスペースとかメルカリとかのリンクはる
-        %p github qiitaも！
-        %p a
-        %p a
-        %p a
-        %p a
+        %ul.product-list
+          %li.product-list__item
+            .product-list__item-button
+              = link_to 'http://52.197.92.111'do
+                チャットアプリ
+                %span chat-space
+            .product-list__item-img
+              = link_to image_tag('https://i.gyazo.com/aac0e1a9219c72244309f228c6bb9dc1.gif',size: '350x350'),'http://52.197.92.111'
+            %table.product-list__item-table
+              %tbody
+                %tr
+                  %th Email
+                  %td sample1@sample.com
+                %tr
+                  %th Password
+                  %td password
+          %li.product-list__item
+            .product-list__item-button
+              = link_to 'http://3.114.144.96'do
+                フリマアプリ
+                %span freemarket_sample_51a
+            .product-list__item-img
+              = link_to image_tag('https://i.gyazo.com/962b4c1386c39c03eb7fda0809478313.gif',size: '350x350'),'http://3.114.144.96'
+            %table.product-list__item-table
+              %tbody
+                %tr
+                  %th ユーザー名(Basic認証)
+                  %td frema51a
+                %tr
+                  %th パスワード(Basic認証)
+                  %td 9074
+                %tr
+                  %th Email
+                  %td sample1@sample.com
+                %tr
+                  %th Password
+                  %td password
     %a.scrollup{href:"#"}
       %i.fas.fa-arrow-alt-circle-up
