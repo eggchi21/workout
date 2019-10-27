@@ -9,17 +9,35 @@
 -# = @week_after
 
 .report
-  .report__title
-    レポート
-  .report__details
-    .report__details--now
-      開始時の体重 #{@reports.first.weight}kg
-    .report__details--now
-      現在の体重 #{@reports.last.weight}kg
-    .report__details--now-before
-      変化 #{@reports.last.weight-@reports.first.weight}kg
-    .report__details--after
-      1週間後の予測体重 #{@week_after}kg
+  -# .report__title
+  -#   レポート
+  -# .report__details
+  -#   .report__details--now
+  -#     開始時の体重 #{@reports.first.weight}kg
+  -#   .report__details--now
+  -#     現在の体重 #{@reports.last.weight}kg
+  -#   .report__details--now-before
+  -#     変化 #{@reports.last.weight-@reports.first.weight}kg
+  -#   .report__details--after
+  -#     1週間後の予測体重 #{@week_after}kg
+  %table.report
+    %thead.report__title
+      %tr
+        %th{:scope => "col"} レポート
+        %th{:scope => "col"} kg
+    %tbody.report__details
+      %tr
+        %td.report__txt{"data-label" => "内容"} 開始時の体重
+        %td.report__kg{"data-label" => "価格"} #{@reports.first.weight}kg
+      %tr
+        %td.report__txt{"data-label" => "内容"} 現在の体重
+        %td.report__kg{"data-label" => "価格"} #{@reports.last.weight}kg
+      %tr
+        %td.report__txt{"data-label" => "内容"} 変化
+        %td.report__kg{"data-label" => "価格"} #{@reports.last.weight-@reports.first.weight}kg
+      %tr
+        %td.report__txt{"data-label" => "内容"} 1週間後の予測体重
+        %td.report__kg{"data-label" => "価格"} #{@week_after}kg
 %script{src: "https://www.amcharts.com/lib/4/core.js"}
 %script{src: "https://www.amcharts.com/lib/4/charts.js"}
 %script{src: "https://www.amcharts.com/lib/4/themes/dataviz.js"}

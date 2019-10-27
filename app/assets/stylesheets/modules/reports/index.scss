@@ -1,0 +1,48 @@
+.report {
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  width: 650px;
+  box-shadow: 0 0 15px -6px #00000073;
+  & tr{
+    background-color: #fff;
+  }
+  & th{
+    padding: .35em 1em;
+    border-bottom: 1px solid #eee;
+  }
+  & td{
+    padding: .35em 1em;
+    border-bottom: 1px solid #eee;
+  }
+  &__title th{
+    font-size: .85em;
+    padding: 1em;
+  }
+  &__title th{
+    background-color: #FFC107;
+    color:#fff;
+  }
+  &__details tr:hover{
+    background-color: #fffae9;
+  }
+  &__details th{
+    text-align: left;
+    font-size: .8em;
+  }
+  &__txt{
+    text-align: left;
+    font-size: .75em;
+  }
+  &__kg{
+    text-align: right;
+    color: #000;
+    font-weight: bold;
+  }
+
+}
+
+
+@media screen and (max-width: 766px) {
+  .report{width: 100%;}
+}
