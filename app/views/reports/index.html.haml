@@ -1,13 +1,25 @@
-%h1 Reports#index
-%p Find me in app/views/reports/index.html.haml
-- @reports.each do |report|
-  = image_tag report.images.first.variant(resize: '100x100')
+-# %h1 Reports#index
+-# %p Find me in app/views/reports/index.html.haml
+-# - @reports.each do |report|
+-#   = image_tag report.images.first.variant(resize: '100x100')
 
-%table
-  = render @reports
+-# %table
+-#   = render @reports
 
-= @week_after
+-# = @week_after
 
+.report
+  .report__title
+    レポート
+  .report__details
+    .report__details--now
+      開始時の体重 #{@reports.first.weight}kg
+    .report__details--now
+      現在の体重 #{@reports.last.weight}kg
+    .report__details--now-before
+      変化 #{@reports.last.weight-@reports.first.weight}kg
+    .report__details--after
+      1週間後の予測体重 #{@week_after}kg
 %script{src: "https://www.amcharts.com/lib/4/core.js"}
 %script{src: "https://www.amcharts.com/lib/4/charts.js"}
 %script{src: "https://www.amcharts.com/lib/4/themes/dataviz.js"}
