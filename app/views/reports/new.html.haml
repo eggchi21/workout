@@ -12,10 +12,22 @@
     = report.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker'
     = report.label '日付',for:'datepicker'
     .report-form__date--description クリックするとカレンダーが表示されます
+
   .report-form__image
-    = report.file_field :images, multiple: true,id:'weight-input'
-    = report.label 'ファイル',for:'weight-input'
+    = report.file_field :images, multiple: true,id:'image-input',class: "report-form__image--input"
+    = report.label:images,class: "report-form__image--icon-0",for:'image-input' do
+      .report-form__image--icon-wrap
+        %i.fas.fa-image
+        .report-form__image--icon-text 画像
+
   = report.submit
 -# .text-input
 -#   %input#input1{:placeholder => "Try typing something in here!", :type => "text"}/
 -#   %label{:for => "input1"} Name
+-# = i.file_field :image_url, id: "re__sell-upload-drop-box__file", class:"re__sell-upload-drop-box__file", type: "file", 'data-image': 0
+-# = i.label :image_url, class: "re__sell-upload-drop-box__text", for: "re__sell-upload-drop-box__file" do
+-#   %p
+-#     ドラッグアンドドラッグドロップ
+-#     %br>/
+-#     またはクリックしてファイルをアップロード
+-# 'data-image': 0

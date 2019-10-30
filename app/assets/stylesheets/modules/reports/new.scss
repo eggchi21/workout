@@ -3,6 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color:#1253A4;
+  // width:700px;
 }
 .report-form__weight{
   position: relative;
@@ -139,4 +141,62 @@
   display: inline-block;
   top: 0px;
   left: 210px;
+}
+
+.report-form__image{
+  position: relative;
+  margin-top: 50px;
+  width:400px;
+  height:440px;
+  &--input{
+    display: none;
+  }
+  &--icon-wrap{
+    width:100%;
+    height:40px;
+    line-height: 40px;
+    background-color:#E03616;
+    color: white;
+    border-radius: 3px;
+    padding: 0 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+  &--icon-text{
+    width:30px;
+    color: #fff;
+    float: left;
+    margin-left:20px;
+  }
+  &--pic{
+    position: relative;
+  }
+}
+
+#report-preview-0 {
+  float: left;
+
+}
+#report-preview-1 {
+  float: left;
+
+}
+#report-preview-2 {
+  float: left;
+}
+#report-preview-3 {
+  float: left;
+}
+
+.active{
+  display: block;
+}
+.inactive{
+  display: none;
+}
+.fa-image{
+  font-size: 40px;
+  float: left;
 }
