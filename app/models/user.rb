@@ -11,7 +11,18 @@ class User < ApplicationRecord
 
   validates :nickname,                presence: true, length: {maximum: 20}
   validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password,                presence: true, length: {minimum: 6, maximum: 128}
+  validates :password,                presence: true, length: {minimum: 6, maximum: 128},on: :create
   validates :password_confirmation,   presence: true, confirmation: true, on: :create
 
+  enum sex: {
+    man: 0,
+    woman: 1
+  }
+  enum activity: {
+    exercise0: 0,
+    exercise1to2: 1,
+    exercise2to3: 2,
+    exercise3to4: 3,
+    exercise7: 4
+  }
 end

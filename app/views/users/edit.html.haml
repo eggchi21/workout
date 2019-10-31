@@ -1,0 +1,22 @@
+= form_with model: current_user , data: { remote: false }, class: "" do |user|
+  .user-form__nickname
+    = user.label :nickname
+    = user.text_field :nickname
+  .user-form__introduction
+    = user.label :introduction
+    = user.text_field :introduction
+  .user-form__sex
+    = user.label :sex,:男性
+    = user.radio_button :sex,:man
+    = user.label :sex,:女性
+    = user.radio_button :sex,:woman
+  .user-form__activity
+    = user.label :activity,:活動量
+    = user.select :activity, User.activities_i18n.invert, {}
+  .user-form__age
+    = user.label :age
+    = user.number_field :age,placeholder: 20
+  .user-form__height
+    = user.label :height
+    = user.number_field :height,placeholder: 170
+  = user.submit "UPDATE USER" ,class:'user-form__submit'
