@@ -62,6 +62,16 @@ $(function(){
     </div>
     </label>`;
     $('.report-form__image').prepend(picboxHtml);
+    $('.report-form__image').css({
+      'width':'400px',
+      'height':'440px'
+    })
+    $('.report-form__image--icon-wrap').css({
+      'width':'400px'
+    })
+    $('.report-form__image--description').css({
+      'left':'410px'
+    })
   }
 //---関数---画像追加済みの投稿ボタン非表示----------------------------------------------------------------------------------------------------------------------
   function hidePicBox(image_count){
