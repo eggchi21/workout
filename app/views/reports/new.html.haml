@@ -1,6 +1,6 @@
 %script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"}
 %script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
-%link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", :rel => "stylesheet"}/
+%link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
 
 
 = form_with model: [current_user ,@report], data: { remote: false }, class: "report-form" do |report|
@@ -12,10 +12,12 @@
     = report.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker'
     = report.label '日付',for:'datepicker'
     .report-form__date--description クリックするとカレンダーが表示されます
+
   .report-form__image
-    = report.file_field :images, multiple: true,id:'weight-input'
-    = report.label 'ファイル',for:'weight-input'
-  = report.submit
--# .text-input
--#   %input#input1{:placeholder => "Try typing something in here!", :type => "text"}/
--#   %label{:for => "input1"} Name
+    .report-form__image--description 画像は4枚まで添付できます
+    = report.file_field :images, multiple: true,id:'image-input',class: "report-form__image--input"
+    = report.label:images,class: "report-form__image--icon-0",for:'image-input' do
+      .report-form__image--icon-wrap
+        %i.fas.fa-image
+        .report-form__image--icon-text 画像
+  = report.submit "Create Report" ,class:'report-form__submit'

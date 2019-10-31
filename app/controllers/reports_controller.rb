@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
     gon.reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')

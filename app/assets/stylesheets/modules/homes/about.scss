@@ -126,6 +126,10 @@ header {
       }
     }
   }
+  .product-list{
+  justify-content: center;
+  align-items: center;
+  }
 }
 //---HEADER---hide show action
 .sticky {
@@ -142,7 +146,6 @@ header {
 .open-nav .main-header--content__mobile-toggle {
   transform: rotate(-90deg);
 }
-
 
 
 //---TOPSECTION---layout
@@ -323,8 +326,8 @@ header {
   display: flex;
   flex-wrap: wrap;
   &__item{
-    padding-right:50px;
-    padding-bottom:20px;
+    margin-right:50px;
+    margin-bottom:20px;
   }
   &__item-button{
     border: 5px solid transparent;

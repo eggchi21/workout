@@ -11,6 +11,7 @@ module HomesHelper
       {title: "新規登録",url:step1_signup_index_path},
     ]
     after_user_session = [
+      {title: "マイページ",url:edit_user_path(current_user)},
       {title: "投稿する",url:new_user_report_path(current_user)},
       {title: "投稿一覧",url:user_reports_path(current_user)},
     ] if user_signed_in?

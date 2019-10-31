@@ -140,3 +140,130 @@
   top: 0px;
   left: 210px;
 }
+
+.report-form__image{
+  position: relative;
+  margin-top: 50px;
+  // height:440px;
+  &--input{
+    display: none;
+  }
+  &--icon-wrap{
+    width:200px;
+    height:40px;
+    line-height: 40px;
+    background-color:#E03616;
+    color: white;
+    border-radius: 3px;
+    padding: 0 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+  &--icon-text{
+    width:30px;
+    color: #fff;
+    float: left;
+    margin-left:20px;
+  }
+  &--pic{
+    position: relative;
+  }
+  &--description{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.6em;
+    color: #fff;
+    border-radius: 5px;
+    background: #000;
+    width: 100px;
+  }
+  &--description:before{
+    content: "";
+    position: absolute;
+    top: 0%;
+    right: 95%;
+    border: 15px solid transparent;
+    border-top: 15px solid #000;
+    margin-left: -15px;
+    transform: rotateZ(90deg);
+  }
+}
+
+#report-preview-0 {
+  float: left;
+
+}
+#report-preview-1 {
+  float: left;
+
+}
+#report-preview-2 {
+  float: left;
+}
+#report-preview-3 {
+  float: left;
+}
+
+.active{
+  display: block;
+}
+.inactive{
+  display: none;
+}
+.fa-image{
+  font-size: 40px;
+  float: left;
+}
+//---weight---ツールチップ
+.report-form__image:hover .report-form__image--description {
+  display: inline-block;
+  top: 0px;
+  left: 210px;
+}
+
+.report-form__submit{
+  position: relative;
+  margin-top: 50px;
+  padding: 20px 40px;
+  color:#fff;
+	background:red;
+	border: none;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: bold;
+  letter-spacing: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  &:before{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		border: 2px solid #000;
+    transition: transform .2s ;
+    transform: translate(-3px, -3px);
+  }
+  &:hover:before{
+      transform: translate(0);
+  }
+  &:after{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		border: 2px solid #000;
+    transition: transform .2s ;
+    transform: translate(3px, 3px);
+    }
+  &:hover:after{
+    transform: translate(0);
+  }
+}
