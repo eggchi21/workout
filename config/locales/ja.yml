@@ -217,3 +217,7 @@ ja:
         exercise2to3: "2回～3回/週 程度の運動"
         exercise3to4: "3回～4回/週 程度の運動"
         exercise7: "ほぼ毎日激しい運動をしている"
+    plan:
+      method:
+        lowfat: "男性"
+        lowcarbo: "女性"

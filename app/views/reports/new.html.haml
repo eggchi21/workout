@@ -2,7 +2,6 @@
 %script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
 %link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
 
-
 = form_with model: [current_user ,@report], data: { remote: false }, class: "report-form" do |report|
   .report-form__weight
     = report.number_field :weight, placeholder:"70.0", step:"0.1", min:0,id:'weight-input'

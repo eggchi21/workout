@@ -1,0 +1,33 @@
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"}
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
+%link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
+
+= form_with model: @plan , data: { remote: false }, class: "" do |plan|
+  .plan-form__start_weight
+    = plan.label :start_weight
+    = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:0
+  .plan-form__target_weight
+    = plan.label :target_weight
+    = plan.number_field :weight,placeholder:"60.0", step:"0.1", min:0
+  .plan-form__start_on
+    = plan.label :start_on,for:'start_on_datepicker'
+    = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker'
+  .plan-form__target_on
+    = plan.label :target_on,for:'target_on_datepicker'
+    = plan.text_field :target_on,placeholder:"2019/10/28", id:'target_on_datepicker'
+  .plan-form__method
+    = plan.label :method,:ローファットダイエット
+    = plan.radio_button :method,:lowfat
+    = plan.label :method,:ローカボダイエット
+    = plan.radio_button :method,:lowcarbo
+  .plan-form__protein
+    = plan.label :protein
+    = plan.number_field :protein,placeholder: 20
+  .plan-form__fat
+    = plan.label :fat
+    = plan.number_field :fat,placeholder: 20
+  .plan-form__carbo
+    = plan.label :carbo
+    = plan.number_field :carbo,placeholder: 20
+
+  = plan.submit "create plan" ,class:'plan-form__submit'

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = '更新しました'
-      redirect_to root_path
+      redirect_to new_plan_path
     else
       render :edit
     end
