@@ -5,6 +5,7 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
+    gon.user = current_user
   end
 
   def create

@@ -317,7 +317,6 @@ $activeShadow: 0 0 10px rgba($teal1, .5);
 		color: #FFF;
 		box-shadow: $activeShadow;
 		border-color: $teal2;
-		z-index: 1;
 	}
 	input:focus + label {@include focusOutline;}
 

@@ -24,13 +24,23 @@
     = plan.label :method,:ローファットダイエット, for:'lowfat_method'
     = plan.radio_button :method,:lowcarbo,id:'lowcarbo_method'
     = plan.label :method,:ローカーボダイエット, for:'lowcarbo_method'
-  .plan-form__protein
-    = plan.label :protein
-    = plan.number_field :protein,placeholder: 20
-  .plan-form__fat
-    = plan.label :fat
-    = plan.number_field :fat,placeholder: 20
-  .plan-form__carbo
-    = plan.label :carbo
-    = plan.number_field :carbo,placeholder: 20
+  .plan-form__pfc
+    %label{for: "proteinpercent"} たんぱく質の割合 (0%-100%):
+    %input#proteinpercent{max:"100", min: "0", name: "proteinpercent", type: "number"}
+    %label{for: "fatpercent"} 脂質の割合 (0%-100%):
+    %input#fatpercent{max:"100", min: "0", name: "proteinpercent", type: "number"}
+    %label{for: "carbopercent"} 炭水化物の割合 (0%-100%):
+    %input#carbopercent{max:"100", min: "0", name: "proteinpercent", type: "number"}
+
+    .plan-form__protein
+      = plan.label :protein
+      = plan.number_field :protein,placeholder: 20
+    .plan-form__fat
+      = plan.label :fat
+      = plan.number_field :fat,placeholder: 20
+    .plan-form__carbo
+      = plan.label :carbo
+      = plan.number_field :carbo,placeholder: 20
+    .plan-form__calorie
+      %p 1000kcal
   = plan.submit "create plan" ,class:'common-form__submit'
