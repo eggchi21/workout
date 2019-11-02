@@ -1,8 +1,8 @@
 $(function(){
 //---関数---プレビュー作成----------------------------------------------------------------------------------------------------------------------
   function appendPreview(blobUrl,image_count){
-    var preview =`<div class="report-form__image--pic" id="report-preview-${image_count}"><img src="${blobUrl}"></div>`
-    $('.report-form__image').append(preview)
+    var preview =`<div class="common-form__image--pic" id="report-preview-${image_count}"><img src="${blobUrl}"></div>`
+    $('.common-form__image').append(preview)
   }
 //---関数---プレビューリサイズ----------------------------------------------------------------------------------------------------------------------
   function　resizePreviews(image_count){
@@ -55,27 +55,27 @@ $(function(){
 //---関数---投稿ボタン作成----------------------------------------------------------------------------------------------------------------------
   function appendPicBox(image_count){
     var picboxHtml = '';
-    picboxHtml = `<input multiple="multiple" id="image-input" class="report-form__image--input" type="file" name="report[images][]">
-    <label class="report-form__image--icon-${image_count+1}" for="image-input"><div class="report-form__image--icon-wrap">
+    picboxHtml = `<input multiple="multiple" id="image-input" class="common-form__image--input" type="file" name="report[images][]">
+    <label class="common-form__image--icon-${image_count+1}" for="image-input"><div class="common-form__image--icon-wrap">
     <i class="fas fa-image"></i>
-    <div class="report-form__image--icon-text">画像</div>
+    <div class="common-form__image--icon-text">画像</div>
     </div>
     </label>`;
-    $('.report-form__image').prepend(picboxHtml);
-    $('.report-form__image').css({
+    $('.common-form__image').prepend(picboxHtml);
+    $('.common-form__image').css({
       'width':'400px',
       'height':'440px'
     })
-    $('.report-form__image--icon-wrap').css({
+    $('.common-form__image--icon-wrap').css({
       'width':'400px'
     })
-    $('.report-form__image--description').css({
+    $('.common-form__image--description').css({
       'left':'410px'
     })
   }
 //---関数---画像追加済みの投稿ボタン非表示----------------------------------------------------------------------------------------------------------------------
   function hidePicBox(image_count){
-    $('.report-form__image--icon-'+image_count).addClass('inactive')
+    $('.common-form__image--icon-'+image_count).addClass('inactive')
   }
 //---関数---連番再作成----------------------------------------------------------------------------------------------------------------------
   function renumbering(){
@@ -109,7 +109,7 @@ $(function(){
     var file = $(this).prop('files')[0];                                            //ファイルの情報取得
     if (file.name.match(/.(jpg|jpeg|png)$/i)){
       var blobUrl = window.URL.createObjectURL(file);
-      var image_count = $('.report-form__image--pic').length;
+      var image_count = $('.common-form__image--pic').length;
       console.log(image_count)
       appendPreview(blobUrl,image_count)
       appendPicBox(image_count)

@@ -2,24 +2,28 @@
 %script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
 %link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
 
-= form_with model: @plan , data: { remote: false }, class: "" do |plan|
-  .plan-form__start_weight
-    = plan.label :start_weight
-    = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:0
-  .plan-form__target_weight
-    = plan.label :target_weight
-    = plan.number_field :weight,placeholder:"60.0", step:"0.1", min:0
-  .plan-form__start_on
-    = plan.label :start_on,for:'start_on_datepicker'
+= form_with model: @plan , data: { remote: false }, class: "common-form" do |plan|
+  .common-form__weight
+    = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:0,id:'start-weight'
+    = plan.label '開始体重',for:'start-weight'
+    .common-form__weight--description 単位はkgです
+  .common-form__weight
+    = plan.number_field :target_weight,placeholder:"60.0", step:"0.1", min:0,id:'target-weight'
+    = plan.label '目標体重',for:'target-weight'
+    .common-form__weight--description 単位はkgです
+  .common-form__date
     = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker'
-  .plan-form__target_on
-    = plan.label :target_on,for:'target_on_datepicker'
+    = plan.label '開始日',for:'start_on_datepicker'
+    .common-form__date--description クリックするとカレンダーが表示されます
+  .common-form__date
     = plan.text_field :target_on,placeholder:"2019/10/28", id:'target_on_datepicker'
-  .plan-form__method
-    = plan.label :method,:ローファットダイエット
-    = plan.radio_button :method,:lowfat
-    = plan.label :method,:ローカボダイエット
-    = plan.radio_button :method,:lowcarbo
+    = plan.label '目標日',for:'target_on_datepicker'
+    .common-form__date--description クリックするとカレンダーが表示されます
+  .common-form__method
+    = plan.radio_button :method,:lowfat,id:'lowfat_method'
+    = plan.label :method,:ローファットダイエット, for:'lowfat_method'
+    = plan.radio_button :method,:lowcarbo,id:'lowcarbo_method'
+    = plan.label :method,:ローカーボダイエット, for:'lowcarbo_method'
   .plan-form__protein
     = plan.label :protein
     = plan.number_field :protein,placeholder: 20
@@ -29,5 +33,4 @@
   .plan-form__carbo
     = plan.label :carbo
     = plan.number_field :carbo,placeholder: 20
-
-  = plan.submit "create plan" ,class:'plan-form__submit'
+  = plan.submit "create plan" ,class:'common-form__submit'
