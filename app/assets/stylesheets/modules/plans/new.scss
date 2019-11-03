@@ -1,0 +1,42 @@
+.initial-none--weight{
+  display:none;
+}
+.initial-none--date{
+  display:none;
+}
+.plan-form__tdee{
+  position: relative;
+  margin-top: 50px;
+  width: 200px;
+  &--numeric{
+    margin-top: 20px;
+    text-align:center;
+    font-weight:bold;
+  }
+}
+.plan-form__tdei{
+  width: 200px;
+  position: relative;
+  margin-top: 50px;
+  &--numeric{
+    margin-top: 20px;
+    text-align:center;
+    font-weight:bold;
+  }
+}
+
+.caution--start_weight{
+    margin-top: 10px;
+    color: #E03616;
+    display:none;
+}
+.caution--target_weight{
+  margin-top: 10px;
+  color: #E03616;
+  display:none;
+}
+.caution--target_date{
+  margin-top: 10px;
+  color: #E03616;
+  display:none;
+}

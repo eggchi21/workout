@@ -3,22 +3,36 @@
 %link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
 
 = form_with model: @plan , data: { remote: false }, class: "common-form" do |plan|
-  .common-form__weight
-    = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:0,id:'start-weight'
+  .common-form__weight.calc-calorie
+    = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:40,id:'start-weight'
     = plan.label '開始体重',for:'start-weight'
-    .common-form__weight--description 単位はkgです
-  .common-form__weight
-    = plan.number_field :target_weight,placeholder:"60.0", step:"0.1", min:0,id:'target-weight'
+    .caution--start_weight 40kg未満は設定できません
+    .common-form__weight--description 単位はkgです。40kg未満は入力できません
+  .common-form__weight.calc-calorie.initial-none--weight
+    = plan.number_field :target_weight,placeholder:"60.0", step:"0.1", min:37,id:'target-weight'
     = plan.label '目標体重',for:'target-weight'
-    .common-form__weight--description 単位はkgです
-  .common-form__date
+    .caution--target_weight 未満は設定できません
+    .common-form__weight--description 単位はkgです。37kg未満は入力できません
+  .common-form__date.calc-calorie.initial-none--weight
     = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker'
     = plan.label '開始日',for:'start_on_datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
-  .common-form__date
+  .common-form__date.calc-calorie.initial-none--weight
     = plan.text_field :target_on,placeholder:"2019/10/28", id:'target_on_datepicker'
     = plan.label '目標日',for:'target_on_datepicker'
+    .caution--target_date 開始日未満は設定できません
     .common-form__date--description クリックするとカレンダーが表示されます
+  .plan-form__tdee.initial-none--weight
+    .plan-form__tdee--text
+      あなたの総消費カロリーは...
+    .plan-form__tdee--numeric
+      0kcal
+  .plan-form__tdei.initial-none--date
+    .plan-form__tdei--text
+      あなたの目標摂取カロリーは...
+    .plan-form__tdei--numeric
+      0kcal
+
   .common-form__method
     = plan.radio_button :method,:lowfat,id:'lowfat_method'
     = plan.label :method,:ローファットダイエット, for:'lowfat_method'
