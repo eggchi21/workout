@@ -38,6 +38,7 @@ $(function(){
     $('#plan_fat').val(Math.round(tdei * 0.1 / 9)),
     $('#plan_carbo').val(Math.round(tdei * 0.5 / 4))
     ).done(function(){
+      $('.initial-none--pfc').fadeIn("slow"),
       pieChartMake()
     })
   }
@@ -47,6 +48,7 @@ $(function(){
     $('#plan_fat').val(Math.round(tdei * 0.6 / 9)),
     $('#plan_carbo').val(Math.round(tdei * 0.1 / 4))
     ).done(function(){
+      $('.initial-none--pfc').fadeIn("slow"),
       pieChartMake()
     })
   }
@@ -55,7 +57,7 @@ $(function(){
     var protein =$('#plan_protein').val() * 4
     var fat =$('#plan_fat').val() * 9
     var carbo =$('#plan_carbo').val() * 4
-
+    $('.plan-form__calorie--numeric').text(`${protein + fat + carbo}kcal`),
     // Themes begin
     am4core.useTheme(am4themes_animated);
     // Themes end
@@ -125,6 +127,8 @@ $(function(){
     if (weight < 40 ){
       $('.caution--start_weight').fadeIn("slow")
       $('.initial-none--weight').fadeOut("slow")
+      $('.initial-none--date').fadeOut("slow")
+      $('.initial-none--pfc').fadeOut("slow")
     } else{
       $('.plan-form__weight--caution').fadeOut("slow")
       var bmr = bmrCalc(user,weight)
@@ -153,10 +157,11 @@ $(function(){
     }
   })
   $(document).on('change keyup', '.calc-calorie',function() {
+    var startWeight =  $('#start-weight').val()
     var startOn = new Date($('#start_on_datepicker').val())
     var targetOn = new Date($('#target_on_datepicker').val())
     resetCalorieCalc()
-    if (targetOn > startOn){
+    if (targetOn > startOn  && startWeight >= 40){
       var term = (targetOn - startOn ) / 86400000 + 1
       var startWeight =  $('#start-weight').val()
       var targetWeight =  $('#target-weight').val()
@@ -174,6 +179,7 @@ $(function(){
         lowestOn.setDate(lowestOn.getDate() + Math.floor(termOrCalorieCalc(lowestdiff,volume)))
         var lowestterm = [lowestOn.getFullYear(), lowestOn.getMonth() + 1, lowestOn.getDate()].join('/');
         $('.plan-form__tdei--numeric').html(`1日の最低摂取カロリーまで<br/>${-diff}kcal足りません。<br/>目標体重を変更するか、<br/>目標日を${lowestterm}以降に変更してください`)
+        $('.initial-none--pfc').fadeOut("slow")
       }
     }
   })
@@ -185,10 +191,14 @@ $(function(){
     })
     if (targetOn < startOn){
       $('.caution--target_date').fadeIn("slow")
+      $('.initial-none--pfc').fadeOut("slow")
     }
   })
   $(document).on('change keyup', '.calc-pfc',function() {
-    if (diff > 0){
+    var startOn = new Date($('#start_on_datepicker').val())
+    var targetOn = new Date($('#target_on_datepicker').val())
+    var startWeight =  $('#start-weight').val()
+    if (diff > 0 && startWeight >= 40 && targetOn > startOn){
       if($('#lowfat_method').prop('checked')){
         lowfatPfcCalc()
       }else if($('#lowcarbo_method').prop('checked')){

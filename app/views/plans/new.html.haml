@@ -35,23 +35,29 @@
     .plan-form__tdei--numeric
       0kcal
 
-  .common-form__method.calc-pfc
+  .common-form__method.calc-pfc.pfc-num
     = plan.radio_button :method,:lowfat,id:'lowfat_method'
     = plan.label :method,:ローファットダイエット, for:'lowfat_method'
     = plan.radio_button :method,:lowcarbo,id:'lowcarbo_method'
     = plan.label :method,:ローカーボダイエット, for:'lowcarbo_method'
-  .plan-form__pfc--protein
-    = plan.number_field :protein,placeholder: 20,class:'pfc-num'
-    = plan.label 'たんぱく質(g)'
-    .plan-form__pfc--protein--description 自動で計算されます
-  .plan-form__pfc--fat
-    = plan.number_field :fat,placeholder: 20,class:'pfc-num'
-    = plan.label '脂質(g)'
-  .plan-form__pfc--carbo
-    = plan.number_field :carbo,placeholder: 20,class:'pfc-num'
-    = plan.label '炭水化物(g)'
-  -# .plan-form__calorie
-  -#   %p 1000kcal
-  .plan-form__piechart
+  .plan-form__pfc.initial-none--pfc
+    .plan-form__pfc--protein.pfc-num
+      = plan.number_field :protein
+      = plan.label 'たんぱく質(g)'
+      .plan-form__pfc--protein--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__pfc--fat.pfc-num
+      = plan.number_field :fat
+      = plan.label 'F:脂質(g)'
+      .plan-form__pfc--fat--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__pfc--carbo.pfc-num
+      = plan.number_field :carbo
+      = plan.label 'C:炭水化物(g)'
+      .plan-form__pfc--carbo--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__calorie
+      .plan-form__calorie--text
+        このバランスでの<br/>カロリーは...
+      .plan-form__calorie--numeric
+        0kcal
+  .plan-form__piechart.initial-none--pfc
     #chartdiv
-  = plan.submit "create plan" ,class:'common-form__submit'
+  = plan.submit "create plan" ,class:'common-form__submit initial-none--pfc'
