@@ -1,6 +1,7 @@
 $(function(){
   var user = gon.user
-
+  var diff = 0
+  var tdei = 0
   function bmrCalc(user,weight){
     if (user.sex == 'man' ){
       return 66 + 13.7 * weight + 5.0 * user.height - 6.8 * user.age
@@ -30,6 +31,91 @@ $(function(){
     $('.initial-none--date').css({
       'display':'none'
     })
+  }
+  function lowfatPfcCalc(){
+    $.when(
+    $('#plan_protein').val(Math.round(tdei * 0.4 / 4)),
+    $('#plan_fat').val(Math.round(tdei * 0.1 / 9)),
+    $('#plan_carbo').val(Math.round(tdei * 0.5 / 4))
+    ).done(function(){
+      pieChartMake()
+    })
+  }
+  function lowcarboPfcCalc(){
+    $.when(
+    $('#plan_protein').val(Math.round(tdei * 0.3 / 4)),
+    $('#plan_fat').val(Math.round(tdei * 0.6 / 9)),
+    $('#plan_carbo').val(Math.round(tdei * 0.1 / 4))
+    ).done(function(){
+      pieChartMake()
+    })
+  }
+
+  function pieChartMake(){
+    var protein =$('#plan_protein').val() * 4
+    var fat =$('#plan_fat').val() * 9
+    var carbo =$('#plan_carbo').val() * 4
+
+    // Themes begin
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+
+    // Create chart instance
+    var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+    // Add and configure Series
+    var pieSeries = chart.series.push(new am4charts.PieSeries());
+    pieSeries.dataFields.value = "calorie";
+    pieSeries.dataFields.category = "nutrient";
+
+    // Let's cut a hole in our Pie chart the size of 30% the radius
+    chart.innerRadius = am4core.percent(30);
+
+    // Put a thick white border around each Slice
+    pieSeries.slices.template.stroke = am4core.color("#fff");
+    pieSeries.slices.template.strokeWidth = 2;
+    pieSeries.slices.template.strokeOpacity = 1;
+    pieSeries.slices.template
+      // change the cursor on hover to make it apparent the object can be interacted with
+      .cursorOverStyle = [
+        {
+          "property": "cursor",
+          "value": "pointer"
+        }
+      ];
+
+    pieSeries.alignLabels = false;
+    pieSeries.labels.template.bent = true;
+    pieSeries.labels.template.radius = 3;
+    pieSeries.labels.template.padding(0,0,0,0);
+
+    pieSeries.ticks.template.disabled = true;
+
+    // Create a base filter effect (as if it's not there) for the hover to return to
+    var shadow = pieSeries.slices.template.filters.push(new am4core.DropShadowFilter);
+    shadow.opacity = 0;
+
+    // Create hover state
+    var hoverState = pieSeries.slices.template.states.getKey("hover"); // normally we have to create the hover state, in this case it already exists
+
+    // Slightly shift the shadow and make it more prominent on hover
+    var hoverShadow = hoverState.filters.push(new am4core.DropShadowFilter);
+    hoverShadow.opacity = 0.7;
+    hoverShadow.blur = 5;
+
+    // Add a legend
+    chart.legend = new am4charts.Legend();
+
+    chart.data = [{
+      "nutrient": "たんぱく質",
+      "calorie": protein
+    },{
+      "nutrient": "脂質",
+      "calorie": fat
+    }, {
+      "nutrient": "炭水化物",
+      "calorie": carbo
+    }];
   }
   $(document).on('change keyup', '#start-weight',function() {
     var weight = $(this).val()
@@ -77,17 +163,17 @@ $(function(){
       var bmr = bmrCalc(user,startWeight)
       var tdee = Math.round(tdeeCalc(bmr,user))
       var volume = startWeight - targetWeight
-      var tdei = tdee - Math.round(termOrCalorieCalc(term,volume))
+      tdei = tdee - Math.round(termOrCalorieCalc(term,volume))
+      diff =  tdei - 1200
       $('.initial-none--date').fadeIn("slow")
-      if (tdei > 1200){
+      if (diff > 0){
         $('.plan-form__tdei--numeric').text(`${tdei}kcal`)
       }else{
-        var diff = 1200 - tdei
         var lowestdiff = tdee - 1200
         var lowestOn = startOn
         lowestOn.setDate(lowestOn.getDate() + Math.floor(termOrCalorieCalc(lowestdiff,volume)))
         var lowestterm = [lowestOn.getFullYear(), lowestOn.getMonth() + 1, lowestOn.getDate()].join('/');
-        $('.plan-form__tdei--numeric').html(`1日の最低摂取カロリーまで<br/>${diff}kcal足りません。<br/>目標体重を変更するか、<br/>目標日を${lowestterm}以降に変更してください`)
+        $('.plan-form__tdei--numeric').html(`1日の最低摂取カロリーまで<br/>${-diff}kcal足りません。<br/>目標体重を変更するか、<br/>目標日を${lowestterm}以降に変更してください`)
       }
     }
   })
@@ -100,5 +186,17 @@ $(function(){
     if (targetOn < startOn){
       $('.caution--target_date').fadeIn("slow")
     }
+  })
+  $(document).on('change keyup', '.calc-pfc',function() {
+    if (diff > 0){
+      if($('#lowfat_method').prop('checked')){
+        lowfatPfcCalc()
+      }else if($('#lowcarbo_method').prop('checked')){
+        lowcarboPfcCalc()
+      }
+    }
+  })
+  $(document).on('change keyup', '.pfc-num',function() {
+    pieChartMake()
   })
 })
