@@ -1,0 +1,63 @@
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"}
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
+%link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
+%script{:src => "https://www.amcharts.com/lib/4/core.js"}
+%script{:src => "https://www.amcharts.com/lib/4/charts.js"}
+%script{:src => "https://www.amcharts.com/lib/4/themes/animated.js"}
+= form_with model: @plan , data: { remote: false }, class: "common-form" do |plan|
+  .common-form__weight.calc-calorie.calc-pfc
+    = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:40,id:'start-weight'
+    = plan.label '開始体重',for:'start-weight'
+    .caution--start_weight 40kg未満は設定できません
+    .common-form__weight--description 単位はkgです。40kg未満は入力できません
+  .common-form__weight.calc-calorie.calc-pfc.initial-none--weight
+    = plan.number_field :target_weight,placeholder:"60.0", step:"0.1", min:37,id:'target-weight'
+    = plan.label '目標体重',for:'target-weight'
+    .caution--target_weight 未満は設定できません
+    .common-form__weight--description 単位はkgです。37kg未満は入力できません
+  .common-form__date.calc-calorie.calc-pfc.initial-none--weight
+    = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker'
+    = plan.label '開始日',for:'start_on_datepicker'
+    .common-form__date--description クリックするとカレンダーが表示されます
+  .common-form__date.calc-calorie.calc-pfc.initial-none--weight
+    = plan.text_field :target_on,placeholder:"2019/10/28", id:'target_on_datepicker'
+    = plan.label '目標日',for:'target_on_datepicker'
+    .caution--target_date 開始日未満は設定できません
+    .common-form__date--description クリックするとカレンダーが表示されます
+  .plan-form__tdee.initial-none--weight
+    .plan-form__tdee--text
+      あなたの総消費カロリーは...
+    .plan-form__tdee--numeric
+      0kcal
+  .plan-form__tdei.initial-none--date
+    .plan-form__tdei--text
+      あなたの目標摂取カロリーは...
+    .plan-form__tdei--numeric
+      0kcal
+
+  .common-form__method.calc-pfc.pfc-num
+    = plan.radio_button :method,:lowfat,id:'lowfat_method'
+    = plan.label :method,:ローファットダイエット, for:'lowfat_method'
+    = plan.radio_button :method,:lowcarbo,id:'lowcarbo_method'
+    = plan.label :method,:ローカーボダイエット, for:'lowcarbo_method'
+  .plan-form__pfc.initial-none--pfc
+    .plan-form__pfc--protein.pfc-num
+      = plan.number_field :protein
+      = plan.label 'たんぱく質(g)'
+      .plan-form__pfc--protein--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__pfc--fat.pfc-num
+      = plan.number_field :fat
+      = plan.label 'F:脂質(g)'
+      .plan-form__pfc--fat--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__pfc--carbo.pfc-num
+      = plan.number_field :carbo
+      = plan.label 'C:炭水化物(g)'
+      .plan-form__pfc--carbo--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__calorie
+      .plan-form__calorie--text
+        このバランスでの<br/>カロリーは...
+      .plan-form__calorie--numeric
+        0kcal
+  .plan-form__piechart.initial-none--pfc
+    #chartdiv
+  = plan.submit "create plan" ,class:'common-form__submit initial-none--pfc'

@@ -1,23 +1,53 @@
--# %h1 Reports#index
--# %p Find me in app/views/reports/index.html.haml
--# - @reports.each do |report|
--#   = image_tag report.images.first.variant(resize: '100x100')
-
 .report
   %table.report__details
     %tr
-      %th.report__txt{"data-label": "レポート"} 開始時の体重
-      %td.report__kg{"data-label": "kg"} #{@reports.first.weight}kg
+      %th.report__txt{"data-label": "レポート"} 開始
+      - if @reports.first.present?
+        %td.report__kg{"data-label": "kg"} #{@reports.first.weight}kg
+      - else
+        %td.report__kg{"data-label": "kg"}
+          = link_to new_user_report_path do
+            記録をする
     %tr
-      %th.report__txt{"data-label": "レポート"} 現在の体重
-      %td.report__kg{"data-label": "kg"} #{@reports.last.weight}kg
+      %th.report__txt{"data-label": "レポート"} 目標
+      - if current_user.plans.last.present?
+        %td.report__kg{"data-label": "kg"} #{current_user.plans.last.target_weight}kg
+      - else
+        %td.report__kg{"data-label": "kg"}
+          = link_to new_plan_path do
+            目標を設定する
     %tr
-      %th.report__txt{"data-label": "レポート"} 変化
-      %td.report__kg{"data-label": "kg"} #{@reports.last.weight-@reports.first.weight}kg
+      %th.report__txt{"data-label": "レポート"} 現在
+      - if @reports.first.present?
+        %td.report__kg{"data-label": "kg"} #{@reports.last.weight}kg
+      - else
+        %td.report__kg{"data-label": "kg"}
+          = link_to new_user_report_path do
+            記録をする
   %table.report__details
     %tr
-      %th.report__txt{"data-label": "レポート"} 1週間後の予測体重
-      %td.report__kg{"data-label": "kg"} #{@week_after}kg
+      %th.report__txt{"data-label": "レポート"} 成果
+      - if @reports.first.present?
+        %td.report__kg{"data-label": "kg"} #{@reports.last.weight-@reports.first.weight}kg
+      - else
+        %td.report__kg{"data-label": "kg"}
+          = link_to new_user_report_path do
+            記録をする
+    %tr
+      %th.report__txt{"data-label": "レポート"} 目標まで
+      - if current_user.plans.last.present?
+        %td.report__kg{"data-label": "kg"} #{@reports.first.weight}kg
+      - else
+        %td.report__kg{"data-label": "kg"}
+          = link_to new_plan_path do
+            目標を設定する
+  %table.report__details
+    %tr
+      %th.report__txt{"data-label": "レポート"} 1週間後の予測
+      - if @reports.length >=2
+        %td.report__kg{"data-label": "kg"} #{@week_after}kg
+      - else
+        %td.report__kg{"data-label": "kg"} 計算できません
 %script{src: "https://www.amcharts.com/lib/4/core.js"}
 %script{src: "https://www.amcharts.com/lib/4/charts.js"}
 %script{src: "https://www.amcharts.com/lib/4/themes/dataviz.js"}

@@ -61,4 +61,14 @@ class Report < ApplicationRecord
     return axis
   end
 
+  scope :entry_on_between, -> from, to {
+    if from.present? && to.present?
+      where(entry_on: from..to).order(entry_on: 'ASC')
+    elsif from.present?
+      where('entry_on >= ?', from).order(entry_on: 'ASC')
+    elsif to.present?
+      where('entry_on <= ?', to).order(entry_on: 'ASC')
+    end
+  }
+
 end

@@ -1,11 +1,19 @@
 @entry_on = Date.today
 @weight = 70
 (1..30).each do |n|
-  Report.create!(weight:@weight + rand(0.0..2.9).round(1),
-                entry_on:@entry_on - rand(1..4),
-                text:"",
-                user_id:1,
-  )
+  if n%3 == 0
+    Report.create!(weight:@weight - rand(0.0..2.9).round(1),
+                  entry_on:@entry_on - rand(1..4),
+                  text:"",
+                  user_id:1,
+    )
+  else
+    Report.create!(weight:@weight + rand(0.0..2.9).round(1),
+                  entry_on:@entry_on - rand(1..4),
+                  text:"",
+                  user_id:1,
+    )
+  end
 
   report = Report.find(n)
 
