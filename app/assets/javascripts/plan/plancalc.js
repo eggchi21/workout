@@ -1,5 +1,4 @@
 $(function(){
-  var user = gon.user
   var diff = 0
   var tdei = 0
   function bmrCalc(user,weight){
@@ -120,6 +119,7 @@ $(function(){
     }];
   }
   $(document).on('change keyup', '#start-weight',function() {
+    var user = gon.user
     var weight = $(this).val()
     $('.caution--start_weight').css({
       'display':'none'
@@ -157,6 +157,7 @@ $(function(){
     }
   })
   $(document).on('change keyup', '.calc-calorie',function() {
+    var user = gon.user
     var startWeight =  $('#start-weight').val()
     var startOn = new Date($('#start_on_datepicker').val())
     var targetOn = new Date($('#target_on_datepicker').val())

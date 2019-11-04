@@ -1,13 +1,20 @@
 class ReportsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
-    gon.reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
+    @plan = Plan.where(user_id:current_user.id).last
+    if @plan.present?
+      @reports = Report.where(user_id:current_user.id).entry_on_between(@plan.start_on , nil)
+      gon.reports = Report.where(user_id:current_user.id).entry_on_between(@plan.start_on , nil)
+    else
+      @reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
+      gon.reports = Report.where(user_id:current_user.id).order(entry_on: 'ASC')
+    end
     gon.ids = @reports.map(&:id)
     gon.weights = @reports.map(&:weight)
     gon.dates = @reports.map{|report| report.entry_on.strftime('%Y/%m/%d') }
     gon.user_id = current_user.id
-    @week_after = Report.ols(@reports)
+    @week_after = Report.ols(@reports) if @reports.length >=2
+
   end
 
   def show

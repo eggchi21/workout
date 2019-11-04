@@ -1,6 +1,6 @@
 $(function(){
   $(window).bind("load", function(){
-    if(document.URL.match(/\/users\/\d\/reports/)) {
+    if(document.URL.match(/\/users\/\d\/reports$/)) {
       am4core.ready(function() {
 
       // Themes begin
