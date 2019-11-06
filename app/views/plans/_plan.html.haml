@@ -1,0 +1,33 @@
+.plan-index
+  .plan-index--flipbox
+    .plan-index--flipbox__front
+      %p.front__title
+        = plan.user.nickname
+      %p.front__subline
+        #{plan.start_on} から
+        %br>/
+        #{plan.target_on}まで
+        %br>/
+        ダイエットします！
+      %h1.front__headline
+        #{plan.target_weight-plan.start_weight}kg
+        %br>/
+        にコミットします！
+    .plan-index--flipbox__back
+      %h1.back__headline
+        ダイエット計画
+      .back__text
+        .back__text--protein.back__text--pfc
+          たんぱく質:#{plan.protein}g
+        .back__text--fat.back__text--pfc
+          脂質:#{plan.fat}g
+        .back__text--carbo.back__text--pfc
+          炭水化物:#{plan.carbo}g
+        .back__text--calorie.back__text--pfc
+          目標摂取カロリー:#{plan.protein * 4 + plan.fat * 9 + plan.carbo * 4}カロリー
+      %button.back__button
+        %span いいね
+  .plan-index--toggle
+    .plan-index--toggle__toback
+    .plan-index--toggle__tofront
+      %i.fa.fa-angle-right.fa-3x.plan-index--toggle__arrow
