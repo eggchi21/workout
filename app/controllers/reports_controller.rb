@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :set_report, only: [:edit ,:update]
   before_action :authenticate_user!
   def index
     @plan = Plan.where(user_id:current_user.id).last
@@ -13,8 +14,7 @@ class ReportsController < ApplicationController
     gon.weights = @reports.map(&:weight)
     gon.dates = @reports.map{|report| report.entry_on.strftime('%Y/%m/%d') }
     gon.user_id = current_user.id
-    @week_after = Report.ols(@reports) if @reports.length >=2
-
+    @week_after = Report.ols(@reports) if @reports.length >= 2
   end
 
   def new
@@ -29,16 +29,24 @@ class ReportsController < ApplicationController
       render :new
     end
   end
-end
 
   def edit
   end
 
   def update
-
+    if @report.update(report_params)
+      flash[:notice] = '更新しました'
+      redirect_to user_reports_path
+    else
+      render :edit
+    end
   end
-
+end
 private
+
+def set_report
+  @report = Report.find(params[:id])
+end
 
 def report_params
   params.require(:report).permit(:weight,:entry_on,:text, images: []).merge(user_id: current_user.id)
