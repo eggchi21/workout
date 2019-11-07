@@ -17,9 +17,6 @@ class ReportsController < ApplicationController
 
   end
 
-  def show
-  end
-
   def new
     @report = Report.new
   end
@@ -33,6 +30,13 @@ class ReportsController < ApplicationController
     end
   end
 end
+
+  def edit
+  end
+
+  def update
+
+  end
 
 private
 

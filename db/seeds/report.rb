@@ -4,13 +4,13 @@
   if n%3 == 0
     Report.create!(weight:@weight - rand(0.0..2.9).round(1),
                   entry_on:@entry_on - rand(1..4),
-                  text:"",
+                  text:"痩せた！",
                   user_id:1,
     )
   else
     Report.create!(weight:@weight + rand(0.0..2.9).round(1),
                   entry_on:@entry_on - rand(1..4),
-                  text:"",
+                  text:"太った...",
                   user_id:1,
     )
   end

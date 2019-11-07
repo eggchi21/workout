@@ -65,7 +65,7 @@ $(function(){
       var bullet = series.bullets.push(new am4charts.CircleBullet());
       bullet.circle.strokeWidth = 2;
       bullet.circle.radius = 10;
-      bullet.circle.url =`/users/${user_id}/reports/{id.urlEncode()}`;
+      bullet.circle.url =`/users/${user_id}/reports/{id.urlEncode()}/edit`;
       bullet.circle.fill = am4core.color("#F26964");
 
       var bullethover = bullet.states.create("hover");

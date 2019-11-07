@@ -11,7 +11,10 @@
     = report.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker'
     = report.label '日付',for:'datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
-
+  .common-form__text
+    = report.text_field :text,placeholder:"今日の気分は？", id:'text-input'
+    = report.label 'メモ',for:'text-input'
+    .common-form__text--description なんでも記載してください
   .common-form__image
     .common-form__image--description 画像は4枚まで添付できます
     = report.file_field :images, multiple: true,id:'image-input',class: "common-form__image--input"

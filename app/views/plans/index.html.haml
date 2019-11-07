@@ -1,4 +1,5 @@
-= link_to new_plan_path do
-  新規計画をする
+
 .plan
+  = link_to new_plan_path ,class:'plan-new'do
+    新規計画をする
   = render partial: 'plan', collection: @plans
