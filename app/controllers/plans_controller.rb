@@ -1,7 +1,12 @@
 class PlansController < ApplicationController
+  before_action :set_plan, only: [:show]
   before_action :authenticate_user!, except:[:index]
   def index
     @plans = Plan.all
+  end
+
+  def show
+    @plans = Plan.where(user_id:@plan.user.id)
   end
 
   def new
@@ -36,6 +41,10 @@ class PlansController < ApplicationController
 end
 
 private
+
+def set_plan
+  @plan = Plan.find(params[:id])
+end
 
 def plan_params
   params.require(:plan).permit(:start_weight,:target_weight,:start_on,:target_on,:method,:protein,:fat,:carbo).merge(user_id:current_user.id)
