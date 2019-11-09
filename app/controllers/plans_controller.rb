@@ -23,7 +23,12 @@ class PlansController < ApplicationController
   end
 
   def update
-
+    if @plan.update(plan_params)
+      flash[:notice] = '更新しました'
+      redirect_to plans_path
+    else
+      render :edit
+    end
   end
 
   def destroy
