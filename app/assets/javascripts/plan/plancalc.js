@@ -210,4 +210,28 @@ $(function(){
   $(document).on('change keyup', '.pfc-num',function() {
     pieChartMake()
   })
+  $(window).bind("load", function(){
+    if(document.URL.match(/\/plans\/\d+\/edit/)) {
+      var user = gon.user
+      var startWeight =  $('#start-weight').val()
+      var startOn = new Date($('#start_on_datepicker').val())
+      var targetOn = new Date($('#target_on_datepicker').val())
+      resetCalorieCalc()
+      var term = (targetOn - startOn ) / 86400000 + 1
+      var startWeight =  $('#start-weight').val()
+      var targetWeight =  $('#target-weight').val()
+      var bmr = bmrCalc(user,startWeight)
+      var tdee = Math.round(tdeeCalc(bmr,user))
+      var volume = startWeight - targetWeight
+      tdei = tdee - Math.round(termOrCalorieCalc(term,volume))
+      diff =  tdei - 1200
+      $('.plan-form__tdee--numeric').text(`${tdee}kcal`)
+      $('.plan-form__tdei--numeric').text(`${tdei}kcal`)
+      $('.initial-none--weight').fadeIn("slow")
+      $('.initial-none--date').fadeIn("slow")
+      $('.initial-none--pfc').fadeIn("slow")
+      pieChartMake()
+      }
+
+  });
 })

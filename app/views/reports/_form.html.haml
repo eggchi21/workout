@@ -1,0 +1,51 @@
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"}
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
+%link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
+= form_with model: [current_user ,@report], data: { remote: false }, class: "common-form" do |report|
+  - if @report.errors.any?
+    .form__errors
+      %h2= "#{@report.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @report.errors.full_messages.each do |message|
+          %li= message
+  .common-form__weight
+    = report.number_field :weight, placeholder:"70.0", step:"0.1", min:0,id:'weight-input'
+    = report.label '体重',for:'weight-input'
+    .common-form__weight--description 単位はkgです
+  .common-form__date
+    = report.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker'
+    = report.label '日付',for:'datepicker'
+    .common-form__date--description クリックするとカレンダーが表示されます
+  .common-form__text
+    = report.text_field :text,placeholder:"今日の気分は？", id:'text-input'
+    = report.label 'メモ',for:'text-input'
+    .common-form__text--description なんでも記載してください
+  .common-form__image
+    .common-form__image--description 画像は4枚まで添付できます
+    = report.file_field :images, multiple: true,id:'image-input',class: "common-form__image--input"
+    = report.label:images,class: "common-form__image--icon-0",for:'image-input' do
+      .common-form__image--icon-wrap
+        %i.fas.fa-image
+        .common-form__image--icon-text 画像
+        -# 複数画像編集考案中
+    -# - @report.images.each_with_index do |image,index|
+    -#   = image_tag image,size:'114x116'
+      -# = report.file_field :images, multiple: true,id:'image-input',class: "common-form__image--input"
+      -# = report.label:images,class: "common-form__image--icon-0",for:'image-input' do
+  - if current_page?(controller: 'reports', action: 'new')
+    = report.submit "記録する" ,class:'common-form__submit'
+  - else
+    = report.submit "更新する" ,class:'common-form__submit'
+
+-# %ul.re__sell-upload-items
+-#   - @item_images.each.each_with_index do |item_image,index|
+-#     = f.fields_for :item_images,item_image do |i|
+-#       %li.re__sell-upload-item
+-#         = image_tag i.object.image_url.url,size:'114x116'
+        -# .re__btn_wrapper
+        -#   = i.label :image_url, class: "btn re__edit", for: "re__sell-upload-drop-box__file_#{index}" do
+        -#     編集
+        -#     = i.file_field :image_url, id: "re__sell-upload-drop-box__file_#{index}", class:"re__sell-upload-drop-box__file", type: "file", 'data-image': i.index,value: i.object.id
+        -#   .btn.re__delete
+        -#     削除
+        -#     = i.check_box :_destroy, class:"re__sell-upload-drop-box__delete-flag"

@@ -1,0 +1,261 @@
+.plan{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.plan-new{
+  color:#fff;
+  text-align:center;
+  line-height: 52px;
+  left: 36px;
+  bottom: 38px;
+  width: 340px;
+  height: 52px;
+  background-color: #E03616;
+  transition: all 0.3s;
+  border: 0;
+  border-radius: 26px;
+  padding-bottom: 2px;
+  &:hover{
+    background-color: #E30143;
+  }
+}
+.plan-card{
+  margin-top:10px;
+  width: 340px;
+  height: 340px;
+  position: relative;
+  -moz-transform: perspective(1200px);
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
+  &--flipbox{
+    width: 340px;
+    height: 340px;
+    position: relative;
+    transition: all 0.5s ease-out;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    &__front{
+      width: 340px;
+      height: 340px;
+      position: absolute;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background-color: #1253A4;
+      background-position:center center;
+      background-size:contain;
+      background-image: url('https://4.bp.blogspot.com/-evvzB9SQso8/W8hDuwMX2LI/AAAAAAABPfA/WIYMs2oOTGk4L_H8eghp8q_LO0QKo9XzgCLcBGAs/s800/diet_before_man.png');
+    }
+    &__back{
+      width: 340px;
+      height: 340px;
+      position: absolute;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background-color: rgb(170, 210, 24);
+      background-position:center center;
+      background-size:contain;
+      background-image: url('https://3.bp.blogspot.com/-KLsvZz5u3PQ/V1z9NhlbXjI/AAAAAAAA7QI/7DMtmzokbksgxLcqN3HlWLhVaOt7MSmsACLcB/s800/kinniku_hanasu.png');
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.front{
+  &__title {
+  padding-top: 30px;
+  color: #fff;
+  font-size: 1.5em;
+  line-height: 25px;
+  padding-left: 40px;
+  }
+  &__subline{
+  padding-top: 20px;
+  color: #fff;
+  font-size: 1.5em;
+  line-height: 25px;
+  padding-left: 40px;
+  }
+  &__headline{
+  letter-spacing: 0.02em;
+  font-size: 1.5em;
+  line-height: 25px;
+  color: #fff;
+  margin: 40px;
+  background-color: #C30C3D;
+  border-radius:5px;
+  text-align:center
+  }
+}
+
+.back{
+  &__headline{
+  padding-top: 20px;
+  padding-left: 40px;
+  font-size: 1.5em;
+  color:#fff;
+  }
+  &__text{
+    &--pfc{
+      background-color: #fff;
+      margin:10px;
+      border-radius:5px;
+      font-size: 1.1em;
+      text-align:center;
+      opacity:0.8;
+    }
+  }
+  &__button{
+    position: absolute;
+    color:#fff;
+    left: 36px;
+    bottom: 38px;
+    width: 150px;
+    height: 52px;
+    background-color: #C30C3D;
+    transition: all 0.3s;
+    border: 0;
+    border-radius: 26px;
+    padding-bottom: 2px;
+    &:hover{
+      background-color: #E30143;
+    }
+  }
+}
+
+
+
+
+
+.flipped {
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+.plan-card--action {
+  position: absolute;
+  left: 40px;
+  bottom: 38px;
+  &__good{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 125px;
+    height: 32px;
+    border-radius: 5px;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_hover{
+      transform: scale(1.1);
+    }
+  }
+  &__thumbsup{
+    color:#fff;
+    background-color: transparent;
+    transition: all 0.35s linear;
+  }
+  &__edit{
+    position: absolute;
+    left: 130px;
+    bottom: 0px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_hover{
+      transform: scale(1.1);
+    }
+  }
+  &__pencil{
+    color:#fff;
+    background-color: transparent;
+    transition: all 0.35s linear;
+  }
+  &__delete{
+    position: absolute;
+    left: 165px;
+    bottom: 0px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_hover{
+      transform: scale(1.1);
+    }
+  }
+  &__trash{
+    color:#fff;
+    background-color: transparent;
+    transition: all 0.35s linear;
+  }
+}
+.plan-card--toggle {
+  position: absolute;
+  right: 40px;
+  bottom: 38px;
+  &__toback{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    opacity: 0;
+    background-color: #D21849;
+    &_hover{
+      transform: scale(1.37);
+      opacity: 0.4;
+    }
+    &_back_hover{
+      background-color: #F60044;
+    }
+  }
+  &__tofront{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_click{
+      transform: scale(1.7);
+    }
+    &_back{
+      background-color: #C30C3D;
+    }
+  }
+  &__arrow{
+    color:#fff;
+    background-color: transparent;
+    transition: all 0.35s linear;
+    &_rotate{
+      transform: rotate(-180deg);
+    }
+  }
+}

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :signup do
     collection do
       get 'reset'
-      get 'step1' # 1ページ目 (メールアドレスで登録する、ファイスブックで登録する、グーグルで登録する。)
+      get 'step1' # 1ページ目 (メールアドレスで登録する、フェイスブックで登録する、グーグルで登録する。)
       get 'step2' # ニックネームメール/PW
       get 'step3' # 住所
       get 'done'
