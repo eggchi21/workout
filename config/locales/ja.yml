@@ -17,8 +17,11 @@ ja:
       plan:
         start_weight: 開始体重
         target_weight: 目標体重
-        start_on: 日付
-        target_on: 日付
+        start_on: 開始日
+        target_on: 目標日
+        protein: たんぱく質(g)
+        fat: 脂質(g)
+        carbo: 炭水化物(g)
 
   date:
     abbr_day_names:
