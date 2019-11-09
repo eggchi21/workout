@@ -34,6 +34,20 @@ class Report < ApplicationRecord
   has_many_attached :images
   using ArrayStatistics
 
+  validates :weight,presence:true
+  validates :entry_on,presence:true, uniqueness: true
+  validate :date_cannot_be_in_the_future
+  validates :user_id, presence: true
+  validates :user, presence: true,if: -> {user_id.present?}
+
+  def date_cannot_be_in_the_future
+    if entry_on.present? && entry_on > Date.today
+      errors.add(:entry_on, ": 今日以降の日付は登録できません")
+    end
+  end
+
+
+
   def self.ols(reports)
     ys = reports.map(&:weight)
     xs = date_to_axis(reports.map(&:entry_on))

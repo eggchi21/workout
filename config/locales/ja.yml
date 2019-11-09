@@ -7,6 +7,19 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    modeles:
+      report: 記録
+      plan: 目標
+    attributes:
+      report:
+        weight: 体重
+        entry_on: 日付
+      plan:
+        start_weight: 開始体重
+        target_weight: 目標体重
+        start_on: 日付
+        target_on: 日付
+
   date:
     abbr_day_names:
     - 日

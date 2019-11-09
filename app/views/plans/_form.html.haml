@@ -5,6 +5,12 @@
 %script{:src => "https://www.amcharts.com/lib/4/charts.js"}
 %script{:src => "https://www.amcharts.com/lib/4/themes/animated.js"}
 = form_with model: @plan , data: { remote: false }, class: "common-form" do |plan|
+  - if @plan.errors.any?
+    .form__errors
+      %h2= "#{@plan.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @plan.errors.full_messages.each do |message|
+          %li= message
   .common-form__weight.calc-calorie.calc-pfc
     = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:40,id:'start-weight'
     = plan.label '開始体重',for:'start-weight'
@@ -46,11 +52,11 @@
       .plan-form__pfc--protein--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
     .plan-form__pfc--fat.pfc-num
       = plan.number_field :fat
-      = plan.label 'F:脂質(g)'
+      = plan.label '脂質(g)'
       .plan-form__pfc--fat--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
     .plan-form__pfc--carbo.pfc-num
       = plan.number_field :carbo
-      = plan.label 'C:炭水化物(g)'
+      = plan.label '炭水化物(g)'
       .plan-form__pfc--carbo--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
     .plan-form__calorie
       .plan-form__calorie--text
