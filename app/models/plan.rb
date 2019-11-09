@@ -13,8 +13,7 @@ class Plan < ApplicationRecord
   validates :user, presence: true,if: -> {user_id.present?}
 
 
-  enum
-   method: {
+  enum method: {
     lowfat: 0,
     lowcarbo: 1
   }
