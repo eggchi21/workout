@@ -1,2 +1,5 @@
 .plan
-  = render partial: 'plan', collection: @plans
+  = render partial: 'plan',locals:{plan: @plan}
+  .plan-post
+    %p 過去の目標↓
+    = render partial: 'plan', collection: @plans

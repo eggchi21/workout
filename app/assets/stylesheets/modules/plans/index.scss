@@ -21,7 +21,7 @@
     background-color: #E30143;
   }
 }
-.plan-index{
+.plan-card{
   margin-top:10px;
   width: 340px;
   height: 340px;
@@ -56,7 +56,7 @@
       -webkit-backface-visibility: hidden;
       -moz-backface-visibility: hidden;
       backface-visibility: hidden;
-      background-color: #D21849;
+      background-color: rgb(170, 210, 24);
       background-position:center center;
       background-size:contain;
       background-image: url('https://3.bp.blogspot.com/-KLsvZz5u3PQ/V1z9NhlbXjI/AAAAAAAA7QI/7DMtmzokbksgxLcqN3HlWLhVaOt7MSmsACLcB/s800/kinniku_hanasu.png');
@@ -140,8 +140,75 @@
   -ms-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
-
-.plan-index--toggle {
+.plan-card--action {
+  position: absolute;
+  left: 40px;
+  bottom: 38px;
+  &__good{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 125px;
+    height: 32px;
+    border-radius: 5px;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_hover{
+      transform: scale(1.1);
+    }
+  }
+  &__thumbsup{
+    color:#fff;
+    background-color: transparent;
+    transition: all 0.35s linear;
+  }
+  &__edit{
+    position: absolute;
+    left: 130px;
+    bottom: 0px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_hover{
+      transform: scale(1.1);
+    }
+  }
+  &__pencil{
+    color:#fff;
+    background-color: transparent;
+    transition: all 0.35s linear;
+  }
+  &__delete{
+    position: absolute;
+    left: 165px;
+    bottom: 0px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #D21849;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_hover{
+      transform: scale(1.1);
+    }
+  }
+  &__trash{
+    color:#fff;
+    background-color: transparent;
+    transition: all 0.35s linear;
+  }
+}
+.plan-card--toggle {
   position: absolute;
   right: 40px;
   bottom: 38px;

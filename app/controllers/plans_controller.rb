@@ -1,12 +1,12 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show]
+  before_action :set_plan, only: [:show,:destroy, :edit ,:update]
   before_action :authenticate_user!, except:[:index]
   def index
     @plans = Plan.all
   end
 
   def show
-    @plans = Plan.where(user_id:@plan.user.id)
+    @plans = Plan.where(user_id:@plan.user.id).where.not(id:@plan.id)
   end
 
   def new
@@ -15,6 +15,24 @@ class PlansController < ApplicationController
       gon.user = current_user
     else
       redirect_to edit_user_path(current_user)
+    end
+  end
+
+  def edit
+    gon.user = current_user
+  end
+
+  def update
+
+  end
+
+  def destroy
+    if @plan.destroy
+      flash[:notice] = '目標を削除しました'
+      redirect_to plans_path
+    else
+      flash[:notice] = '目標の削除に失敗しました'
+      redirect_to plans_path
     end
   end
 

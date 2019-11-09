@@ -1,6 +1,6 @@
-.plan-index
-  .plan-index--flipbox
-    .plan-index--flipbox__front
+.plan-card
+  .plan-card--flipbox
+    .plan-card--flipbox__front
       %p.front__title
         = plan.user.nickname
       %p.front__subline
@@ -13,7 +13,7 @@
         #{plan.target_weight-plan.start_weight}kg
         %br>/
         にコミットします！
-    .plan-index--flipbox__back
+    .plan-card--flipbox__back
       %h1.back__headline
         ダイエット計画
       .back__text
@@ -25,9 +25,19 @@
           炭水化物:#{plan.carbo}g
         .back__text--calorie.back__text--pfc
           目標摂取カロリー:#{plan.protein * 4 + plan.fat * 9 + plan.carbo * 4}カロリー
-      %button.back__button
-        %span いいね
-  .plan-index--toggle
-    .plan-index--toggle__toback
-    .plan-index--toggle__tofront
-      %i.fa.fa-angle-right.fa-3x.plan-index--toggle__arrow
+  .plan-card--action
+    - if user_signed_in?
+      .plan-card--action__good
+        %i.fa.fa-thumbs-up.fa-1x.plan-card--action__thumbsup
+          いいね 100
+      - if plan.user.id == current_user.id
+        = link_to edit_plan_path(plan) do
+          .plan-card--action__edit
+            %i.fa.fa-pen.fa-1x.plan-card--action__pencil
+        = link_to plan_path(plan), method: :delete do
+          .plan-card--action__delete
+            %i.fa.fa-trash-alt.fa-1x.plan-card--action__trash
+  .plan-card--toggle
+    .plan-card--toggle__toback
+    .plan-card--toggle__tofront
+      %i.fa.fa-angle-right.fa-3x.plan-card--toggle__arrow
