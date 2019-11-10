@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :reports
   end
   resources :plans
+  resources :diaries
   resources :homes do
     collection do
       get "logout"

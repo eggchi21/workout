@@ -1,8 +1,12 @@
 module HomesHelper
   def contents
-    titles = [
-      {title: "アプリについて",url:about_homes_path},
+    homes =[
+      {title: "HOME",url:root_path},
+    ]
+
+    common_contents = [
       {title: "みんなの目標",url:plans_path},
+      {title: "アプリについて",url:about_homes_path},
     ]
 
     before_user_session = [
@@ -10,9 +14,11 @@ module HomesHelper
       {title: "新規登録",url:step1_signup_index_path},
     ]
     after_user_session = [
-      {title: "プロフィール",url:edit_user_path(current_user)},
+      {title: "ユーザー情報",url:edit_user_path(current_user)},
       {title: "自分の体重記録",url:user_reports_path(current_user)},
       {title: "今日の体重を記録する",url:new_user_report_path(current_user)},
+      {title: "フード登録",url:new_diary_path},
+
     ] if user_signed_in?
     mycontents =[
       {title: "Qiita",url:"https://qiita.com/eggchi21"},
@@ -23,9 +29,9 @@ module HomesHelper
     ]
 
     if user_signed_in?
-      after_user_session.push(titles).push(mycontents).push(logout).flatten!
+      homes.push(after_user_session).push(common_contents).push(mycontents).push(logout).flatten!
     else
-      before_user_session.push(titles).push(mycontents).flatten!
+      homes.push(before_user_session).push(common_contents).push(mycontents).flatten!
     end
   end
 end

@@ -13,7 +13,7 @@
     = report.label '体重',for:'weight-input'
     .common-form__weight--description 単位はkgです
   .common-form__date
-    = report.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker'
+    = report.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker',value: Date.today.strftime('%Y/%m/%d')
     = report.label '日付',for:'datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
   .common-form__text

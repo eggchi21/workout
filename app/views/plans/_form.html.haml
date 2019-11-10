@@ -1,9 +1,9 @@
 %script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"}
 %script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
 %link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
-%script{:src => "https://www.amcharts.com/lib/4/core.js"}
-%script{:src => "https://www.amcharts.com/lib/4/charts.js"}
-%script{:src => "https://www.amcharts.com/lib/4/themes/animated.js"}
+%script{src: "https://www.amcharts.com/lib/4/core.js"}
+%script{src: "https://www.amcharts.com/lib/4/charts.js"}
+%script{src: "https://www.amcharts.com/lib/4/themes/animated.js"}
 = form_with model: @plan , data: { remote: false }, class: "common-form" do |plan|
   - if @plan.errors.any?
     .form__errors
@@ -22,7 +22,7 @@
     .caution--target_weight 未満は設定できません
     .common-form__weight--description 単位はkgです。37kg未満は入力できません
   .common-form__date.calc-calorie.calc-pfc.initial-none--weight
-    = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker'
+    = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker',value: Date.today.strftime('%Y/%m/%d')
     = plan.label '開始日',for:'start_on_datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
   .common-form__date.calc-calorie.calc-pfc.initial-none--weight
