@@ -51,12 +51,13 @@ class Scraping
     protein = food_page.at('#protein_content').inner_text.to_f
     fat = food_page.at('#fat_content').inner_text.to_f
     carbo = food_page.at('#carb_content').inner_text.to_f
+    kcal = food_page.at('.singlelistKcal').inner_text.to_i
     if food_page.at('#serving_comment')
       unit = food_page.at('#serving_comment').inner_text
     else
       unit = 'No Data'
     end
-    gram = food_page.at('#serving_content').inner_text.to_i
+    gram = food_page.at('#serving_content').inner_text.to_f
     image_url = 'https:' + food_page.at('#foodImage')[:src]
     if food = Food.find_by(name:name)
       food.update(
@@ -64,6 +65,7 @@ class Scraping
         protein: protein,
         fat: fat,
         carbo: carbo,
+        kcal: kcal,
         unit: unit,
         gram: gram,
         image_url: image_url,
@@ -74,6 +76,7 @@ class Scraping
         protein: protein,
         fat: fat,
         carbo: carbo,
+        kcal: kcal,
         unit: unit,
         gram: gram,
         image_url: image_url,

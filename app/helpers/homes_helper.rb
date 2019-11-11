@@ -17,7 +17,7 @@ module HomesHelper
       {title: "ユーザー情報",url:edit_user_path(current_user)},
       {title: "自分の体重記録",url:user_reports_path(current_user)},
       {title: "今日の体重を記録する",url:new_user_report_path(current_user)},
-      {title: "フード登録",url:new_diary_path},
+      {title: "フード検索",url:foods_path},
 
     ] if user_signed_in?
     mycontents =[

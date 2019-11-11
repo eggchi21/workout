@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_072318) do
+ActiveRecord::Schema.define(version: 2019_11_11_092112) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -60,11 +60,12 @@ ActiveRecord::Schema.define(version: 2019_11_10_072318) do
     t.decimal "fat", precision: 10, scale: 2
     t.decimal "carbo", precision: 10, scale: 2
     t.string "unit"
-    t.integer "gram"
+    t.decimal "gram", precision: 10, scale: 1
     t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.integer "kcal"
   end
 
   create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'foods/index'
+  # get 'foods/show'
   root 'homes#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
       get "about"
     end
   end
+  resources :foods, only: [:index,:show]
+
   resources :signup do
     collection do
       get 'reset'
