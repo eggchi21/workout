@@ -1,0 +1,5 @@
+%li.foods-level2-box__part{ id:"food_initial-#{level2}"}
+  %h4.foods-level2-box__head
+    = level2
+  .foods-level3-box
+    = render partial: 'level3-list', collection: level3.select{|x| x.name[0] == level2}, as: 'level3'

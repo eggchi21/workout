@@ -1,0 +1,10 @@
+%li.foods-level1-box__part
+  %h3.foods-level1-box__head{ id: "food-#{level1.id}" }
+    = level1.name
+  .foods-level2-box
+    .food-initial-link-box
+      - Food.initial_sort(level1.children).each do |food_initial|
+        .food-initial-link-box-initial
+          = link_to food_initial, "#food_initial-#{food_initial}"
+    %ul.foods-level2-box__wrapper
+      = render partial: 'level2-list', collection: Food.initial_sort(level1.children), as: 'level2', locals: { level3: level1.children }

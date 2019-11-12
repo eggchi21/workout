@@ -8,12 +8,15 @@ Rails.application.routes.draw do
     resources :reports
   end
   resources :plans
+  resources :diaries
   resources :homes do
     collection do
       get "logout"
       get "about"
     end
   end
+  resources :foods, only: [:index,:show]
+
   resources :signup do
     collection do
       get 'reset'
