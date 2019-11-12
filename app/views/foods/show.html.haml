@@ -1,4 +1,19 @@
-.plan
-  .plan-card
-    .plan-card--flipbox
-      = image_tag @food.image_url
+.food
+  .food-card
+    %a{:href => "#"}
+      %h3.food-card__title
+        = @food.name
+      = image_tag @food.image_url,class:'food-card__image'
+      %ul.food-card__pfc
+        %li
+          %span.food-card__pfc--kcal
+          #{@food.unit}あたり(#{@food.gram}g)#{@food.kcal}kcal
+        %li
+          %span.food-card__pfc--protein
+          たんぱく質:#{@food.protein}g
+        %li
+          %span.food-card__pfc--fat
+          脂質:#{@food.fat}g
+        %li
+          %span.food-card__pfc--carbo
+          炭水化物:#{@food.carbo}g

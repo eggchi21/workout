@@ -1,0 +1,101 @@
+.food{
+  display: flex;
+  justify-content: center;
+}
+.food-card {
+  background-color: #1B73BA;
+  width: 400px;
+}
+.food-card a{
+  box-sizing: border-box;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  color: #000000;
+  display:block;
+  position: relative;
+  transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -webkit-transition: 0.2s ease-in-out;
+}
+.food-card img {
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  display: block;
+}
+.food-card ul {
+  background-color: #FFFFFF;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 8px;
+}
+.food-card .food-card__title {
+  background-color: #1B73BA;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 8px;
+  position: relative;
+}
+
+.food-card__image{
+  height:400px;
+  width:400px;
+}
+
+.food-card .food-card__title:before {
+  border: 7px solid transparent;
+  border-top: 7px solid #1B73BA;
+  box-sizing: border-box;
+  content: "";
+  height: 7px;
+  left: 50%;
+  margin:0 0 0 -7px;
+  position: absolute;
+  top: 100%;
+  width: 14px;
+}
+.food-card a:hover{
+  opacity: 0.8;
+}
+
+.food-card__pfc li {
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+.food-card__pfc li:last-child {
+  padding-bottom: 0;
+}
+
+/* アイコン（丸の箇所） */
+.food-card__pfc li span {
+  background-color: #AAAAAA;
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: inline-block;
+*display:inline;
+*zoom:1;
+  height: 10px;
+  margin: 0 10px 3px 0;
+  position: relative;
+  vertical-align: middle;
+  width: 10px;
+}
+
+/* アイコン（三角の箇所） */
+.food-card__pfc li span:before {
+  border-bottom: 3px solid transparent;
+  border-left: 3px solid #FFF;
+  border-right: 3px solid transparent;
+  border-top: 3px solid transparent;
+  content: "";
+  display: block;
+  left: 4px;
+  position: absolute;
+  top: 2px;
+}

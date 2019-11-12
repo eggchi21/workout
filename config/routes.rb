@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # get 'foods/index'
-  # get 'foods/show'
   root 'homes#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
