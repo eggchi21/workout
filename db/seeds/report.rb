@@ -15,9 +15,9 @@
     )
   end
 
-  # report = Report.find(n)
+  report = Report.find(n)
 
-  # @weight = report.weight
-  # @entry_on = report.entry_on
+  @weight = report.weight
+  @entry_on = report.entry_on
   # report.images.attach(io: File.open("#{Rails.root}/db/fixtures/sample.jpeg"), filename: "test#{n}")
 end
