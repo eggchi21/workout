@@ -13,7 +13,40 @@
     = diary.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker', value: Date.today.strftime('%Y/%m/%d')
     = diary.label '開始日',for:'datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
+  .common-form__searchbox
+    %input#food-search__field.food-search__input{placeholder: "追加したいフードを入力してください", type: "text"}
 
+  .common-form__food
+    %table.msr_table03
+      %thead
+        %tr
+          %th フード
+          %th 量
+          %th 単位あたりのg
+          %th カロリー(kcal)
+          %th たんぱく質(g)
+          %th 脂質(g)
+          %th 炭水化物(g)
+      %tbody
+        = diary.fields_for :diaryfoods do |diaryfood|
+          %tr
+            %th
+              = diaryfood.collection_select :food_id, @food, :id, :name, {prompt: "---"}
+            %td
+              = diaryfood.number_field :amount,placeholder:"60.0", step:"0.1"
+            %td 10g
+            %td 100g
+            %td 100g
+            %td 100g
+            %td 100g
+        %tr
+          %th th
+          %td 100g
+          %td 100g
+          %td 100g
+          %td 100g
+          %td 100g
+          %td 100g
   - if current_page?(controller: 'diaries', action: 'new')
     = diary.submit '記録する' ,class:'common-form__submit'
   - else
