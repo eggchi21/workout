@@ -18,7 +18,6 @@ class DiariesController < ApplicationController
   end
 
   def create
-    binding.pry
     @diary = Diary.new(diary_params)
     if @diary.save
       redirect_to root_path
