@@ -15,6 +15,7 @@ class DiariesController < ApplicationController
     @diary = Diary.new
     @diary.diaryfoods.build
     @food = Food.where(ancestry:nil)
+    @plan = current_user.plans.last
   end
 
   def create

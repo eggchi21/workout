@@ -15,18 +15,38 @@ $(function(){
   }
   function appendFoodList(food){
     var html =`<tr class="food-record" data-id="${food.id_count + 1}" >
-    <th>${food.name}<input id="" class="" value="${food.id}" type="hidden" name="diary[diaryfoods_attributes][${food.id_count}][food_id]">
-    </th>
-    <td>
-      <input placeholder="60.0" step="0.1" type="number" name="diary[diaryfoods_attributes][${food.id_count}][amount]" id="diary_diaryfoods_attributes_${food.id_count}_amount">
-    </td>
-    <td>${food.unit}</td>
-    <td>${food.kcal}</td>
-    <td>${food.protein}</td>
-    <td>${food.fat}</td>
-    <td>${food.carbo}</td>
-    </tr>`
+                <th>
+                  ${food.name}<input id="" class="" value="${food.id}" type="hidden" name="diary[diaryfoods_attributes][${food.id_count}][food_id]">
+                </th>
+                <td>${food.unit}</td>
+                <td>
+                  <input class="unit-calc" step="0.1" type="number" name="diary[diaryfoods_attributes][${food.id_count}][amount]" id="diary_diaryfoods_attributes_${food.id_count}_amount" value ="1.0" ,width ="20px">個
+                </td>
+                <td>
+                  <input class="gram-calc" step="0.1" type="number" name="diary[diaryfoods_attributes][${food.id_count}][amount]" id="diary_diaryfoods_attributes_${food.id_count}_amount" value ="${food.gram}" data-unitgram="${food.gram}">g
+                </td>
+                <td value="${food.kcal}">${food.kcal}kcal</td>
+                <td value="${food.protein}">${food.protein}g</td>
+                <td value="${food.fat}">${food.fat}g</td>
+                <td value="${food.carbo}">${food.carbo}g</td>
+                <td>
+                  <input type="button" value="削除" class="record-delete"/>
+                </td>
+              </tr>`
     return html;
+  }
+  function calcKcal(){
+    var totalkcal = 0
+    var targetkcal = Number($(".kcal-calc__table").find("td").eq(0).text().replace(/[^0-9]/g, ''))
+    $(".food-record").each(function(index,elem){
+      totalkcal += Number($(elem).children("td").eq(3).text().replace(/[^0-9]/g, ''))
+    })
+    $(".kcal-calc__table").find("td").eq(1).text(totalkcal +'kcal')
+    if(totalkcal > targetkcal){
+      $(".kcal-calc__table").find("td").eq(2).text(totalkcal - targetkcal + 'kcalオーバーしてます')
+    }else{
+      $(".kcal-calc__table").find("td").eq(2).text(targetkcal - totalkcal + 'kcal分まだ余裕があります')
+    }
   }
 
   $(document).on('keyup', "#food-search__field",function() {
@@ -75,6 +95,11 @@ $(function(){
                 }
     $(".food-search__suggest").children().remove()
     insertList = appendFoodList(food)
-    $(".food_added__table").append(insertList)
+    $(".food-added__table").append(insertList)
+    calcKcal()
+  })
+  $(document).on('click',".record-delete",function(){
+    $(this).parent().parent().remove()
+    calcKcal()
   })
 })
