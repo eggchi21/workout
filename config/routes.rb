@@ -15,8 +15,11 @@ Rails.application.routes.draw do
       get "about"
     end
   end
-  resources :foods, only: [:index,:show]
-
+  resources :foods, only: [:index,:show] do
+    collection do
+      get "search"
+    end
+  end
   resources :signup do
     collection do
       get 'reset'

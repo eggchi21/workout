@@ -1,0 +1,27 @@
+.unit-calc{
+  width:40px;
+}
+.gram-calc{
+  width:45px;
+}
+.food-table{
+  width: 800px;
+  & th:first-child  {
+    width:200px;
+  }
+  & th:nth-child(2){
+    width:80px;
+  }
+}
+.pfc-table{
+  width: 400px;
+  & th {
+  width: calc(400px / 4);
+  }
+}
+.kcal-table{
+  width: 400px;
+  & th {
+  width: calc(400px / 3);
+  }
+}

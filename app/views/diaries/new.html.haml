@@ -13,7 +13,57 @@
     = diary.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker', value: Date.today.strftime('%Y/%m/%d')
     = diary.label '開始日',for:'datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
-
+  .common-form__searchbox
+    %input#food-search__field.food-search__input{placeholder: "追加したいフードを入力してください", type: "text"}
+    %label{for:'food-search__field'} 検索
+    %ul.food-search__suggest.form-suggest-list
+  .common-form__sheet
+    %table.common-form__table.food-table
+      %thead
+        %tr.food-record{data:{id:"0"}}
+          %th フード
+          %th 単位
+          %th 個数
+          %th グラム(g)
+          %th カロリー(kcal)
+          %th たんぱく質(g)
+          %th 脂質(g)
+          %th 炭水化物(g)
+          %th 削除
+      = diary.fields_for :diaryfoods do |diaryfood|
+        %tbody.food-added__table
+  .common-form__sheet
+    %table.common-form__table.pfc-table
+      %thead
+        %th
+        %th たんぱく質
+        %th 脂質
+        %th 炭水化物
+      %tbody.pfc-calc__table
+        %tr
+          %th 目標
+          %td{value: @plan.protein}
+            #{@plan.protein}g
+          %td{value: @plan.fat}
+            #{@plan.fat}g
+          %td{value: @plan.carbo}
+            #{@plan.carbo}g
+        %tr
+          %th 合計
+          %td -
+          %td -
+          %td -
+  .common-form__sheet
+    %table.common-form__table.kcal-table
+      %thead
+        %th 目標カロリー
+        %th 摂取カロリー
+        %th アドバイス
+      %tbody.kcal-calc__table
+        %td
+          #{@plan.protein * 4  + @plan.fat * 9 + @plan.carbo * 4}kcal
+        %td -
+        %td 検索からフードを追加してください
   - if current_page?(controller: 'diaries', action: 'new')
     = diary.submit '記録する' ,class:'common-form__submit'
   - else
