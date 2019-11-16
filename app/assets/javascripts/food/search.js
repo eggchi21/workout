@@ -35,22 +35,54 @@ $(function(){
               </tr>`
     return html;
   }
-  function calcKcal(){
+  function calcPfcKcal(){
+    var totalprotein = 0
+    var totalfat = 0
+    var totalcarbo = 0
     var totalkcal = 0
-    var targetkcal = Number($(".kcal-calc__table").find("td").eq(0).text().replace(/[^0-9]/g, ''))
+
+    var targetkcal = Number($(".kcal-calc__table").find("td").eq(0).text().replace(/[^\d+\.\d+]/g, ''))
     $(".food-record").each(function(index,elem){
-      totalkcal += Number($(elem).children("td").eq(3).text().replace(/[^0-9]/g, ''))
+      totalkcal += Number($(elem).children("td").eq(3).text().replace(/[^\d+\.\d+]/g, ''))
+      totalprotein += Number($(elem).children("td").eq(4).text().replace(/[^\d+\.\d+]/g, ''))
+      totalfat += Number($(elem).children("td").eq(5).text().replace(/[^\d+\.\d+]/g, ''))
+      totalcarbo += Number($(elem).children("td").eq(6).text().replace(/[^\d+\.\d+]/g, ''))
     })
+    var pfc = [totalprotein,totalfat,totalcarbo]
     $(".kcal-calc__table").find("td").eq(1).text(totalkcal +'kcal')
+    $(".pfc-calc__table").find("td").eq(3).text(Math.round(totalprotein* 100) / 100  +'g')
+    $(".pfc-calc__table").find("td").eq(4).text(Math.round(totalfat* 100) / 100  +'g')
+    $(".pfc-calc__table").find("td").eq(5).text(Math.round(totalcarbo* 100) / 100  +'g')
+    for (var i = 0; i < 3; i++){
+      if (Number($(".pfc-calc__table").find("td").eq(i).attr('value')) < pfc[i]) {
+        $(".pfc-calc__table").find("td").eq(i+3).css({
+          'font-weight':'bold',
+          'color':'red'
+        })
+      } else{
+        $(".pfc-calc__table").find("td").eq(i+3).css({
+          'font-weight':'bold',
+          'color':'bule'
+        })
+      }
+    }
     if(totalkcal > targetkcal){
       $(".kcal-calc__table").find("td").eq(2).text(totalkcal - targetkcal + 'kcalオーバーしてます')
+      $(".kcal-calc__table").find("td").eq(2).css({
+        'font-weight':'bold',
+        'color':'red'
+      })
     }else{
       $(".kcal-calc__table").find("td").eq(2).text(targetkcal - totalkcal + 'kcal分まだ余裕があります')
+      $(".kcal-calc__table").find("td").eq(2).css({
+        'font-weight':'bold',
+        'color':'blue'
+      })
     }
   }
 
   $(document).on('keyup', "#food-search__field",function() {
-    var input=$(this).val();
+    var input = $(this).val();
     $.ajax({
       type:'GET',
       url: '/foods/search',
@@ -60,10 +92,12 @@ $(function(){
     .done(function(foods){
       $(".food-search__suggest").empty();
       var insertHTML = '';
-      if (input.length != 0 ){
+      if (input.length != 0 && foods.length !== 0 ){
         foods.forEach(function(food){
           insertHTML += appendFoodSuggest(food);
         });
+      } else{
+        insertHTML = `<li>一致するフードはありません</li>`
       }
       $('.food-search__suggest').append(insertHTML)
     })
@@ -96,10 +130,38 @@ $(function(){
     $(".food-search__suggest").children().remove()
     insertList = appendFoodList(food)
     $(".food-added__table").append(insertList)
-    calcKcal()
+    calcPfcKcal()
   })
   $(document).on('click',".record-delete",function(){
     $(this).parent().parent().remove()
-    calcKcal()
+    calcPfcKcal()
+  })
+  $(document).on('change keyup', '.unit-calc',function() {
+    var unit = $(this).val()
+    var record = $(this).parent().parent(".food-record")
+    for (var i = 3; i < record.children("td").length - 1; i++){
+      if (i == 3) {
+        record.children("td").eq(i).text(Math.round(Number(record.children("td").eq(i).attr('value')) * unit ) + "kcal")
+      } else{
+        record.children("td").eq(i).text(Math.round(Number(record.children("td").eq(i).attr('value')) * unit * 100) / 100 + "g")
+      }
+    }
+    var unitgram = record.find(".gram-calc").data("unitgram")
+    record.find(".gram-calc").val(Math.round(unit * unitgram * 10)/ 10)
+    calcPfcKcal()
+  })
+  $(document).on('change keyup', '.gram-calc',function() {
+    var gram = $(this).val()
+    var record = $(this).parent().parent(".food-record")
+    var unitgram = $(this).data("unitgram")
+    Number(record.find(".unit-calc").val(Math.round(gram / unitgram * 10)/ 10))
+    for (var i = 3; i < record.children("td").length - 1; i++){
+      if (i == 3) {
+        record.children("td").eq(i).text(Math.round(Number(record.children("td").eq(i).attr('value')) * gram / unitgram ) + "kcal")
+      } else{
+        record.children("td").eq(i).text(Math.round(Number(record.children("td").eq(i).attr('value')) * gram / unitgram * 100) / 100 + "g")
+      }
+    }
+    calcPfcKcal()
   })
 })

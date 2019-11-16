@@ -33,29 +33,26 @@
       = diary.fields_for :diaryfoods do |diaryfood|
         %tbody.food-added__table
   .common-form__sheet
-    %table.common-form__table.kcal-table
+    %table.common-form__table.pfc-table
       %thead
         %th
         %th たんぱく質
         %th 脂質
         %th 炭水化物
-      %tbody.kcal-calc__table
+      %tbody.pfc-calc__table
         %tr
           %th 目標
-          %td
+          %td{value: @plan.protein}
             #{@plan.protein}g
-          %td
+          %td{value: @plan.fat}
             #{@plan.fat}g
-          %td
+          %td{value: @plan.carbo}
             #{@plan.carbo}g
         %tr
           %th 合計
-          %td
-            #{@plan.protein}g
-          %td
-            #{@plan.fat}g
-          %td
-            #{@plan.carbo}g
+          %td -
+          %td -
+          %td -
   .common-form__sheet
     %table.common-form__table.kcal-table
       %thead
