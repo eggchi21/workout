@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @food_groups = Food.where(ancestry: nil)
   end

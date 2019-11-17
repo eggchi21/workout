@@ -10,6 +10,8 @@ ja:
     modeles:
       report: 記録
       plan: 目標
+      diary: 食事の記録
+      diaryfood: フードの登録
     attributes:
       report:
         weight: 体重
@@ -22,7 +24,10 @@ ja:
         protein: たんぱく質(g)
         fat: 脂質(g)
         carbo: 炭水化物(g)
-
+      diary:
+        entry_on: 日付
+      diary/diaryfoods:
+        amount: "個数"
   date:
     abbr_day_names:
     - 日

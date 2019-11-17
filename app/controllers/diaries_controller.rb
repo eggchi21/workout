@@ -1,10 +1,6 @@
 class DiariesController < ApplicationController
+  before_action :authenticate_user!
   def index
-    # if Diary.find_by(user_id: current_user.id,entry_on: Date.today)
-    #   @diary = Diary.find_by(user_id: current_user.id,entry_on: Date.today)
-    # else
-    #   @diary = Diary.create(user_id: current_user.id,entry_on: Date.today,evaliation:0)
-    # end
   end
 
   def show
@@ -14,7 +10,7 @@ class DiariesController < ApplicationController
   def new
     @diary = Diary.new
     @diary.diaryfoods.build
-    @food = Food.where(ancestry:nil)
+    @food = Food.where(ancestry: nil)
     @plan = current_user.plans.last
   end
 
@@ -23,6 +19,7 @@ class DiariesController < ApplicationController
     if @diary.save
       redirect_to root_path
     else
+      @plan = current_user.plans.last
       render :new
     end
   end
