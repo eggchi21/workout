@@ -7,14 +7,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   has_many :reports
   has_many :plans
-
-  VALID_EMAIL_REGEX =                 /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-  validates :nickname,                presence: true, length: {maximum: 20}
-  validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password,                presence: true, length: {minimum: 6, maximum: 128},on: :create
-  validates :password_confirmation,   presence: true, confirmation: true, on: :create
-
   enum sex: {
     man: 0,
     woman: 1
@@ -26,4 +18,17 @@ class User < ApplicationRecord
     exercise3to4: 3,
     exercise7: 4
   }
+  VALID_EMAIL_REGEX =                 /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :nickname,                presence: true, length: {maximum: 20}
+  validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :password,                presence: true, length: {minimum: 6, maximum: 128},on: :create
+  validates :password_confirmation,   presence: true, confirmation: true, on: :create
+  validates :age,presence:true, on: :update, numericality: { only_integer: true, greater_than: 0 }
+  validates :height,presence:true, on: :update, numericality: { only_integer: true, greater_than: 0 }
+
+  validates :sex,inclusion: {in: User.sexes.keys}, on: :update
+  validates :activity,inclusion: {in: User.activities.keys}, on: :update
+
+
 end

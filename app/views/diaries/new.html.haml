@@ -11,7 +11,7 @@
           %li= message
   .common-form__date
     = diary.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker', value: Date.today.strftime('%Y/%m/%d')
-    = diary.label '開始日',for:'datepicker'
+    = diary.label '日付',for:'datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
   .common-form__searchbox
     %input#food-search__field.food-search__input{placeholder: "追加したいフードを入力してください", type: "text"}

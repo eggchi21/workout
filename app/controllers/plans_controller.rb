@@ -10,10 +10,16 @@ class PlansController < ApplicationController
   end
 
   def new
-    if current_user.sex.present?
-      @plan = Plan.new
-      gon.user = current_user
+    if current_user.sex.present? && current_user.age.present? && current_user.activity.present?
+      if current_user.plans.last.blank? || Date.today > current_user.plans.last.target_on
+        @plan = Plan.new
+        gon.user = current_user
+      else
+        flash[:notice] = 'ユーザー情報が更新されました。あなたの目標に変更はありませんか?'
+        redirect_to plan_path(current_user.plans.last)
+      end
     else
+      flash[:notice] = 'まだユーザー情報が足りないようです。身長や性別を教えてください!'
       redirect_to edit_user_path(current_user)
     end
   end
@@ -24,7 +30,7 @@ class PlansController < ApplicationController
 
   def update
     if @plan.update(plan_params)
-      flash[:notice] = '更新しました'
+      flash[:notice] = '目標を更新しました。がんばってくださいね!'
       redirect_to plans_path
     else
       render :edit

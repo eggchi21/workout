@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      flash[:notice] = '更新しました'
+      flash[:notice] = '更新しました。続いて、目標を立てましょう!'
       redirect_to new_plan_path
     else
       render :edit
