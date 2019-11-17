@@ -1,4 +1,10 @@
 = form_with model: current_user , data: { remote: false }, class: "" do |user|
+  - if @user.errors.any?
+    .form__errors
+      %h2= "#{@user.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
   .user-form__nickname
     = user.label :nickname
     = user.text_field :nickname
@@ -11,7 +17,7 @@
     = user.label :sex,:女性
     = user.radio_button :sex,:woman
   .user-form__activity
-    = user.label :activity,:活動量
+    = user.label :activity
     = user.select :activity, User.activities_i18n.invert, {}
   .user-form__age
     = user.label :age

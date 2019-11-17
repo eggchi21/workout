@@ -6,11 +6,11 @@ class SignupController < ApplicationController
   end
 
   def reset
-    session[:nickname]=nil
-    session[:email]=nil
-    session[:provider]=nil
-    session[:password]=nil
-    session[:password_confirmation]=nil
+    session[:nickname] = nil
+    session[:email] = nil
+    session[:provider] = nil
+    session[:password] = nil
+    session[:password_confirmation] = nil
     redirect_to step2_signup_index_path
   end
   def step2
@@ -47,7 +47,7 @@ class SignupController < ApplicationController
 
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
-    redirect_to root_path
+    redirect_to root_path,notice: 'ようこそ' + session[:nickname] + 'さん！ まずは「ユーザー情報」から身長や性別を登録しましょう！'
 
   end
 

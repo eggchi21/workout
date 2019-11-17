@@ -12,6 +12,7 @@ ja:
       plan: 目標
       diary: 食事の記録
       diaryfood: フードの登録
+      user: ユーザー
     attributes:
       report:
         weight: 体重
@@ -27,7 +28,17 @@ ja:
       diary:
         entry_on: 日付
       diary/diaryfoods:
-        amount: "個数"
+        amount: 個数
+      user:
+        email: メール
+        password: パスワード(最低6文字)
+        password_confirmation: パスワード(確認)
+        nickname: ニックネーム
+        introduction: 紹介文
+        sex: 性別
+        age: 年齢
+        height: 身長
+        activity: 活動レベル
   date:
     abbr_day_names:
     - 日
