@@ -35,8 +35,9 @@ class Report < ApplicationRecord
   using ArrayStatistics
 
   validates :weight,presence:true
-  validates :entry_on,presence:true, uniqueness: true
+  validates :entry_on,presence:true, uniqueness: true, date: true
   validate :date_cannot_be_in_the_future
+  validate :calendar_valid?
   validates :user_id, presence: true
   validates :user, presence: true,if: -> {user_id.present?}
 
@@ -46,6 +47,16 @@ class Report < ApplicationRecord
     end
   end
 
+  def calendar_valid?
+    date = entry_on_before_type_cast
+    return if date.blank?
+    y = date[0, 4].to_i
+    m = date[6, 2].to_i
+    d = date[9, 2].to_i
+    unless Date.valid_date?(y, m, d)
+      errors.add(:date, "カレンダーにない日付です")
+    end
+  end
 
 
   def self.ols(reports)

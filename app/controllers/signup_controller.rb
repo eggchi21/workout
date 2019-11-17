@@ -47,7 +47,8 @@ class SignupController < ApplicationController
 
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
-    redirect_to root_path,notice: 'ようこそ' + session[:nickname] + 'さん！ まずは「ユーザー情報」から身長や性別を登録しましょう！'
+    flash[:notice] = 'ようこそ' + session[:nickname] + 'さん! まずは「ユーザー情報」から身長や性別を登録しましょう!'
+    redirect_to root_path
 
   end
 
