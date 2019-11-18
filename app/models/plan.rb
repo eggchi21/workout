@@ -22,19 +22,19 @@ class Plan < ApplicationRecord
 
     return if start_on.blank? || target_on.blank?
     ys = start_on[0, 4].to_i
-    ms = start_on[6, 2].to_i
-    ds = start_on[9, 2].to_i
+    ms = start_on[5, 2].to_i
+    ds = start_on[8, 2].to_i
 
     yt = start_on[0, 4].to_i
-    mt = start_on[6, 2].to_i
-    dt = start_on[9, 2].to_i
+    mt = start_on[5, 2].to_i
+    dt = start_on[8, 2].to_i
 
     unless Date.valid_date?(ys, ms, ds)
-      errors.add(:start_on, "カレンダーにない日付です")
+      errors.add(:start_on, start_on + "はカレンダーにない日付です")
     end
 
     unless Date.valid_date?(yt, mt, dt)
-      errors.add(:target_on, "カレンダーにない日付です")
+      errors.add(:target_on, target_on + "はカレンダーにない日付です")
     end
   end
 

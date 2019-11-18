@@ -51,8 +51,8 @@ class Report < ApplicationRecord
     date = entry_on_before_type_cast
     return if date.blank?
     y = date[0, 4].to_i
-    m = date[6, 2].to_i
-    d = date[9, 2].to_i
+    m = date[5, 2].to_i
+    d = date[8, 2].to_i
     unless Date.valid_date?(y, m, d)
       errors.add(:date, "カレンダーにない日付です")
     end
