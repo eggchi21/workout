@@ -19,7 +19,7 @@ class PlansController < ApplicationController
         redirect_to plan_path(current_user.plans.last)
       end
     else
-      flash[:notice] = 'まだユーザー情報が足りないようです。身長や性別を教えてください!'
+      flash[:notice] = 'ユーザー情報が足りないようです。身長や性別を教えてください!'
       redirect_to edit_user_path(current_user)
     end
   end

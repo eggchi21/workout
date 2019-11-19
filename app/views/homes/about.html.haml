@@ -76,11 +76,11 @@
         %ul.product-list
           %li.product-list__item
             .product-list__item-button
-              = link_to 'http://52.197.92.111'do
+              = link_to 'http://52.197.92.111',target: :_blank do
                 チャットアプリ
                 %span chat-space
             .product-list__item-img
-              = link_to image_tag('https://i.gyazo.com/aac0e1a9219c72244309f228c6bb9dc1.gif',size: '350x350'),'http://52.197.92.111'
+              = link_to image_tag('https://i.gyazo.com/aac0e1a9219c72244309f228c6bb9dc1.gif',size: '350x350'),'http://52.197.92.111',target: :_blank
             %table.product-list__item-table
               %tbody
                 %tr
@@ -95,13 +95,17 @@
                 %tr
                   %th Password
                   %td password
+                %tr
+                  %th GitHub
+                  %td
+                    = link_to 'リンク','https://github.com/eggchi21/chat-space',target: :_blank
           %li.product-list__item
             .product-list__item-button
-              = link_to 'http://3.114.144.96'do
+              = link_to 'http://3.114.144.96',target: :_blank do
                 フリマアプリ
                 %span freemarket_sample_51a
             .product-list__item-img
-              = link_to image_tag('https://i.gyazo.com/962b4c1386c39c03eb7fda0809478313.gif',size: '350x350'),'http://3.114.144.96'
+              = link_to image_tag('https://i.gyazo.com/962b4c1386c39c03eb7fda0809478313.gif',size: '350x350'),'http://3.114.144.96',target: :_blank
             %table.product-list__item-table
               %tbody
                 %tr
@@ -112,7 +116,8 @@
                   %td 2019/7/28~10/5
                 %tr
                   %th 担当箇所
-                  %td 別途資料を用意してます
+                  %td
+                    = link_to '担当箇所資料のリンク' ,'https://docs.google.com/document/d/1XiQgeS4W0cHeGm5xnT7hUtxpkThnYz_WD3I_vYqdrXQ/edit#heading=h.uc9r1bu1xm1f',target: :_blank
                 %tr
                   %th ユーザー名(Basic認証)
                   %td frema51a
@@ -125,5 +130,9 @@
                 %tr
                   %th Password
                   %td password
+                %tr
+                  %th GitHub
+                  %td
+                    = link_to 'リンク','https://github.com/eggchi21/freemarket_sample_51a',target: :_blank
     %a.scrollup{href:"#"}
       %i.fas.fa-arrow-alt-circle-up
