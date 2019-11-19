@@ -15,15 +15,15 @@ module HomesHelper
     ]
     after_user_session = [
       {title: "ユーザー情報",url:edit_user_path(current_user)},
-      {title: "自分の体重記録",url:user_reports_path(current_user)},
-      {title: "今日の体重を記録する",url:new_user_report_path(current_user)},
+      {title: "体重表",url:user_reports_path(current_user)},
+      {title: "体重を記録する",url:new_user_report_path(current_user)},
       {title: "食事を記録する",url:new_diary_path},
-      {title: "フード検索",url:foods_path},
+      {title: "たべもの図鑑",url:foods_path},
 
     ] if user_signed_in?
     mycontents =[
       {title: "Qiita",url:"https://qiita.com/eggchi21"},
-      {title: "GitHub",url:"https://github.com/eggchi21"}
+      {title: "GitHub",url:"https://github.com/eggchi21/workout"}
     ]
     logout =[
       {title: "ログアウト",url:logout_homes_path},
