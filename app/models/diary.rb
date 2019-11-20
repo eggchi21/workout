@@ -3,7 +3,7 @@ class Diary < ApplicationRecord
   has_many :diaryfoods ,dependent: :destroy
   accepts_nested_attributes_for :diaryfoods, allow_destroy: true
 
-  validates :entry_on, uniqueness: true, date: true
+  validates :entry_on, uniqueness: { scope: :user_id }, date: true
   validate :date_cannot_be_in_the_future
   validate :calendar_valid?
   validates :user_id, presence: true
@@ -19,8 +19,8 @@ class Diary < ApplicationRecord
     date = entry_on_before_type_cast
     return if date.blank?
     y = date[0, 4].to_i
-    m = date[6, 2].to_i
-    d = date[9, 2].to_i
+    m = date[5, 2].to_i
+    d = date[8, 2].to_i
     unless Date.valid_date?(y, m, d)
       errors.add(:date, "カレンダーにない日付です")
     end

@@ -1,6 +1,10 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!
   def index
+    @diaries =  Diary.where(user_id: current_user.id).order(entry_on: 'ASC')
+    # gon.diary = @diaries.first.entry_on
+    @plan = current_user.plans.last
+    gon.plan_kcal = @plan.protein * 4 + @plan.fat * 9 + @plan.carbo * 4
   end
 
   def show
