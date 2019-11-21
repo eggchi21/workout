@@ -1,6 +1,7 @@
 class Diary < ApplicationRecord
   belongs_to :user
   has_many :diaryfoods ,dependent: :destroy
+  has_many :foods, through: :diaryfoods
   accepts_nested_attributes_for :diaryfoods, allow_destroy: true
 
   validates :entry_on, uniqueness: { scope: :user_id }, date: true
@@ -24,5 +25,18 @@ class Diary < ApplicationRecord
     unless Date.valid_date?(y, m, d)
       errors.add(:date, "カレンダーにない日付です")
     end
+  end
+
+  def self.calc_kcal(diaries)
+    @kcals = []
+    diaries.each do |diary|
+      kcals = diary.foods.map(&:kcal)
+      amounts = diary.diaryfoods.map(&:amount)
+      @kcals << kcals.zip(amounts).map{|n,p| n*p}.sum
+
+    end
+
+    return @kcals
+
   end
 end

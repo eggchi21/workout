@@ -2,110 +2,116 @@ $(function(){
   $(window).bind("load", function(){
     if(document.URL.match(/diaries$/)) {
 var planKcal = gon.plan_kcal
+const dates = gon.dates;
+console.log(gon.kcals)
+var firstDate = new Date(dates[0])
+var lastDate = new Date(dates.slice(-1)[0])
+var termDate = (lastDate - firstDate)/ 1000 / 60 / 60 / 24 + 1
 // Themes begin
 am4core.useTheme(am4themes_material);
 am4core.useTheme(am4themes_animated);
+
 // Themes end
 
 var chart = am4core.create("chartdiv", am4charts.XYChart);
 chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
 chart.data = [{
-    "date": "2019-09-01",
+    "date": "2019-11-01",
     "steps": 4561
 }, {
-    "date": "2019-09-02",
+    "date": "2019-11-02",
     "steps": 5687
 }, {
-    "date": "2019-09-03",
+    "date": "2019-11-03",
     "steps": 6348
 }, {
-    "date": "2019-09-04",
+    "date": "2019-11-04",
     "steps": 4878
 }, {
-    "date": "2019-09-05",
+    "date": "2019-11-05",
     "steps": 9867
 }, {
-    "date": "2019-09-06",
+    "date": "2019-11-06",
     "steps": 7561
 }, {
-    "date": "2019-09-07",
+    "date": "2019-11-07",
     "steps": 1287
 }, {
-    "date": "2019-09-08",
+    "date": "2019-11-08",
     "steps": 3298
 }, {
-    "date": "2019-09-09",
+    "date": "2019-11-09",
     "steps": 5697
 }, {
-    "date": "2019-09-10",
+    "date": "2019-11-10",
     "steps": 4878
 }, {
-    "date": "2019-09-11",
+    "date": "2019-11-11",
     "steps": 8788
 }, {
-    "date": "2019-09-12",
+    "date": "2019-11-12",
     "steps": 9560
 }, {
-    "date": "2019-09-13",
+    "date": "2019-11-13",
     "steps": 11687
 }, {
-    "date": "2019-09-14",
-    "steps": 5878
+    "date": "2019-11-14",
+    "steps": 587
 }, {
-    "date": "2019-09-15",
-    "steps": 9789
+    "date": "2019-11-15",
+    "steps": 978
 }, {
-    "date": "2019-09-16",
+    "date": "2019-11-16",
     "steps": 3987
 }, {
-    "date": "2019-09-17",
+    "date": "2019-11-17",
     "steps": 5898
 }, {
-    "date": "2019-09-18",
+    "date": "2019-11-18",
     "steps": 9878
 }, {
-    "date": "2019-09-19",
+    "date": "2019-11-19",
     "steps": 13687
 }, {
-    "date": "2019-09-20",
+    "date": "2019-11-20",
     "steps": 6789
 }, {
-    "date": "2019-09-21",
+    "date": "2019-11-21",
     "steps": 4531
 }, {
-    "date": "2019-09-22",
+    "date": "2019-11-22",
     "steps": 5856
 }, {
-    "date": "2019-09-23",
+    "date": "2019-11-23",
     "steps": 5737
 }, {
-    "date": "2019-09-24",
+    "date": "2019-11-24",
     "steps": 998
 }, {
-    "date": "2019-09-25",
+    "date": "2019-11-25",
     "steps": 164
 }, {
-    "date": "2019-09-26",
+    "date": "2019-11-26",
     "steps": 7878
 }, {
-    "date": "2019-09-27",
+    "date": "2019-11-27",
     "steps": 6845
 }, {
-    "date": "2019-09-28",
+    "date": "2019-11-28",
     "steps": 4659
 }, {
-    "date": "2019-09-29",
+    "date": "2019-11-29",
     "steps": 7892
 }, {
-    "date": "2019-09-30",
+    "date": "2019-11-30",
     "steps": 7362
 }, {
     "date": gon.diary ,
     "steps": 3268
 }];
 
-chart.dateFormatter.inputDateFormat = "YYYY/MM/dd";
+chart.dateFormatter.inputDateFormat = "YYYY-MM-dd";
 chart.zoomOutButton.disabled = true;
 
 var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -172,8 +178,9 @@ cursor.behavior = "panX";
 chart.cursor = cursor;
 cursor.lineX.disabled = true;
 
+var tenBeforeDate = new Date(lastDate).setDate(new Date(lastDate).getDate() - 10)
 chart.events.on("datavalidated", function () {
-    dateAxis.zoomToDates(new Date(2019, 8, 21), new Date(2019, 9, 1), false, true);
+    dateAxis.zoomToDates(tenBeforeDate, lastDate.setDate(lastDate.getDate() + 1), false, true);
 });
 
 

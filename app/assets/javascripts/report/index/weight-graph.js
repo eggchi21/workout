@@ -17,7 +17,7 @@ $(function(){
 
       var firstDate = new Date(dates[0])
       var lastDate = new Date(dates.slice(-1)[0])
-      var termDate= (lastDate - firstDate)/ 1000 / 60 / 60 / 24 + 1
+      var termDate = (lastDate - firstDate)/ 1000 / 60 / 60 / 24 + 1
 
       // Add data
         chart.data = [];
