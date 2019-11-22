@@ -35,7 +35,7 @@
             記録をする
     %tr
       %th.report__txt{"data-label": "レポート"} 目標まで
-      - if current_user.plans.last.present?
+      - if @plan.present? && Date.today < @plan.target_on
         - if @reports.last.present?
           %td.report__kg{"data-label": "kg"} #{@reports.last.weight-current_user.plans.last.target_weight}kg
         - else

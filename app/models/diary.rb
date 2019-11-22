@@ -32,11 +32,8 @@ class Diary < ApplicationRecord
     diaries.each do |diary|
       kcals = diary.foods.map(&:kcal)
       amounts = diary.diaryfoods.map(&:amount)
-      @kcals << kcals.zip(amounts).map{|n,p| n*p}.sum
-
+      @kcals << kcals.zip(amounts).map{|kcal,amount| kcal * amount}.sum
     end
-
     return @kcals
-
   end
 end

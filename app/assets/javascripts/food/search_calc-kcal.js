@@ -23,7 +23,7 @@ $(function(){
                   <input class="unit-calc" step="0.1" type="number" name="diary[diaryfoods_attributes][${food.id_count}][amount]" id="diary_diaryfoods_attributes_${food.id_count}_amount" value ="1.0" ,width ="20px">個
                 </td>
                 <td>
-                  <input class="gram-calc" step="0.1" type="number" name="diary[diaryfoods_attributes][${food.id_count}][amount]" id="diary_diaryfoods_attributes_${food.id_count}_amount" value ="${food.gram}" data-unitgram="${food.gram}">g
+                  <input class="gram-calc" step="0.1" type="number" id="diary_diaryfoods_attributes_${food.id_count}_amount" value ="${food.gram}" data-unitgram="${food.gram}">g
                 </td>
                 <td value="${food.kcal}">${food.kcal}kcal</td>
                 <td value="${food.protein}">${food.protein}g</td>
