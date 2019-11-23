@@ -2,6 +2,8 @@ class DiariesController < ApplicationController
   before_action :authenticate_user!
   before_action :validates_index_new, only: [:index,:new]
   before_action :set_diary, only: [:edit ,:update]
+  before_action :set_plan, only: [:index ,:new,:edit,:update]
+
 
 
   def index
@@ -9,7 +11,6 @@ class DiariesController < ApplicationController
     gon.ids = @diaries.map(&:id)
     gon.dates = @diaries.map(&:entry_on)
     gon.kcals = Diary.calc_kcal(@diaries)
-    @plan = current_user.plans.last
     gon.plan_kcal = @plan.protein * 4 + @plan.fat * 9 + @plan.carbo * 4
   end
 
@@ -21,7 +22,6 @@ class DiariesController < ApplicationController
     @diary = Diary.new
     @diary.diaryfoods.build
     @food = Food.where(ancestry: nil)
-    @plan = current_user.plans.last
   end
 
   def create
@@ -32,6 +32,19 @@ class DiariesController < ApplicationController
     else
       @plan = current_user.plans.last
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @diary.update(diary_params)
+      flash[:notice] = '更新しました'
+      redirect_to diaries_path
+    else
+      @plan = current_user.plans.last
+      render :edit
     end
   end
 
@@ -46,9 +59,11 @@ def diary_params
   params.require(:diary).permit(
     :entry_on,
     diaryfoods_attributes: [:id,
-    :amount,
-    :food_id,
-    :diary_id]
+                            :amount,
+                            :_destroy,
+                            :food_id,
+                            :diary_id
+                            ]
     ).merge(user_id: current_user.id,evaluation:0)
 end
 
@@ -66,4 +81,8 @@ end
 
 def set_diary
   @diary = Diary.find(params[:id])
+end
+
+def set_plan
+  @plan = current_user.plans.last
 end

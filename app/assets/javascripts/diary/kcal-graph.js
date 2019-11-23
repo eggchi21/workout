@@ -17,11 +17,11 @@ am4core.useTheme(am4themes_animated);
 var chart = am4core.create("chartdiv", am4charts.XYChart);
 chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 chart.data = [];
-for (var j =0; j< kcals.length; j++){
+for (var j = 0; j< kcals.length; j++){
   for (var i = 0; i < termDate; i++) {
     var newDate = new Date(firstDate)
     newDate.setDate(newDate.getDate() + i); //初日からi日分たす
-    if ((new Date(dates[j])) - (newDate)==0){
+    if ((new Date(dates[j])) - (newDate) == 0){
       kcal = kcals[j]
       id = ids[j]
       chart.data.push({
@@ -32,8 +32,25 @@ for (var j =0; j< kcals.length; j++){
     }
   }
 }
-
-chart.dateFormatter.inputDateFormat = "YYYY-MM-dd";
+//未来分のダミーデータを作成(グラフ移動のスムーズ性向上)
+for (var i = 1; i < 6; i++) {
+  var newDate = new Date(lastDate)
+  newDate.setDate(newDate.getDate() + i); //初日からi日分たす
+    chart.data.push({
+        date: newDate,
+        kcal: 0
+    });
+}
+//過去分のダミーデータを作成(グラフ移動のスムーズ性向上)
+for (var i = 1; i < 6; i++) {
+  var newDate = new Date(firstDate)
+  newDate.setDate(newDate.getDate() - i); //初日からi日分たす
+    chart.data.push({
+        date: newDate,
+        kcal: 0
+    });
+}
+chart.dateFormatter.inputDateFormat = "YYYY/MM/dd";
 chart.zoomOutButton.disabled = true;
 
 var dateAxis = chart.xAxes.push(new am4charts.DateAxis());

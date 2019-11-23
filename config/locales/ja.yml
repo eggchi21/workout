@@ -27,6 +27,7 @@ ja:
         carbo: 炭水化物(g)
       diary:
         entry_on: 日付
+        diaryfood: フードの登録
       diary/diaryfoods:
         amount: 個数
       user:

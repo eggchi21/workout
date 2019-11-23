@@ -9,6 +9,7 @@ class Diary < ApplicationRecord
   validate :calendar_valid?
   validates :user_id, presence: true
   validates :user, presence: true,if: -> {user_id.present?}
+  validate :require_any_diaryfoods
 
   def date_cannot_be_in_the_future
     if entry_on.present? && entry_on > Date.today
@@ -25,6 +26,10 @@ class Diary < ApplicationRecord
     unless Date.valid_date?(y, m, d)
       errors.add(:date, "カレンダーにない日付です")
     end
+  end
+
+  def require_any_diaryfoods
+    errors.add(:diaryfood, "は最低1つ記録してください") if diaryfoods.blank?
   end
 
   def self.calc_kcal(diaries)
