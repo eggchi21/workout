@@ -1,5 +1,5 @@
 .foods
-  %h2.foods__head フード一覧
+  %h2.foods__head たべもの図鑑
   %nav.foods__level1-list
     - @food_groups.each do |food_group|
       = link_to food_group.name, "#food-#{food_group.id}", class: 'foods__level1-list--link'

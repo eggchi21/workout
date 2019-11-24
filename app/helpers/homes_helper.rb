@@ -17,6 +17,7 @@ module HomesHelper
       {title: "ユーザー情報",url:edit_user_path(current_user)},
       {title: "体重表",url:user_reports_path(current_user)},
       {title: "体重を記録する",url:new_user_report_path(current_user)},
+      {title: "食事記録表",url:diaries_path},
       {title: "食事を記録する",url:new_diary_path},
       {title: "たべもの図鑑",url:foods_path},
 

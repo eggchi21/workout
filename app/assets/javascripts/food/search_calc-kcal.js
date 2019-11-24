@@ -14,16 +14,16 @@ $(function(){
     return html;
   }
   function appendFoodList(food){
-    var html =`<tr class="food-record" data-id="${food.id_count + 1}" >
+    var html =`<tr class="food-record food-record__new" data-id="${food.id_count + 1}" >
                 <th>
-                  ${food.name}<input id="" class="" value="${food.id}" type="hidden" name="diary[diaryfoods_attributes][${food.id_count}][food_id]">
+                  ${food.name}
                 </th>
                 <td>${food.unit}</td>
                 <td>
                   <input class="unit-calc" step="0.1" type="number" name="diary[diaryfoods_attributes][${food.id_count}][amount]" id="diary_diaryfoods_attributes_${food.id_count}_amount" value ="1.0" ,width ="20px">個
                 </td>
                 <td>
-                  <input class="gram-calc" step="0.1" type="number" name="diary[diaryfoods_attributes][${food.id_count}][amount]" id="diary_diaryfoods_attributes_${food.id_count}_amount" value ="${food.gram}" data-unitgram="${food.gram}">g
+                  <input class="gram-calc" step="0.1" type="number" value ="${food.gram}" data-unitgram="${food.gram}">g
                 </td>
                 <td value="${food.kcal}">${food.kcal}kcal</td>
                 <td value="${food.protein}">${food.protein}g</td>
@@ -32,7 +32,8 @@ $(function(){
                 <td>
                   <input type="button" value="削除" class="record-delete"/>
                 </td>
-              </tr>`
+              </tr>
+              <input class="food-record__new" value="${food.id}" type="hidden" name="diary[diaryfoods_attributes][${food.id_count}][food_id]">`
     return html;
   }
   function calcPfcKcal(){
@@ -133,7 +134,21 @@ $(function(){
     calcPfcKcal()
   })
   $(document).on('click',".record-delete",function(){
-    $(this).parent().parent().remove()
+    if(document.URL.match(/\/diaries\/\d+\/edit/) || document.URL.match(/\/diaries\/\d+$/)) {
+      $(this).parent().parent(".food-record").find(".unit-calc").val(0)
+      var record = $(this).parent().parent(".food-record")
+      for (var i = 3; i < record.children("td").length - 1; i++){
+        if (i == 3) {
+          record.children("td").eq(i).text("0kcal")
+        } else{
+          record.children("td").eq(i).text("0g")
+        }
+      }
+      $(this).parent().parent().hide();
+      $(this).parent().find('.record-delete__flag').prop('checked', true)
+    }
+    $(this).parent().parent().next('.food-record__new').remove();
+    $(this).parent().parent('.food-record__new').remove();
     calcPfcKcal()
   })
   $(document).on('change keyup', '.unit-calc',function() {
@@ -163,5 +178,10 @@ $(function(){
       }
     }
     calcPfcKcal()
+  })
+  $(window).bind("load", function(){
+    if(document.URL.match(/\/diaries\/\d+\/edit/)) {
+      calcPfcKcal()
+    }
   })
 })

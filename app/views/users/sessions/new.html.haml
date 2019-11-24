@@ -1,18 +1,15 @@
-%p ビューのレイアウト更新中
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
+= form_for(resource, as: resource_name,html: {class: 'common-form'}, url: session_path(resource_name)) do |f|
+  .common-form__text
     = f.email_field :email, autofocus: true, autocomplete: "email",value:'sample1@sample.com'
-  .field
-    = f.label :password
-    %br/
+    = f.label :email,'メールアドレス'
+    .common-form__text--description メールアドレスを入力してください
+  .common-form__text
     = f.password_field :password, autocomplete: "current-password",value:'password'
+    = f.label :password,'パスワード'
+    .common-form__text--description パスワードを入力してください
   - if devise_mapping.rememberable?
-    .field
+    .common-form__checkbox
       = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+      = f.label :remember_me,'パスワードを記憶する'
+  = f.submit "ログイン",class:'common-form__submit'
+  = render "users/shared/links"

@@ -35,7 +35,7 @@ class Report < ApplicationRecord
   using ArrayStatistics
 
   validates :weight,presence:true
-  validates :entry_on,presence:true, uniqueness: true, date: true
+  validates :entry_on, uniqueness: { scope: :user_id }, date: true
   validate :date_cannot_be_in_the_future
   validate :calendar_valid?
   validates :user_id, presence: true

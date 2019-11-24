@@ -1,0 +1,99 @@
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"}
+%script{src: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"}
+%link{href: "http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css", rel: "stylesheet"}/
+
+= form_with model: @diary , data: { remote: false }, class: "common-form" do |diary|
+  - if @diary.errors.any?
+    .form__errors
+      %h2= "#{@diary.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @diary.errors.full_messages.each do |message|
+          %li= message
+  .common-form__date
+    - if @diary.new_record?
+      = diary.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker',value: I18n.l(Date.today)
+    - else
+      = diary.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker',value: I18n.l(@diary.entry_on)
+    = diary.label '日付',for:'datepicker'
+    .common-form__date--description クリックするとカレンダーが表示されます
+  .common-form__searchbox
+    %input#food-search__field.food-search__input{placeholder: "追加したいフードを入力してください", type: "text"}
+    %label{for:'food-search__field'} 検索
+    %ul.food-search__suggest.form-suggest-list
+    .common-form__searchbox--description 検索結果を選択すると表に追加されます
+  .common-form__sheet
+    %table.common-form__table.food-table
+      %thead
+        %tr.food-record{data:{id:"0"}}
+          %th フード
+          %th 単位
+          %th 個数
+          %th グラム(g)
+          %th カロリー(kcal)
+          %th たんぱく質(g)
+          %th 脂質(g)
+          %th 炭水化物(g)
+          %th 削除
+        - if @diary.new_record?
+          = diary.fields_for :diaryfoods do |df|
+            %tbody.food-added__table
+        - else
+          %tbody.food-added__table
+            - @diary.diaryfoods.each.each_with_index do | diaryfood , index |
+              = diary.fields_for :diaryfoods, diaryfood  do |df|
+                %tr.food-record{data:{id:index+1}}
+                  %th
+                    #{diaryfood.food.name}
+                  %td
+                    #{diaryfood.food.unit}
+                  %td
+                    %input.unit-calc{id:"diary_diaryfoods_attributes_#{index}_amount" ,name: "diary[diaryfoods_attributes][#{index}][amount]", step: "0.1", type: "number", value: diaryfood.amount}個
+                  %td
+                    %input.gram-calc{data:{unitgram:diaryfood.food.gram}, step: "0.1", type: "number", value: (diaryfood.food.gram * diaryfood.amount).round(1)}g
+                    %td{value: diaryfood.food.kcal}
+                      #{(diaryfood.food.kcal * diaryfood.amount).round}kcal
+                    %td{value: diaryfood.food.protein}
+                      #{(diaryfood.food.protein * diaryfood.amount).round(2)}g
+                    %td{value: diaryfood.food.fat}
+                      #{(diaryfood.food.fat * diaryfood.amount).round(2)}g
+                    %td{value: diaryfood.food.carbo}
+                      #{(diaryfood.food.carbo * diaryfood.amount).round(2)}g
+                    %td
+                      %input.record-delete{type: "button", value: "削除"}
+                      = df.check_box :_destroy,class:"record-delete__flag"
+  .common-form__sheet
+    %table.common-form__table.pfc-table
+      %thead
+        %th
+        %th たんぱく質
+        %th 脂質
+        %th 炭水化物
+      %tbody.pfc-calc__table
+        %tr
+          %th 目標
+          %td{value: @plan.protein}
+            #{@plan.protein}g
+          %td{value: @plan.fat}
+            #{@plan.fat}g
+          %td{value: @plan.carbo}
+            #{@plan.carbo}g
+        %tr
+          %th 合計
+          %td -
+          %td -
+          %td -
+  .common-form__sheet
+    %table.common-form__table.kcal-table
+      %thead
+        %th 目標カロリー
+        %th 摂取カロリー
+        %th アドバイス
+      %tbody.kcal-calc__table
+        %td
+          #{@plan.protein * 4  + @plan.fat * 9 + @plan.carbo * 4}kcal
+        %td -
+        %td 検索からフードを追加してください
+  = diary.submit @diary.new_record? ? '記録する' : '変更する' ,class:'common-form__submit'
+  - if !@diary.new_record?
+    = link_to diary_path(@diary), method: :delete ,class:'common-form__submit' do
+      削除する
