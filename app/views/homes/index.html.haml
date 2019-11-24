@@ -1,5 +1,31 @@
-%p ダッシュボード作成予定
 - if user_signed_in?
+  .card.pattern
+    .card-item
+      .card-item__title
+        %i.fas.fa-utensils
+        今日の摂取カロリー
+      - if @today_kcal
+        .card-item__content
+          #{@today_kcal}kcal
+      - else
+        .card-item__content
+          まだ記録がありません
+    .card-item
+      .card-item__title
+        %i.fas.fa-calendar-alt
+        今日の日付
+      .card-item__content
+        #{Date.today}
+    .card-item
+      .card-item__title
+        %i.fas.fa-weight
+        今日の体重
+      - if @today_weight
+        .card-item__content
+          #{@today_weight}kg
+      - else
+        .card-item__content
+          まだ記録がありません
   .contents
     %ul.contents__list
       = render partial:'homes/content', collection: contents, as:'content'

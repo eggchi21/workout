@@ -11,7 +11,7 @@ class DiariesController < ApplicationController
     gon.kcals = Diary.calc_kcals(@diaries)
     @plan_kcal = @plan.protein * 4 + @plan.fat * 9 + @plan.carbo * 4
     gon.plan_kcal = @plan_kcal
-    @today_kcal = Diary.calc_kcal(@diary) if @diary = Diary.find_by(entry_on:Date.today)
+    @today_kcal = Diary.calc_kcal(@diary) if @diary = Diary.find_by(user_id:current_user.id,entry_on:Date.today)
   end
 
   def show

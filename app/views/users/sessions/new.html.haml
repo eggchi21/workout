@@ -1,17 +1,15 @@
-.common-form
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email",value:'sample1@sample.com'
-    .field
-      = f.label :password
-      %br/
-      = f.password_field :password, autocomplete: "current-password",value:'password'
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me
-        = f.label :remember_me
-    .actions
-      = f.submit "Log in"
+= form_for(resource, as: resource_name,html: {class: 'common-form'}, url: session_path(resource_name)) do |f|
+  .common-form__text
+    = f.email_field :email, autofocus: true, autocomplete: "email",value:'sample1@sample.com'
+    = f.label :email,'メールアドレス'
+    .common-form__text--description メールアドレスを入力してください
+  .common-form__text
+    = f.password_field :password, autocomplete: "current-password",value:'password'
+    = f.label :password,'パスワード'
+    .common-form__text--description パスワードを入力してください
+  - if devise_mapping.rememberable?
+    .common-form__checkbox
+      = f.check_box :remember_me
+      = f.label :remember_me,'パスワードを記憶する'
+  = f.submit "ログイン",class:'common-form__submit'
   = render "users/shared/links"
