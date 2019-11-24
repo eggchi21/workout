@@ -93,3 +93,6 @@
         %td -
         %td 検索からフードを追加してください
   = diary.submit @diary.new_record? ? '記録する' : '変更する' ,class:'common-form__submit'
+  - if !@diary.new_record?
+    = link_to diary_path(@diary), method: :delete ,class:'common-form__submit' do
+      削除する

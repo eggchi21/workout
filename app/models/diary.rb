@@ -7,9 +7,9 @@ class Diary < ApplicationRecord
   validates :entry_on, uniqueness: { scope: :user_id }, date: true
   validate :date_cannot_be_in_the_future
   validate :calendar_valid?
+  validate :have_at_least_one_diaryfood
   validates :user_id, presence: true
   validates :user, presence: true,if: -> {user_id.present?}
-  validate :require_any_diaryfoods
 
   def date_cannot_be_in_the_future
     if entry_on.present? && entry_on > Date.today
@@ -28,17 +28,23 @@ class Diary < ApplicationRecord
     end
   end
 
-  def require_any_diaryfoods
+  def have_at_least_one_diaryfood
     errors.add(:diaryfood, "は最低1つ記録してください") if diaryfoods.blank?
   end
 
-  def self.calc_kcal(diaries)
-    @kcals = []
+  def self.calc_kcals(diaries)
+    @dates_kcals = []
     diaries.each do |diary|
       kcals = diary.foods.map(&:kcal)
       amounts = diary.diaryfoods.map(&:amount)
-      @kcals << kcals.zip(amounts).map{|kcal,amount| kcal * amount}.sum
+      @dates_kcals << kcals.zip(amounts).map{|kcal,amount| kcal * amount}.sum
     end
-    return @kcals
+    return @dates_kcals
+  end
+  def self.calc_kcal(diary)
+      kcals = diary.foods.map(&:kcal)
+      amounts = diary.diaryfoods.map(&:amount)
+      date_kcals = kcals.zip(amounts).map{|kcal,amount| kcal * amount}.sum
+    return date_kcals
   end
 end

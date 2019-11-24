@@ -1,17 +1,17 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!
   before_action :validates_index_new, only: [:index,:new]
-  before_action :set_diary, only: [:edit ,:update]
-  before_action :set_plan, only: [:index ,:new,:edit,:update]
-
-
+  before_action :set_diary, only: [:edit,:update,:destroy]
+  before_action :set_plan, only: [:index,:new,:edit,:update]
 
   def index
     @diaries =  Diary.where(user_id: current_user.id).order(entry_on: 'ASC')
     gon.ids = @diaries.map(&:id)
     gon.dates = @diaries.map(&:entry_on)
-    gon.kcals = Diary.calc_kcal(@diaries)
-    gon.plan_kcal = @plan.protein * 4 + @plan.fat * 9 + @plan.carbo * 4
+    gon.kcals = Diary.calc_kcals(@diaries)
+    @plan_kcal = @plan.protein * 4 + @plan.fat * 9 + @plan.carbo * 4
+    gon.plan_kcal = @plan_kcal
+    @today_kcal = Diary.calc_kcal(@diary) if @diary = Diary.find_by(entry_on:Date.today)
   end
 
   def show
@@ -49,7 +49,13 @@ class DiariesController < ApplicationController
   end
 
   def destroy
-
+    if @diary.destroy
+      flash[:notice] = '記録を削除しました'
+      redirect_to diaries_path
+    else
+      flash[:notice] = '記録の削除に失敗しました'
+      redirect_to diaries_path
+    end
   end
 end
 

@@ -1,3 +1,16 @@
+.common-table
+  %table.common-table__details
+    %tr
+      %th.common-table__label{"data-label": "レポート"} 目標摂取カロリー
+      %td.common-table__content{"data-label": "kg"} #{@plan_kcal}kcal
+    %tr
+      %th.common-table__label{"data-label": "レポート"} 今日の記録
+      - if Diary.find_by(entry_on:Date.today)
+        %td.common-table__content{"data-label": "kg"} #{@today_kcal}kcal
+      -else
+        %td.common-table__content{"data-label": "kg"}
+          = link_to new_diary_path do
+            記録をする
 %script{:src => "https://www.amcharts.com/lib/4/core.js"}
 %script{:src => "https://www.amcharts.com/lib/4/charts.js"}
 %script{:src => "https://www.amcharts.com/lib/4/themes/material.js"}

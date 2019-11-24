@@ -1,8 +1,8 @@
-.report{
+.common-table{
   display: flex;
   flex-wrap: wrap;
   justify-content:  space-between;
-  .report__details{
+  .common-table__details{
     width: 300px;
     border-collapse: collapse;
     margin: 10px auto;
@@ -47,7 +47,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  .report__details{
+  .common-table__details{
     width: 100%;
   }
 }

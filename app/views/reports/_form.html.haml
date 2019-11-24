@@ -36,16 +36,3 @@
     = report.submit "記録する" ,class:'common-form__submit'
   - else
     = report.submit "更新する" ,class:'common-form__submit'
-
--# %ul.re__sell-upload-items
--#   - @item_images.each.each_with_index do |item_image,index|
--#     = f.fields_for :item_images,item_image do |i|
--#       %li.re__sell-upload-item
--#         = image_tag i.object.image_url.url,size:'114x116'
-        -# .re__btn_wrapper
-        -#   = i.label :image_url, class: "btn re__edit", for: "re__sell-upload-drop-box__file_#{index}" do
-        -#     編集
-        -#     = i.file_field :image_url, id: "re__sell-upload-drop-box__file_#{index}", class:"re__sell-upload-drop-box__file", type: "file", 'data-image': i.index,value: i.object.id
-        -#   .btn.re__delete
-        -#     削除
-        -#     = i.check_box :_destroy, class:"re__sell-upload-drop-box__delete-flag"
