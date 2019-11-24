@@ -1,28 +1,32 @@
-= form_with model: current_user , data: { remote: false }, class: "" do |user|
+= form_with model: current_user , data: { remote: false }, class: 'common-form' do |user|
   - if @user.errors.any?
     .form__errors
       %h2= "#{@user.errors.full_messages.count}件のエラーが発生しました。"
       %ul
         - @user.errors.full_messages.each do |message|
           %li= message
-  .user-form__nickname
-    = user.label :nickname
+  .common-form__text
     = user.text_field :nickname
-  .user-form__introduction
-    = user.label :introduction
+    = user.label :nickname
+    .common-form__text--description 新しいニックネームをどうぞ
+  .common-form__text
     = user.text_field :introduction
-  .user-form__sex
-    = user.label :sex,:男性
-    = user.radio_button :sex,:man
-    = user.label :sex,:女性
-    = user.radio_button :sex,:woman
-  .user-form__activity
+    = user.label :introduction
+    .common-form__text--description あなたのことを教えてください
+  .common-form__radiobtn
+    = user.radio_button :sex,:man,id:'man_radiobtn'
+    = user.label :sex,:男性, for:'man_radiobtn'
+    = user.radio_button :sex,:woman,id:'woman_radiobtn'
+    = user.label :sex,:女性, for:'woman_radiobtn'
+  .common-form__select
+    = user.select :activity, User.activities_i18n.invert,{prompt: ""},{class: "common-form__select--option"}
     = user.label :activity
-    = user.select :activity, User.activities_i18n.invert, {}
-  .user-form__age
-    = user.label :age
+  .common-form__number
     = user.number_field :age,placeholder: 20
-  .user-form__height
-    = user.label :height
+    = user.label :age
+    .common-form__number--description 単位は歳です。
+  .common-form__number
     = user.number_field :height,placeholder: 170
-  = user.submit "UPDATE USER" ,class:'user-form__submit'
+    = user.label :height
+    .common-form__number--description 単位はcmです。
+  = user.submit "ユーザー情報更新" ,class:'common-form__submit'

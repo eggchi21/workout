@@ -11,16 +11,16 @@
       %ul
         - @plan.errors.full_messages.each do |message|
           %li= message
-  .common-form__weight.calc-calorie.calc-pfc
+  .common-form__number.calc-calorie.calc-pfc
     = plan.number_field :start_weight,placeholder:"80.0", step:"0.1", min:40,id:'start-weight'
     = plan.label '開始体重',for:'start-weight'
     .caution--start_weight 40kg未満は設定できません
-    .common-form__weight--description 単位はkgです。40kg未満は入力できません
-  .common-form__weight.calc-calorie.calc-pfc.initial-none--weight
+    .common-form__number--description 単位はkgです。40kg未満は入力できません
+  .common-form__number.calc-calorie.calc-pfc.initial-none--weight
     = plan.number_field :target_weight,placeholder:"60.0", step:"0.1", min:37,id:'target-weight'
     = plan.label '目標体重',for:'target-weight'
     .caution--target_weight 未満は設定できません
-    .common-form__weight--description 単位はkgです。37kg未満は入力できません
+    .common-form__number--description 単位はkgです。37kg未満は入力できません
   .common-form__date.calc-calorie.calc-pfc.initial-none--weight
     = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker',value: Date.today.strftime('%Y/%m/%d')
     = plan.label '開始日',for:'start_on_datepicker'
@@ -40,7 +40,7 @@
       あなたの目標摂取カロリーは...
     .plan-form__tdei--numeric
       0kcal
-  .common-form__method.calc-pfc.pfc-num
+  .common-form__radiobtn.calc-pfc.pfc-num
     = plan.radio_button :method,:lowfat,id:'lowfat_method'
     = plan.label :method,:ローファットダイエット, for:'lowfat_method'
     = plan.radio_button :method,:lowcarbo,id:'lowcarbo_method'

@@ -1,8 +1,8 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!
   before_action :validates_index_new, only: [:index,:new]
-  before_action :set_diary, only: [:edit,:update,:destroy]
-  before_action :set_plan, only: [:index,:new,:edit,:update]
+  before_action :find_diary, only: [:edit,:update,:destroy]
+  before_action :find_plan, only: [:index,:new,:edit,:update]
 
   def index
     @diaries =  Diary.where(user_id: current_user.id).order(entry_on: 'ASC')
@@ -85,10 +85,10 @@ def validates_index_new
   end
 end
 
-def set_diary
+def find_diary
   @diary = Diary.find(params[:id])
 end
 
-def set_plan
+def find_plan
   @plan = current_user.plans.last
 end

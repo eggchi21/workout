@@ -8,10 +8,10 @@
       %ul
         - @report.errors.full_messages.each do |message|
           %li= message
-  .common-form__weight
+  .common-form__number
     = report.number_field :weight, placeholder:"70.0", step:"0.1", min:0,id:'weight-input'
     = report.label '体重',for:'weight-input'
-    .common-form__weight--description 単位はkgです
+    .common-form__number--description 単位はkgです
   .common-form__date
     = report.text_field :entry_on,placeholder:"2019/10/28", id:'datepicker',value: Date.today.strftime('%Y/%m/%d')
     = report.label '日付',for:'datepicker'
