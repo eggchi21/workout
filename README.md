@@ -1,7 +1,9 @@
 # アプリケーションの概要
+[コチラ](http://3.115.172.75)からアクセスできます
 ## ダイエット×確率統計×目標シェア
 体重を毎日記録することで、将来の体重を確率統計で導きます。
-ダイエットの知識がない人でもカンタンにはじめられるように、目標設定のサポート、たべもの図鑑から食べたものを記録でき、カロリー/PFCバランスの計算結果をグラフ化します
+ダイエットの知識がない人でもカンタンにはじめられるように、目標設定のサポート、
+たべもの図鑑から食べたものを記録、カロリー/PFCバランスの計算結果をグラフ化します
 [![Image from Gyazo](https://i.gyazo.com/1c3b2f518a3025bee3c4840a5c9f2d77.gif)](https://gyazo.com/1c3b2f518a3025bee3c4840a5c9f2d77)
 [![Image from Gyazo](https://i.gyazo.com/945cdbd973a745b82112b68b0fbd51de.gif)](https://gyazo.com/945cdbd973a745b82112b68b0fbd51de)
 [![Image from Gyazo](https://i.gyazo.com/f0e7845deccad7fd03998cc7a47f2275.gif)](https://gyazo.com/f0e7845deccad7fd03998cc7a47f2275)
@@ -88,9 +90,9 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/8f768267b8a4cb7dabc5b76e29924ba4.gif)](https://gyazo.com/8f768267b8a4cb7dabc5b76e29924ba4)
 4. 必要事項を入力していくと自動で次の入力フォームが出現します　要件に満たない場合はアドバイスが表示されます
 [![Image from Gyazo](https://i.gyazo.com/0342b1fdf051f3e51dce17574c0842c4.gif)](https://gyazo.com/0342b1fdf051f3e51dce17574c0842c4)
-5. 登録できるような状態の数値であれば"設定する"ボタンが表示されるので選択してください
+5. ダイエット方法によって最適なPFCバランスを提案します 登録できるような状態の数値であれば"設定する"ボタンが表示されるので選択してください
 [![Image from Gyazo](https://i.gyazo.com/183d0a46417bb0a0e0a445ba2d0389d0.gif)](https://gyazo.com/183d0a46417bb0a0e0a445ba2d0389d0)
-6. "自分の目標を確認する"編から編集・削除ができます
+6. "自分の目標を確認する"から編集・削除ができます
 [![Image from Gyazo](https://i.gyazo.com/c0a45da0d719e285d3ada565d67a2519.gif)](https://gyazo.com/c0a45da0d719e285d3ada565d67a2519)
 
 ## 食事を記録する
@@ -100,13 +102,14 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/03b2c5ddf0b35cce5cb46c79fbb3f788.gif)](https://gyazo.com/03b2c5ddf0b35cce5cb46c79fbb3f788)
 3. 表の"個数”,”グラム”を変更すると自動でPFCバランス/カロリーが計算されます
 [![Image from Gyazo](https://i.gyazo.com/b501febdbe326c668c8497e7e50a1386.gif)](https://gyazo.com/b501febdbe326c668c8497e7e50a1386)
-4. 削除等もできます　完了したら"記録する"ボタンを選択してください。
+4. 削除もできます　完了したら"記録する"ボタンを選択してください。
 [![Image from Gyazo](https://i.gyazo.com/ec5a2a21c6e1961cbe32ffd08169fc82.gif)](https://gyazo.com/ec5a2a21c6e1961cbe32ffd08169fc82)
 5. 任意の棒グラフを選択すると編集画面へ遷移します
 [![Image from Gyazo](https://i.gyazo.com/945cdbd973a745b82112b68b0fbd51de.gif)](https://gyazo.com/945cdbd973a745b82112b68b0fbd51de)
 6. また、たべもの図鑑から食べ物を検索できます。
 [![Image from Gyazo](https://i.gyazo.com/40b4bf8057b98605032ed5772c5ff4b7.gif)](https://gyazo.com/40b4bf8057b98605032ed5772c5ff4b7)
 [![Image from Gyazo](https://i.gyazo.com/fbcc9d1d5860299cd051263248c1c0a3.gif)](https://gyazo.com/fbcc9d1d5860299cd051263248c1c0a3)
+
 # 作者
 - Qiita: [@eggchi21](https://qiita.com/eggchi21)
 - Mail: 52.eguchi.keita@mail.com
