@@ -22,11 +22,17 @@
     .caution--target_weight 未満は設定できません
     .common-form__number--description 単位はkgです。37kg未満は入力できません
   .common-form__date.calc-calorie.calc-pfc.initial-none--weight
-    = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker',value: Date.today.strftime('%Y/%m/%d')
+    - if @plan.new_record?
+      = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker',value: I18n.l(Date.today)
+    - else
+      = plan.text_field :start_on,placeholder:"2019/10/28", id:'start_on_datepicker',value: I18n.l(@plan.start_on)
     = plan.label '開始日',for:'start_on_datepicker'
     .common-form__date--description クリックするとカレンダーが表示されます
   .common-form__date.calc-calorie.calc-pfc.initial-none--weight
-    = plan.text_field :target_on,placeholder:"2019/10/28", id:'target_on_datepicker'
+    - if @plan.new_record?
+      = plan.text_field :target_on,placeholder:"2019/10/28", id:'target_on_datepicker'
+    - else
+      = plan.text_field :target_on,placeholder:"2019/10/28", id:'target_on_datepicker',value: I18n.l(@plan.target_on)
     = plan.label '目標日',for:'target_on_datepicker'
     .caution--target_date 開始日未満は設定できません
     .common-form__date--description クリックするとカレンダーが表示されます
