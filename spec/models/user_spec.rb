@@ -13,7 +13,7 @@ describe User do
       user.valid?
       expect(user.errors[:nickname]).to include("を入力してください")
     end
-    # --- email validation
+
     it "is invalid without a email" do
       user = build(:user, email: "")
       user.valid?
@@ -32,6 +32,7 @@ describe User do
       expect(user.errors[:password_confirmation]).to include("を入力してください")
     end
 
+    # --- email validation
     it "is invalid with wrong email format(without '@')" do
       user = build(:user, email: "tester1.gmail.com")
       user.valid?
@@ -105,6 +106,5 @@ describe User do
       user.valid?
       expect(user.errors[:password_confirmation]).to include("とパスワード(最低6文字)の入力が一致しません", "を入力してください")
     end
-
   end
 end
