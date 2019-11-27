@@ -8,7 +8,7 @@ class Plan < ApplicationRecord
   validates :target_weight, presence:true
   validates :start_on, presence:true, date: true
   validates :target_on, presence:true, date: true
-  validate :calendar_valid?
+  validate :start_on_target_on_calendar_valid?
   validates :method, inclusion: {in: Plan.methods.keys}
   validates :protein, presence:true,numericality: { only_integer: true, greater_than: 0 }
   validates :fat, presence:true, numericality: { only_integer: true, greater_than: 0 }
@@ -16,7 +16,7 @@ class Plan < ApplicationRecord
   validates :user_id, presence: true
   validates :user, presence: true,if: -> {user_id.present?}
 
-  def calendar_valid?
+  def start_on_target_on_calendar_valid?
     start_on = start_on_before_type_cast
     target_on = target_on_before_type_cast
 
