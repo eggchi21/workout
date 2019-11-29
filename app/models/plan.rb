@@ -4,8 +4,8 @@ class Plan < ApplicationRecord
     lowfat: 0,
     lowcarbo: 1
   }
-  validates :start_weight, presence:true
-  validates :target_weight, presence:true
+  validates :start_weight, presence:true, numericality: {greater_than: 0}
+  validates :target_weight, presence:true, numericality: {greater_than: 0}
   validates :start_on, presence:true, date: true
   validates :target_on, presence:true, date: true
   validate :start_on_target_on_calendar_valid?

@@ -34,7 +34,7 @@ class Report < ApplicationRecord
   has_many_attached :images
   using ArrayStatistics
 
-  validates :weight,presence:true, numericality: true
+  validates :weight,presence:true,numericality: {greater_than: 0}
   validates :entry_on, uniqueness: { scope: :user_id }, date: true
   validate :date_cannot_be_in_the_future
   validate :entry_on_calendar_valid?, on: :create
