@@ -37,16 +37,6 @@ describe Report do
       report.valid?
       expect(report.errors[:entry_on]).to include("20191126はカレンダーにない日付です")
     end
-
-    # --- entry_on validation
-    it "is invalid with wrong entry_on format('-' instead of '/'  )" do
-      user = create(:user)
-      report = build(:report,user_id: user.id , entry_on: "2019/11/26")
-      report.valid?
-      expect(report).to be_valid
-      # expect(report.errors[:entry_on]).to include("20191126はカレンダーにない日付です")
-    end
-
   end
 
 end
