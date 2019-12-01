@@ -3,7 +3,10 @@ class Diary < ApplicationRecord
   has_many :diaryfoods ,dependent: :destroy
   has_many :foods, through: :diaryfoods
   accepts_nested_attributes_for :diaryfoods, allow_destroy: true
-
+  enum evaluation: {
+    not_yet: 0,
+    completed: 1
+  }
   validates :entry_on, uniqueness: { scope: :user_id }, date: true
   validate :date_cannot_be_in_the_future
   validate :calendar_valid?
