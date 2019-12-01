@@ -13,6 +13,7 @@ ja:
       diary: 食事の記録
       diaryfood: フードの登録
       user: ユーザー
+      food: たべもの
     attributes:
       report:
         weight: 体重
@@ -40,6 +41,15 @@ ja:
         age: 年齢
         height: 身長
         activity: 活動レベル
+      food:
+        name: たべもの名
+        protein: たんぱく質
+        fat: 脂質
+        carbo: 炭水化物
+        unit: 単位
+        gram: グラム
+        image_url: 画像URL
+        kcal: kcal
   date:
     abbr_day_names:
     - 日

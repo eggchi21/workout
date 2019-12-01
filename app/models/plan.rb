@@ -10,6 +10,7 @@ class Plan < ApplicationRecord
   validates :target_on, presence:true, date: true
   validate :start_on_calendar_valid?
   validate :target_on_calendar_valid?
+  validate :date_cannot_be_target_on_greater_than_start_on
   validates :method, inclusion: {in: Plan.methods.keys}
   validates :protein, presence:true,numericality: { only_integer: true, greater_than: 0 }
   validates :fat, presence:true, numericality: { only_integer: true, greater_than: 0 }
@@ -36,6 +37,12 @@ class Plan < ApplicationRecord
     d = date[8, 2].to_i
     unless Date.valid_date?(y, m, d)
       errors.add(:target_on, date + "はカレンダーにない日付です")
+    end
+  end
+
+  def date_cannot_be_target_on_greater_than_start_on
+    if start_on.present? && target_on.present? && start_on > target_on
+      errors.add(:start_on, ": 開始日は目標日より前の日付を登録できません")
     end
   end
 

@@ -37,6 +37,13 @@ describe Report do
       report.valid?
       expect(report.errors[:entry_on]).to include("20191126はカレンダーにない日付です")
     end
-  end
 
+    it "is invalid with wrong entry_on format(with future date)" do
+      user = create(:user)
+      report = build(:report,user_id: user.id , entry_on: "3019/11/26")
+      report.valid?
+      expect(report.errors[:entry_on]).to include(": 今日以降の日付は登録できません")
+    end
+
+  end
 end

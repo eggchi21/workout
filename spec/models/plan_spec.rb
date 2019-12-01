@@ -107,11 +107,18 @@ describe Plan do
       expect(plan.errors[:start_on]).to include("20191126はカレンダーにない日付です")
     end
     # --- target_on validation
-    it "is invalid with wrong start_on format(without '/'  )" do
+    it "is invalid with wrong target_on format(without '/'  )" do
       user = create(:updated_user)
       plan = build(:plan,method: "lowfat",user_id: user.id , target_on: "20191126")
       plan.valid?
       expect(plan.errors[:target_on]).to include("20191126はカレンダーにない日付です")
+    end
+
+    it "is invalid with wrong start_on format(with start_on > target_on)" do
+      user = create(:user)
+      plan = build(:plan,user_id: user.id , start_on: "3019/11/26")
+      plan.valid?
+      expect(plan.errors[:start_on]).to include(": 開始日は目標日より前の日付を登録できません")
     end
   end
 
