@@ -34,10 +34,10 @@ class Report < ApplicationRecord
   has_many_attached :images
   using ArrayStatistics
 
-  validates :weight,presence:true
+  validates :weight,presence:true,numericality: {greater_than: 0}
   validates :entry_on, uniqueness: { scope: :user_id }, date: true
   validate :date_cannot_be_in_the_future
-  validate :calendar_valid?
+  validate :entry_on_calendar_valid?, on: :create
   validates :user_id, presence: true
   validates :user, presence: true,if: -> {user_id.present?}
 
@@ -47,14 +47,14 @@ class Report < ApplicationRecord
     end
   end
 
-  def calendar_valid?
+  def entry_on_calendar_valid?
     date = entry_on_before_type_cast
     return if date.blank?
     y = date[0, 4].to_i
     m = date[5, 2].to_i
     d = date[8, 2].to_i
     unless Date.valid_date?(y, m, d)
-      errors.add(:date, "カレンダーにない日付です")
+      errors.add(:entry_on, date + "はカレンダーにない日付です")
     end
   end
 

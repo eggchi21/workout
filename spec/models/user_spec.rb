@@ -7,6 +7,11 @@ describe User do
       user = build(:user)
       expect(user).to be_valid
     end
+    # --- 全部(updated)
+    it "is valid with a nickname, email, password, password_confirmation, introduction,sex,age,height,activity" do
+      user = build(:updated_user)
+      expect(user).to be_valid
+    end
     # --- 部分欠損
     it "is invalid without a nickname" do
       user = build(:user, nickname: "")
