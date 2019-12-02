@@ -10,6 +10,8 @@ FactoryBot.define do
     fat                        {23}
     carbo                      {260}
     user
+    created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
+
   end
 
 end

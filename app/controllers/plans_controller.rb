@@ -2,7 +2,7 @@ class PlansController < ApplicationController
   before_action :set_plan, only: [:show,:destroy, :edit ,:update]
   before_action :authenticate_user!, except:[:index]
   def index
-    @plans = Plan.all
+    @plans = Plan.all.order(created_at: :desc)
   end
 
   def show
