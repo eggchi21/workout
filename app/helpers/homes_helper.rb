@@ -12,6 +12,7 @@ module HomesHelper
     before_user_session = [
       {title: "ログイン",url:new_user_session_path},
       {title: "新規登録",url:step1_signup_index_path},
+      {title: "たべもの図鑑",url:foods_path},
     ]
     after_user_session = [
       {title: "ユーザー情報",url:edit_user_path(current_user)},

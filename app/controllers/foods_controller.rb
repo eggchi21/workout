@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except:[:index,:show]
   def index
     @food_groups = Food.where(ancestry: nil)
   end
