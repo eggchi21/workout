@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :reports
   end
   resources :plans
+  get 'likes/:item_id/create', to: 'likes#create'
+  get 'likes/:item_id/destroy', to: 'likes#destroy'
   resources :diaries
   resources :homes do
     collection do

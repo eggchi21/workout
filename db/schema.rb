@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_105917) do
+ActiveRecord::Schema.define(version: 2019_12_03_102553) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 2019_11_13_105917) do
     t.integer "kcal"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_likes_on_plan_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "plans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "start_weight", precision: 4, scale: 1
     t.decimal "target_weight", precision: 4, scale: 1
@@ -126,5 +135,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_105917) do
   add_foreign_key "diaries", "users"
   add_foreign_key "diaryfoods", "diaries"
   add_foreign_key "diaryfoods", "foods"
+  add_foreign_key "likes", "plans"
+  add_foreign_key "likes", "users"
   add_foreign_key "reports", "users"
 end
