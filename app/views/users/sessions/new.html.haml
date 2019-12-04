@@ -1,3 +1,8 @@
+=link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn btn--facebook", id: "facebook-login" do
+  .fab.fa-facebook-f.facebook-icon
+  Facebookでログイン
+=link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn--google", id: "google-login" do
+  Googleでログイン
 = form_for(resource, as: resource_name,html: {class: 'common-form'}, url: session_path(resource_name)) do |f|
   .common-form__text
     = f.email_field :email, autofocus: true, autocomplete: "email",value:'sample1@sample.com'

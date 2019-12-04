@@ -5,3 +5,8 @@
   = link_to new_user_session_path,class:'common-form__submit' do
     %i.fas.fa-sign-in-alt.fa-2x
     ログイン
+  = link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn btn--facebook", id: "facebook-login" do
+    .fab.fa-facebook-f.facebook-icon
+    Facebookで登録
+  -# =link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn--google", id: "google-login" do
+  -#   Googleで登録する
