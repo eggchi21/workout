@@ -12,9 +12,9 @@
 たべもの図鑑から食べたものを記録、カロリー/PFCバランスの計算結果をグラフ化します
 [![Image from Gyazo](https://i.gyazo.com/1c3b2f518a3025bee3c4840a5c9f2d77.gif)](https://gyazo.com/1c3b2f518a3025bee3c4840a5c9f2d77)
 [![Image from Gyazo](https://i.gyazo.com/945cdbd973a745b82112b68b0fbd51de.gif)](https://gyazo.com/945cdbd973a745b82112b68b0fbd51de)
-[![Image from Gyazo](https://i.gyazo.com/f0e7845deccad7fd03998cc7a47f2275.gif)](https://gyazo.com/f0e7845deccad7fd03998cc7a47f2275)
+[![Image from Gyazo](https://i.gyazo.com/60804fb6ddd8921820169ddd90e6b7e2.gif)](https://gyazo.com/60804fb6ddd8921820169ddd90e6b7e2)
 # アプリケーションの機能一覧
-- sessionを使用したウイザード形式でのユーザ登録機能/ログイン機能
+- sessionを使用したウイザード形式でのユーザ新規登録機能/ログイン機能
 - 郵便番号から住所を自動入力する機能
 - 各種投稿(体重/目標/食事)の新規作成・編集・削除・一覧機能
 - 複数画像プレビュー表示/投稿機能
@@ -26,7 +26,7 @@
 - 経路列挙モデルで関連付けた"たべもの"の親子関係を一覧で表示させる機能
 - 食べ物を頭文字で分類する機能
 - いいね機能
-- SNS経由でユーザー新規登録/ログイン
+- SNS経由でユーザー新規登録機能/ログイン機能
 
 # アプリケーション内で使用している主な技術一覧
 | 種別 | 名称 |
@@ -74,7 +74,8 @@ $ rails server
 1. TOPページ中部の"Start This APP"をクリックしてください
 [![Image from Gyazo](https://i.gyazo.com/e2c5d65fba6398236363f77573a4e90c.gif)](https://gyazo.com/e2c5d65fba6398236363f77573a4e90c)
 2. テストユーザー(sample1@sample.com)が入力されているので、そのままログインボタンを選択してください
-[![Image from Gyazo](https://i.gyazo.com/32135f06036e8b8e35e439ececd61259.gif)](https://gyazo.com/32135f06036e8b8e35e439ececd61259)
+※SNS経由でのログインはローカル環境のみで適用させてます
+[![Image from Gyazo](https://i.gyazo.com/e0210b75366139c7ac9b224d486d2798.gif)](https://gyazo.com/e0210b75366139c7ac9b224d486d2798)
 
 ## 体重を記録する
 1. メニュー(画面左上の三本線)から"体重を記録する"を選択してください
