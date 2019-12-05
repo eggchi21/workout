@@ -3,22 +3,22 @@
     .common-form__text
       = d.text_field :postcode, placeholder: '例）1234567', class: "input-default"
       = f.label :郵便番号, { class: 'new-registration-label' }
-      = f.label :必須, { class: 'common-form__require' }
+      = f.label :必須, { class: 'common-form__require btn--red' }
       .common-form__text--description 郵便番号だけで番地まで自動入力されます
     .common-form__select
       = d.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name,{prompt: ""},{class: "common-form__select--option"}
       = f.label :都道府県
-      = f.label :必須, { class: 'common-form__require' }
+      = f.label :必須, { class: 'common-form__require btn--red' }
       .common-form__select--description 選択肢から選んでください
     .common-form__text
       = d.text_field :city, placeholder: '例）横浜市緑区', class: "input-default"
       = f.label :市区町村, { class: 'new-registration-label' }
-      = f.label :必須, { class: 'common-form__require' }
+      = f.label :必須, { class: 'common-form__require btn--red' }
       .common-form__text--description 記載してください
     .common-form__text
       = d.text_field :address1, placeholder: "例）青山1-1-1", class: "input-default"
       = f.label :番地, { class: 'new-registration-label' }
-      = f.label :必須, { class: 'common-form__require' }
+      = f.label :必須, { class: 'common-form__require btn--red' }
       .common-form__text--description 記載してください
     .common-form__text
       = d.text_field :address2, placeholder: "例）柳ビル103", class: "input-default"
@@ -26,4 +26,4 @@
       = f.label :任意,  { class: 'common-form__not-require' }
       .common-form__text--description 記載してください
     .button
-      = f.submit "登録する", {class:'common-form__submit'}
+      = f.submit "登録する", {class:'common-form__submit btn--red'}

@@ -26,6 +26,7 @@
 - 経路列挙モデルで関連付けた"たべもの"の親子関係を一覧で表示させる機能
 - 食べ物を頭文字で分類する機能
 - いいね機能
+- SNS経由でユーザー新規登録/ログイン
 
 # アプリケーション内で使用している主な技術一覧
 | 種別 | 名称 |
@@ -46,7 +47,6 @@
 | メモリ不足対策 | gem 'unicorn-worker-killer' |
 
 # 実装予定の機能
-- 各種SNSログイン
 - Google Cloud Vision APIを使用して商品パッケージ写真からPFCを認識する
 - LINEBotから体重記録
 - 増量プランの追加
@@ -56,7 +56,7 @@
 
 # ER図
 gem 'rails-erd'で自動生成
-[![Image from Gyazo](https://i.gyazo.com/799123e263bdbd05b701a0d135804caa.png)](https://gyazo.com/799123e263bdbd05b701a0d135804caa)
+[![Image from Gyazo](https://i.gyazo.com/6a98fc0d09db01880e452799062016d5.png)](https://gyazo.com/6a98fc0d09db01880e452799062016d5)
 
 # GitHubからインストール
 

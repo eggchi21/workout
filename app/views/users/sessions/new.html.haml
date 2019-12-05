@@ -1,9 +1,11 @@
-=link_to user_facebook_omniauth_authorize_path, method: :post, class: "btn btn--facebook", id: "facebook-login" do
-  .fab.fa-facebook-f.facebook-icon
-  Facebookでログイン
-=link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn--google", id: "google-login" do
-  Googleでログイン
+
 = form_for(resource, as: resource_name,html: {class: 'common-form'}, url: session_path(resource_name)) do |f|
+  =link_to user_facebook_omniauth_authorize_path, method: :post, class: "common-form__submit btn--facebook", id: "facebook-login" do
+    .fab.fa-facebook-f.facebook-icon
+    Facebookでログイン
+  =link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "common-form__submit btn--google", id: "google-login" do
+    %i.fab.fa-google
+    Googleでログイン
   .common-form__text
     = f.email_field :email, autofocus: true, autocomplete: "email",value:'sample1@sample.com'
     = f.label :email,'メールアドレス'
@@ -16,5 +18,5 @@
     .common-form__checkbox
       = f.check_box :remember_me
       = f.label :remember_me,'パスワードを記憶する'
-  = f.submit "ログイン",class:'common-form__submit'
+  = f.submit "ログイン",class:'common-form__submit btn--red'
   = render "users/shared/links"

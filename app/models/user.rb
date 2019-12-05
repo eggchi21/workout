@@ -7,6 +7,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   has_many :reports
   has_many :plans
+  has_many :likes, dependent: :destroy
+  has_many :social_profiles, dependent: :destroy
   enum sex: {
     man: 0,
     woman: 1
