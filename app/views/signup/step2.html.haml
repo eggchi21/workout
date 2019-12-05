@@ -2,23 +2,23 @@
   .common-form__text
     = f.text_field :nickname, autofocus: true, placeholder: '例) サンプル',value: session[:nickname]
     = f.label :ニックネーム
-    = f.label :必須, { class: 'common-form__require' }
+    = f.label :必須, { class: 'common-form__require btn--red' }
     .common-form__text--description 20文字以内のニックネームにしてください。あとで変更できます。
   .common-form__text
     = f.email_field :email, placeholder: 'PC・携帯どちらでも可',value: session[:email]
     = f.label :メールアドレス
-    = f.label :必須, { class: 'common-form__require' }
+    = f.label :必須, { class: 'common-form__require btn--red' }
     .common-form__text--description メールアドレスは記載ミスのないようにお願いします。
   - if session[:provider] == nil
     .common-form__text
       = f.password_field :password, placeholder: '6文字以上'
       = f.label :パスワード
-      = f.label :必須, { class: 'common-form__require' }
+      = f.label :必須, { class: 'common-form__require btn--red' }
       .common-form__text--description 半角英数字6文字以上です。
     .common-form__text
       = f.password_field :password_confirmation, placeholder: '6文字以上'
       = f.label :パスワード（確認）
-      = f.label :必須, { class: 'common-form__require' }
+      = f.label :必須, { class: 'common-form__require btn--red' }
       .common-form__text--description 確認のためもう一度入力してください
   .button
     = f.submit "次に進む" ,{class:'common-form__submit'}

@@ -305,14 +305,16 @@
 }
 
 .common-form__submit{
+  width:400px;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
   position: relative;
   margin-top: 50px;
-  padding: 10px 40px;
   color:#fff;
 	background:#1253A4;
 	border: none;
 	position: relative;
-	text-transform: uppercase;
 	font-number: bold;
   letter-spacing: 3px;
   border-radius: 3px;
@@ -346,8 +348,23 @@
     transform: translate(0);
   }
 }
-
-
+.btn--facebook {
+  position: relative;
+  margin: 16px 0 0;
+  background: #385185;
+  color: #fff;
+  font-size: 13px;
+}
+.btn--google {
+  margin: 16px 0 0;
+  background: #fff;
+  border: #979797 solid 1px;
+  color: #333;
+  font-size: 13px;
+}
+.btn--red{
+  background: red;
+}
 //--- VARS ---//
 $open-sans: 'Open Sans', 'Helvetica', sans-serif;
 

@@ -1,7 +1,9 @@
 .common-form
   = link_to reset_signup_index_path,class:'common-form__submit' do
-    %i.fa.fa-envelope.fa-2x
+    %i.fa.fa-envelope
     新規作成
-  = link_to new_user_session_path,class:'common-form__submit' do
-    %i.fas.fa-sign-in-alt.fa-2x
-    ログイン
+  = link_to user_facebook_omniauth_authorize_path, method: :post, class: "common-form__submit btn--facebook", id: "facebook-login" do
+    .fab.fa-facebook-f.facebook-icon
+    Facebookで登録
+  =link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "common-form__submit btn--google", id: "google-login" do
+    Googleで登録する
