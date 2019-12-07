@@ -21,6 +21,8 @@ module HomesHelper
       {title: "食事記録表",url:diaries_path},
       {title: "食事を記録する",url:new_diary_path},
       {title: "たべもの図鑑",url:foods_path},
+      {title: "たべもの登録",url:new_food_path},
+
 
     ] if user_signed_in?
     mycontents =[

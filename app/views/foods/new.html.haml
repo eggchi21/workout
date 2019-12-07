@@ -1,0 +1,9 @@
+= form_with model: @food do |form|
+  %div
+    = form.label :name
+    = form.text_field :name
+  %div
+    = form.label :images
+    = form.file_field :images, multiple: true
+  %div
+    = form.submit

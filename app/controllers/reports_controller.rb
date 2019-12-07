@@ -42,6 +42,7 @@ class ReportsController < ApplicationController
     end
   end
 end
+
 private
 
 def set_report

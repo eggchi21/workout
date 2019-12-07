@@ -2,6 +2,7 @@ class Food < ApplicationRecord
   has_ancestry
   has_many :diaryfoods ,dependent: :destroy
   has_many :diaries, through: :diaryfoods
+  has_many_attached :images
 
   validates :name, presence:true
   with_options if: :ancestry_is_not_nil? do

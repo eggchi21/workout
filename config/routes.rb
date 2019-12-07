@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get "about"
     end
   end
-  resources :foods, only: [:index,:show] do
+  resources :foods, only: [:index,:show,:new,:create] do
     collection do
       get "search"
     end
