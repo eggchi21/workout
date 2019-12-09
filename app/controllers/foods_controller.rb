@@ -36,10 +36,17 @@ class FoodsController < ApplicationController
 
   def upload
 
-    image_annotator_client = Google::Cloud::Vision::ImageAnnotator.new
-    gcs_image_uri = "https://i.gyazo.com/4cd8f66814874782fe4be092b5e7c446.png"
-    @data = (image_annotator_client.document_text_detection image: gcs_image_uri).to_s
+    # image_annotator_client = Google::Cloud::Vision::ImageAnnotator.new
+    image_path = './erd.png'
+    # @data = (image_annotator_client.document_text_detection image: gcs_image_uri).to_s
 
+    # image  = vision.image image_path
+    vision = Google::Cloud::Vision.new
+    image  = vision.image image_path
+    @data =[]
+    image.logos.each do |logo|
+      @data << logo.description
+    end
     # gcs_image_uri = "https://i.gyazo.com/4cd8f66814874782fe4be092b5e7c446.png"
     # source = { gcs_image_uri: gcs_image_uri }
     # image = { source: source }
