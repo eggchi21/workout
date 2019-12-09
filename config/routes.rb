@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :foods, only: [:index,:show,:new,:create] do
     collection do
       get "search"
+      get "upload"
     end
   end
   resources :signup do

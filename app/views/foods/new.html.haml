@@ -1,9 +1,22 @@
-= form_with model: @food do |form|
+= form_with model: @food , data: { remote: false }, class: "common-form" do |food|
+  .common-form__text
+    = food.text_field :name
+    = food.label :name
+  .plan-form__pfc
+    .plan-form__pfc--protein
+      = food.number_field :protein
+      = food.label 'たんぱく質(g)'
+      .plan-form__pfc--protein--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__pfc--fat
+      = food.number_field :fat
+      = food.label '脂質(g)'
+      .plan-form__pfc--fat--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+    .plan-form__pfc--carbo
+      = food.number_field :carbo
+      = food.label '炭水化物(g)'
+      .plan-form__pfc--carbo--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
   %div
-    = form.label :name
-    = form.text_field :name
+    = food.label :images
+    = food.file_field :images, multiple: true
   %div
-    = form.label :images
-    = form.file_field :images, multiple: true
-  %div
-    = form.submit
+    = food.submit

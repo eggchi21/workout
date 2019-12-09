@@ -110,7 +110,6 @@ $(function(){
     if (file.name.match(/.(jpg|jpeg|png)$/i)){
       var blobUrl = window.URL.createObjectURL(file);
       var image_count = $('.common-form__image--pic').length;
-      console.log(image_count)
       appendPreview(blobUrl,image_count)
       appendPicBox(image_count)
       resizePreviews(image_count)
