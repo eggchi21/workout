@@ -1,5 +1,7 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!, except:[:index,:show]
+  require 'google/cloud/vision'
+
 
   def index
     @food_groups = Food.where(ancestry: nil)
@@ -33,7 +35,6 @@ class FoodsController < ApplicationController
   end
 
   def upload
-    require 'google/cloud/vision'
 
     image_annotator_client = Google::Cloud::Vision::ImageAnnotator.new
     gcs_image_uri = "https://i.gyazo.com/4cd8f66814874782fe4be092b5e7c446.png"
