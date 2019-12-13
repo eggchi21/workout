@@ -1,20 +1,22 @@
 $(function(){
   $(document).on('change', 'input[type= "file"]',function(e) {
     e.preventDefault();
-    // var formData = new FormData(this);
+    var formData = new FormData();
+    formData.append("image",$('#food_image')[0].files[0]);
+    console.log(formData)
     var image = $(this).prop('files')[0];                                            //ファイルの情報取得
     console.log(image)
     $.ajax({
       type:'GET',
       url: '/foods/upload',
-      data: {file: image},
+      data: {file: formData},
       dataType:'json',
       processData: false,
       contentType: false
     })
     .done(function(data){
-      console.log('ok')
       console.log(data)
+
     })
     .fail(function(){
       alert('失敗しました')

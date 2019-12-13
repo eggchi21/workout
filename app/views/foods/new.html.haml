@@ -16,7 +16,13 @@
       = food.label '炭水化物(g)'
       .plan-form__pfc--carbo--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
   %div
-    = food.label :images
-    = food.file_field :images, multiple: true
+    = food.label :image
+    = food.file_field :image
   %div
     = food.submit
+-# = form_with model: @food ,url:upload_foods_path, data: { remote: false }, class: "common-form" do |up|
+-#   %div
+-#     = up.label :image
+-#     = up.file_field :image
+-#   %div
+-#     = up.submit
