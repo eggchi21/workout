@@ -65,7 +65,7 @@
 
 # ER図
 gem 'rails-erd'で自動生成
-[![Image from Gyazo](https://i.gyazo.com/6a98fc0d09db01880e452799062016d5.png)](https://gyazo.com/6a98fc0d09db01880e452799062016d5)
+[![Image from Gyazo](https://i.gyazo.com/ec43e40b25c0f2546e1e55f1e74f921c.png)](https://gyazo.com/ec43e40b25c0f2546e1e55f1e74f921c)
 
 # GitHubからインストール
 
@@ -119,7 +119,7 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/03b2c5ddf0b35cce5cb46c79fbb3f788.gif)](https://gyazo.com/03b2c5ddf0b35cce5cb46c79fbb3f788)
 3. 表の"個数”,”グラム”を変更すると自動でPFCバランス/カロリーが計算されます
 [![Image from Gyazo](https://i.gyazo.com/b501febdbe326c668c8497e7e50a1386.gif)](https://gyazo.com/b501febdbe326c668c8497e7e50a1386)
-4. 削除もできます　完了したら"記録する"ボタンを選択してください。
+4. 削除もできます 完了したら"記録する"ボタンを選択してください。
 [![Image from Gyazo](https://i.gyazo.com/ec5a2a21c6e1961cbe32ffd08169fc82.gif)](https://gyazo.com/ec5a2a21c6e1961cbe32ffd08169fc82)
 5. 任意の棒グラフを選択すると編集画面へ遷移します
 [![Image from Gyazo](https://i.gyazo.com/945cdbd973a745b82112b68b0fbd51de.gif)](https://gyazo.com/945cdbd973a745b82112b68b0fbd51de)
@@ -128,6 +128,7 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/fbcc9d1d5860299cd051263248c1c0a3.gif)](https://gyazo.com/fbcc9d1d5860299cd051263248c1c0a3)
 
 ## オリジナルのたべものを登録する
+※ローカル環境のみで適用させてます
 1. メニュー(画面左上の三本線)から"たべもの登録"を選択してください
 [![Image from Gyazo](https://i.gyazo.com/920630e25a258aca8ca7673c432ebe84.gif)](https://gyazo.com/920630e25a258aca8ca7673c432ebe84)
 2. "画像からPFCを取得する"を選択してください
