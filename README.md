@@ -129,11 +129,7 @@ $ rails server
 
 ## オリジナルのたべものを登録する
 ※ローカル環境のみで適用させてます
-1. メニュー(画面左上の三本線)から"たべもの登録"を選択してください
-[![Image from Gyazo](https://i.gyazo.com/920630e25a258aca8ca7673c432ebe84.gif)](https://gyazo.com/920630e25a258aca8ca7673c432ebe84)
-2. "画像からPFCを取得する"を選択してください
-成分表示が記載された商品パッケージを選んでください
-[![Image from Gyazo](https://i.gyazo.com/af959f2bd8c5c45dc00be9d6493be479.gif)](https://gyazo.com/af959f2bd8c5c45dc00be9d6493be479)
+
 3. 画像を解析して、たんぱく質/脂質/炭水化物の含有量(g)がフォームに入力されます
 [![Image from Gyazo](https://i.gyazo.com/527f9739ea3fcc6a70f0a7dceac148ad.gif)](https://gyazo.com/527f9739ea3fcc6a70f0a7dceac148ad)
 4. あとは名前を入力して"登録する"を選択してください
