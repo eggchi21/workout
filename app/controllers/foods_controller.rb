@@ -26,7 +26,7 @@ class FoodsController < ApplicationController
 
 
   def search
-    @foods = Food.where.not(ancestry: nil).where('name LIKE(?)',"#{params[:keyword]}%")
+    @foods = Food.where.not(ancestry: nil).where('name LIKE(?)',"%#{params[:keyword]}%")
     respond_to do |format|
       format.html
       format.json
@@ -35,14 +35,15 @@ class FoodsController < ApplicationController
 
   def upload
     require 'google/cloud/vision'
-
-
-  # image = "erd.png"
-  image = params[:file]
-
-  image_annotator_client = Google::Cloud::Vision::ImageAnnotator.new
-  @data = (image_annotator_client.document_text_detection image: image ).to_s
-
+    image = params[:image].path
+    image_annotator_client = Google::Cloud::Vision::ImageAnnotator.new
+    image_text = (image_annotator_client.document_text_detection image: image ).to_s
+    if image_text.include?("たんぱく質")
+      @protein = image_text[/たんぱく質(.{0,3}\d+\.?\d+)/][/\d+\.?\d+/].to_f
+      @fat = image_text[/脂質(.{0,3}\d+\.?\d+)/][/\d+\.?\d+/].to_f
+      @carbo = image_text[/炭水化物(.{0,3}\d+\.?\d+)/][/\d+\.?\d+/].to_f
+      @data = {protein: @protein, fat: @fat, carbo: @carbo}
+    end
     respond_to do |format|
       format.html
       format.json
@@ -52,6 +53,6 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:name,images: [])
+    params.require(:food).permit(:name,:protein,:fat,:carbo)
   end
 end

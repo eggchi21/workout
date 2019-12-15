@@ -223,7 +223,6 @@
 .common-form__image{
   position: relative;
   margin-top: 50px;
-  // height:440px;
   &--input{
     display: none;
   }
@@ -271,7 +270,60 @@
     transform: rotateZ(90deg);
   }
 }
-
+.common-form__upload-image{
+  position: relative;
+  margin-top: 50px;
+  &--input{
+    display: none;
+  }
+  &--icon-wrap{
+    width:400px;
+    height:40px;
+    line-height: 40px;
+    background-color:#1253A4;
+    color: white;
+    border-radius: 3px;
+    padding: 0 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+  &--icon-text{
+    width:200px;
+    color: #fff;
+    float: left;
+    margin-left:20px;
+  }
+  &--pic{
+    position: relative;
+    & img{
+      width:400px;
+      height:500px;
+    }
+  }
+  &--description{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.6em;
+    color: #fff;
+    border-radius: 5px;
+    background: #000;
+    width: 100px;
+  }
+  &--description:before{
+    content: "";
+    position: absolute;
+    top: 0%;
+    right: 95%;
+    border: 15px solid transparent;
+    border-top: 15px solid #000;
+    margin-left: -15px;
+    transform: rotateZ(90deg);
+  }
+}
 #report-preview-0 {
   float: left;
 

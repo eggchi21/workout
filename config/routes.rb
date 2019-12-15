@@ -20,12 +20,12 @@ Rails.application.routes.draw do
     end
   end
   resources :foods, only: [:index,:show,:new,:create] do
-    member do
-      post 'upload'
-    end
+    # member do
+    #   post 'upload'
+    # end
     collection do
       get "search"
-      get "upload"
+      post "upload"
     end
   end
   resources :signup do

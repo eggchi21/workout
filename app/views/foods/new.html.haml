@@ -1,28 +1,25 @@
 = form_with model: @food , data: { remote: false }, class: "common-form" do |food|
+  .common-form__upload-image
+    .common-form__upload-image--description 画像は4枚まで添付できます
+    %input#image-upload.common-form__upload-image--input{name: "image", type: "file"}
+    %label.common-form__image--icon-0{for: "image-upload"}
+      .common-form__upload-image--icon-wrap
+        %i.fas.fa-image
+        .common-form__upload-image--icon-text 画像からPFCを取得する
   .common-form__text
     = food.text_field :name
     = food.label :name
   .plan-form__pfc
     .plan-form__pfc--protein
-      = food.number_field :protein
+      = food.number_field :protein, step:"0.1", min:0
       = food.label 'たんぱく質(g)'
-      .plan-form__pfc--protein--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+      .plan-form__pfc--protein--description 画像を挿入すると自動で数値が入力されます。
     .plan-form__pfc--fat
-      = food.number_field :fat
+      = food.number_field :fat, step:"0.1", min:0
       = food.label '脂質(g)'
-      .plan-form__pfc--fat--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
+      .plan-form__pfc--fat--description 画像を挿入すると自動で数値が入力されます。
     .plan-form__pfc--carbo
-      = food.number_field :carbo
+      = food.number_field :carbo, step:"0.1", min:0
       = food.label '炭水化物(g)'
-      .plan-form__pfc--carbo--description ダイエット法によって適切な数値が自動で計算されます。単位はgです。
-  %div
-    = food.label :image
-    = food.file_field :image
-  %div
-    = food.submit
--# = form_with model: @food ,url:upload_foods_path, data: { remote: false }, class: "common-form" do |up|
--#   %div
--#     = up.label :image
--#     = up.file_field :image
--#   %div
--#     = up.submit
+      .plan-form__pfc--carbo--description 画像を挿入すると自動で数値が入力されます。
+  = food.submit '登録する' , class:'common-form__submit'
