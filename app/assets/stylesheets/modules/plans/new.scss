@@ -12,7 +12,7 @@
 .plan-form__tdee{
   position: relative;
   margin-top: 50px;
-  width: 200px;
+  width: 220px;
   &--numeric{
     margin-top: 20px;
     text-align:center;
@@ -20,7 +20,7 @@
   }
 }
 .plan-form__calorie{
-  width: 200px;
+  width: 220px;
   position: relative;
   margin-top: 50px;
   &--numeric{
@@ -31,7 +31,7 @@
 }
 
 .plan-form__tdei{
-  width: 200px;
+  width: 220px;
   position: relative;
   margin-top: 50px;
   &--numeric{
@@ -62,7 +62,7 @@
   margin-top: 20px;
   input[type="number"]{
     display: inline-block;
-    width: 200px;
+    width: 220px;
     height: 40px;
     box-sizing: border-box;
     outline: none;
@@ -114,7 +114,7 @@
 .plan-form__pfc--protein:hover .plan-form__pfc--protein--description {
   display: inline-block;
   top: 0px;
-  left: 210px;
+  left: 230px;
 }
 
 .plan-form__pfc--fat{
@@ -122,7 +122,7 @@
   margin-top: 20px;
   input[type="number"]{
     display: inline-block;
-    width: 200px;
+    width: 220px;
     height: 40px;
     box-sizing: border-box;
     outline: none;
@@ -174,7 +174,7 @@
 .plan-form__pfc--fat:hover .plan-form__pfc--fat--description {
   display: inline-block;
   top: 0px;
-  left: 210px;
+  left: 230px;
 }
 
 .plan-form__pfc--carbo{
@@ -182,7 +182,7 @@
   margin-top: 20px;
   input[type="number"]{
     display: inline-block;
-    width: 200px;
+    width: 220px;
     height: 40px;
     box-sizing: border-box;
     outline: none;
@@ -234,5 +234,5 @@
 .plan-form__pfc--carbo:hover .plan-form__pfc--carbo--description {
   display: inline-block;
   top: 0px;
-  left: 210px;
+  left: 230px;
 }

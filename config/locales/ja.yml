@@ -14,6 +14,7 @@ ja:
       diaryfood: フードの登録
       user: ユーザー
       food: たべもの
+      social_profile: SNSアカウント
     attributes:
       report:
         weight: 体重
@@ -50,6 +51,9 @@ ja:
         gram: グラム
         image_url: 画像URL
         kcal: kcal
+      social_profile:
+        uid: SNSのユーザーID
+        provider: SNSプロバイダー
   date:
     abbr_day_names:
     - 日

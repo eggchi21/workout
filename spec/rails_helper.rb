@@ -25,7 +25,23 @@ require 'rspec/rails'
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
-
+module OmniauthMocks
+  def facebook_mock
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
+      {
+        provider: 'facebook',
+        uid: '12345',
+        info: {
+          name: 'mockuser',
+          email: 'sample@test.com'
+        },
+        credentials: {
+          token: 'hogefuga'
+        }
+      }
+    )
+  end
+end
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -35,6 +51,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  OmniAuth.config.test_mode = true
+  config.include OmniauthMocks
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

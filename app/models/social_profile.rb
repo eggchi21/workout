@@ -2,7 +2,7 @@ class SocialProfile < ApplicationRecord
   belongs_to :user
   validates :uid,
     presence: true,
-    uniqueness: { message: "はすでに存在しています" }
+    uniqueness: { scope: :provider }
   validates :provider,
     presence: true
   validates :user_id,

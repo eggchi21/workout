@@ -2,11 +2,17 @@
 ## 制作の背景
 **120kg**の巨漢だった私は、昨年、**315日間**ダイエットをして、フィジークの大会に出場しました。ダイエット期間中、体重の減り具合が芳しくなかったり、誘惑に負けそうになって不安になることがありましたが、Twitterに毎日体型の自撮りと体重、摂取カロリーをアップロードすることで、自制心を保つことができました。中にはエールをくれる同志がいて、Webでつながることに素晴らしさを覚えました。
 この経験から、**ダイエットの不安を解消してくれるアプリを作ってみたい**と思い、同志と目標をシェア、食事・体重の増減経過のサポートを担うアプリの制作に至りました。
-
 ### アクセス
 [コチラ](http://3.115.172.75)からアクセスできます。
 
-## ダイエット×確率統計×目標シェア
+## こだわり機能
+[1] ArrayクラスをRubyのRefinementで拡張し、作成したオリジナルの統計メソッド
+[2] Google Cloud Vision APIを使用した画像解析
+[3] WebサイトからScrapingした情報を用いてカロリー/PFCバランスの非同期で計算
+その他の機能は「アプリケーションの機能一覧」よりご確認ください
+
+## コンセプト
+###「ダイエット×確率統計×目標シェア」
 体重を毎日記録することで、将来の体重を確率統計で導きます。
 ダイエットの知識がない人でもカンタンにはじめられるように、目標設定のサポート、
 たべもの図鑑から食べたものを記録、カロリー/PFCバランスの計算結果をグラフ化します
@@ -26,7 +32,8 @@
 - 経路列挙モデルで関連付けた"たべもの"の親子関係を一覧で表示させる機能
 - 食べ物を頭文字で分類する機能
 - いいね機能
-- SNS経由でユーザー新規登録機能/ログイン機能
+- SNS(Facebook,Google)経由でユーザー新規登録機能/ログイン機能
+- [Google Cloud Vision API](https://cloud.google.com/vision/?hl=ja)を使用して商品パッケージ写真からPFCを識別する
 
 # アプリケーション内で使用している主な技術一覧
 | 種別 | 名称 |
@@ -47,7 +54,7 @@
 | メモリ不足対策 | gem 'unicorn-worker-killer' |
 
 # 実装予定の機能
-- Google Cloud Vision APIを使用して商品パッケージ写真からPFCを認識する
+- csvで体重の記録を抽出する機能
 - LINEBotから体重記録
 - 増量プランの追加
 - 重回帰分析の導入
@@ -85,7 +92,7 @@ $ rails server
 (他のユーザーはメールアドレスの「sample"数字"@sample.com」の"数字"を1~9のうちいずれかにしてください。パスワードはすべて同じで"password"です)
 [![Image from Gyazo](https://i.gyazo.com/de704f972496328e9d1dd0795d2bf135.gif)](https://gyazo.com/de704f972496328e9d1dd0795d2bf135)
 3. 体重一覧ページに遷移します。直近の１週間分の体重が表示されてグラフ下部のバーを調節する/右上のマイナスボタンを押すことで目的の範囲のグラフを描画できます
-ページ右上には最小二乗法で算出された、1週間後の体重が表示されています
+ページ右上には**最小二乗法で算出された、1週間後の体重**が表示されています
 [![Image from Gyazo](https://i.gyazo.com/f8852e978f9796e33784ab358df9882a.gif)](https://gyazo.com/f8852e978f9796e33784ab358df9882a)
 4. グラフの点すると編集画面へ遷移します
 [![Image from Gyazo](https://i.gyazo.com/5eda8549474a4ce8d275976e7f95c6bb.gif)](https://gyazo.com/5eda8549474a4ce8d275976e7f95c6bb)
@@ -117,6 +124,16 @@ $ rails server
 6. また、たべもの図鑑から食べ物を検索できます。
 [![Image from Gyazo](https://i.gyazo.com/40b4bf8057b98605032ed5772c5ff4b7.gif)](https://gyazo.com/40b4bf8057b98605032ed5772c5ff4b7)
 [![Image from Gyazo](https://i.gyazo.com/fbcc9d1d5860299cd051263248c1c0a3.gif)](https://gyazo.com/fbcc9d1d5860299cd051263248c1c0a3)
+
+## オリジナルのたべものを登録する
+1. メニュー(画面左上の三本線)から"たべもの登録"を選択してください
+[![Image from Gyazo](https://i.gyazo.com/920630e25a258aca8ca7673c432ebe84.gif)](https://gyazo.com/920630e25a258aca8ca7673c432ebe84)
+2. "画像からPFCを取得する"を選択してください
+成分表示が記載された商品パッケージを選んでください
+[![Image from Gyazo](https://i.gyazo.com/af959f2bd8c5c45dc00be9d6493be479.gif)](https://gyazo.com/af959f2bd8c5c45dc00be9d6493be479)
+3. 画像を解析して、たんぱく質/脂質/炭水化物の含有量(g)がフォームに入力されます
+[![Image from Gyazo](https://i.gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01.gif)](https://gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01)
+4. あとは名前を入力して"登録する"を選択してください
 
 # 作者
 - Qiita: [@eggchi21](https://qiita.com/eggchi21)

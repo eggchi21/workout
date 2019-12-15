@@ -4,9 +4,10 @@ FactoryBot.define do
     entry_on                {"2019/11/18"}
     evaluation              {"not_yet"}
     user
-    # after(:create) do |diary|
-    #   create(:diaryfood , diary_id: diary.id)
-    # end
+    after(:create) do |diary|
+      # food = create(:food)
+      create(:diaryfood , food: create(:food), diary: diary, amount:10)
+    end
   end
 
 end
