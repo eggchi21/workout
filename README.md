@@ -136,7 +136,6 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/af959f2bd8c5c45dc00be9d6493be479.gif)](https://gyazo.com/af959f2bd8c5c45dc00be9d6493be479)
 3. 画像を解析して、たんぱく質/脂質/炭水化物の含有量(g)がフォームに入力されます
 [![Image from Gyazo](https://i.gyazo.com/527f9739ea3fcc6a70f0a7dceac148ad.gif)](https://gyazo.com/527f9739ea3fcc6a70f0a7dceac148ad)
-[![Image from Gyazo](https://i.gyazo.com/a076cf1fc7ee8553e400089cd83f2d4e.gif)](https://gyazo.com/a076cf1fc7ee8553e400089cd83f2d4e)
 # 作者
 - Qiita: [@eggchi21](https://qiita.com/eggchi21)
 - Mail: 52.eguchi.keita@mail.com
