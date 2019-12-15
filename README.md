@@ -9,6 +9,7 @@
 - ArrayクラスをRubyのRefinementで拡張し、作成したオリジナルの統計メソッド
 - Google Cloud Vision APIを使用した画像解析
 - WebサイトからScrapingした情報を用いてカロリー/PFCバランスの非同期で計算
+[![Image from Gyazo](https://i.gyazo.com/adb572de9dbd7419673d9e2adff010a3.gif)](https://gyazo.com/adb572de9dbd7419673d9e2adff010a3)
 
 - その他の機能は「アプリケーションの機能一覧」よりご確認ください
 
@@ -135,8 +136,7 @@ $ rails server
 成分表示が記載された商品パッケージを選んでください
 [![Image from Gyazo](https://i.gyazo.com/af959f2bd8c5c45dc00be9d6493be479.gif)](https://gyazo.com/af959f2bd8c5c45dc00be9d6493be479)
 3. 画像を解析して、たんぱく質/脂質/炭水化物の含有量(g)がフォームに入力されます
-aaa
-[![Image from Gyazo](https://i.gyazo.com/adb572de9dbd7419673d9e2adff010a3.gif)](https://gyazo.com/adb572de9dbd7419673d9e2adff010a3)
+
 # 作者
 - Qiita: [@eggchi21](https://qiita.com/eggchi21)
 - Mail: 52.eguchi.keita@mail.com
