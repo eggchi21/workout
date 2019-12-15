@@ -133,7 +133,7 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/920630e25a258aca8ca7673c432ebe84.gif)](https://gyazo.com/920630e25a258aca8ca7673c432ebe84)
 2. "画像からPFCを取得する"を選択してください
 成分表示が記載された商品パッケージを選んでください
-[![Image from Gyazo](https://i.gyazo.com/af959f2bd8c5c45dc00be9d6493be479.gif)](https://gyazo.com/af959f2bd8c5c45dc00be9d6493be479)
+[![Image from Gyazo](https://i.gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01.gif)](https://gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01)
 3. 画像を解析して、たんぱく質/脂質/炭水化物の含有量(g)がフォームに入力されます
 
 [![Image from Gyazo](https://i.gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01.gif)](https://gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01)
