@@ -135,7 +135,9 @@ $ rails server
 成分表示が記載された商品パッケージを選んでください
 [![Image from Gyazo](https://i.gyazo.com/af959f2bd8c5c45dc00be9d6493be479.gif)](https://gyazo.com/af959f2bd8c5c45dc00be9d6493be479)
 3. 画像を解析して、たんぱく質/脂質/炭水化物の含有量(g)がフォームに入力されます
+
 [![Image from Gyazo](https://i.gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01.gif)](https://gyazo.com/9ccf611e5c08ca2e432cc160bafdaa01)
+
 4. あとは名前を入力して"登録する"を選択してください
 
 # 作者
