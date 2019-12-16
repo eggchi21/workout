@@ -12,6 +12,7 @@ class FoodsController < ApplicationController
 
   def new
     @food = Food.new
+    @food_groups = Food.where(ancestry: nil)
   end
 
 
