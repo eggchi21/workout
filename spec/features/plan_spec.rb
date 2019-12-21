@@ -18,7 +18,7 @@ feature 'plan', type: :feature do
     expect(page).to have_content('目標を作成する')
 
     # planの投稿
-    expect {
+    expect do
       click_link('目標を作成する')
       expect(current_path).to eq "/users/#{user.id}/edit"
       fill_in 'user[nickname]', with: 'test'
@@ -38,6 +38,6 @@ feature 'plan', type: :feature do
       fill_in 'plan[fat]', with: '31'
       fill_in 'plan[carbo]', with: '345'
       find('input[type="submit"]').click
-    }.to change(Plan, :count).by(1)
+    end.to change(Plan, :count).by(1)
   end
 end

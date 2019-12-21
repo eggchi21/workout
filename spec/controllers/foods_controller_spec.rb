@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe FoodsController, type: :controller do
-
   describe 'GET #index' do
     it "populates an array of food_groups" do
       foods = create_list(:food_ancestry_is_nil, 3)

@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only:[:edit]
+  before_action :set_user, only: [:edit]
 
-  def edit
-  end
+  def edit; end
 
   def update
     @user = current_user
@@ -16,9 +15,11 @@ class UsersController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find(params[:id])
   end
+
   def user_params
     params.require(:user).permit(
       :nickname,
@@ -26,8 +27,7 @@ class UsersController < ApplicationController
       :sex,
       :age,
       :height,
-      :activity,
+      :activity
     )
   end
-
 end

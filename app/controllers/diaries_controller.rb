@@ -1,22 +1,20 @@
 class DiariesController < ApplicationController
   before_action :authenticate_user!
-  before_action :validates_index_new, only: [:index,:new]
-  before_action :find_diary, only: [:edit,:update,:destroy]
-  before_action :find_plan, only: [:index,:new,:edit,:update]
+  before_action :validates_index_new, only: %i[index new]
+  before_action :find_diary, only: %i[edit update destroy]
+  before_action :find_plan, only: %i[index new edit update]
 
   def index
-    @diaries =  Diary.where(user_id: current_user.id).order(entry_on: 'ASC')
+    @diaries = Diary.where(user_id: current_user.id).order(entry_on: 'ASC')
     gon.ids = @diaries.map(&:id)
     gon.dates = @diaries.map(&:entry_on)
     gon.kcals = Diary.calc_kcals(@diaries)
     @plan_kcal = @plan.protein * 4 + @plan.fat * 9 + @plan.carbo * 4
     gon.plan_kcal = @plan_kcal
-    @today_kcal = Diary.calc_kcal(@diary) if @diary = Diary.find_by(user_id:current_user.id,entry_on:Date.today)
+    @today_kcal = Diary.calc_kcal(@diary) if @diary = Diary.find_by(user_id: current_user.id, entry_on: Date.today)
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @diary = Diary.new
@@ -35,8 +33,7 @@ class DiariesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @diary.update(diary_params)
@@ -64,13 +61,12 @@ private
 def diary_params
   params.require(:diary).permit(
     :entry_on,
-    diaryfoods_attributes: [:id,
-                            :amount,
-                            :_destroy,
-                            :food_id,
-                            :diary_id
-                            ]
-    ).merge(user_id: current_user.id,evaluation:0)
+    diaryfoods_attributes: %i[id
+                              amount
+                              _destroy
+                              food_id
+                              diary_id]
+  ).merge(user_id: current_user.id, evaluation: 0)
 end
 
 def validates_index_new
