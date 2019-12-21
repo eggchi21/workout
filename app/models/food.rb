@@ -11,7 +11,6 @@ class Food < ApplicationRecord
     validates :carbo, presence:true
     validates :unit, presence:true
     validates :gram, presence:true
-    validates :image_url, presence:true
     validates :kcal, presence:true
   end
 
@@ -21,7 +20,6 @@ class Food < ApplicationRecord
     validates :carbo, absence: true
     validates :unit, absence: true
     validates :gram, absence: true
-    validates :image_url,absence: true
     validates :kcal, absence: true
   end
 

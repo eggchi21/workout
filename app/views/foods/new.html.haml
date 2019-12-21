@@ -10,6 +10,9 @@
     = food.text_field :name
     = food.label :name
   .plan-form__pfc
+    .sell-form-group__select-wrap.level1_category--form
+      %i.sell-form-group__select-wrap--icon.fas.fa-chevron-down
+      = food.collection_select :ancestry, @food_groups , :id, :name, {prompt: "---"}, {class: "sell-form-group__select-wrap--default",id: 'level1_category'}
     .plan-form__pfc--protein
       = food.number_field :protein, step:"0.1", min:0
       = food.label 'たんぱく質(g)'
@@ -23,11 +26,12 @@
       = food.label '炭水化物(g)'
       .plan-form__pfc--carbo--description 画像を挿入すると自動で数値が入力されます。
     .common-form__number
+      = food.number_field :kcal, step:"0.1", min:0
+      = food.label 'kcal'
+    .common-form__number
       = food.number_field :gram, step:"0.1", min:0
       = food.label 'グラム(g)'
-      .plan-form__pfc--carbo--description 画像を挿入すると自動で数値が入力されます。
     .common-form__text
       = food.text_field :unit, placeholder:"例: 1枚"
       = food.label '単位'
-      .common-form__text--description 画像を挿入すると自動で数値が入力されます。
   = food.submit '登録する' , class:'common-form__submit'

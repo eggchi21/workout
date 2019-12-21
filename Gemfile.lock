@@ -457,7 +457,6 @@ DEPENDENCIES
   gimei
   gon
   google-cloud-vision
-  google-protobuf
   haml-rails
   jbuilder (~> 2.5)
   jp_prefecture
