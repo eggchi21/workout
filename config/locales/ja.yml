@@ -51,6 +51,7 @@ ja:
         gram: グラム
         image_url: 画像URL
         kcal: kcal
+        ancestry: カテゴリー
       social_profile:
         uid: SNSのユーザーID
         provider: SNSプロバイダー

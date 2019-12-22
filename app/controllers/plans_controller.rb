@@ -1,12 +1,12 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show,:destroy, :edit ,:update]
-  before_action :authenticate_user!, except:[:index]
+  before_action :set_plan, only: %i[show destroy edit update]
+  before_action :authenticate_user!, except: [:index]
   def index
     @plans = Plan.all.order(created_at: :desc)
   end
 
   def show
-    @plans = Plan.where(user_id:@plan.user.id).where.not(id:@plan.id)
+    @plans = Plan.where(user_id: @plan.user.id).where.not(id: @plan.id)
   end
 
   def new
@@ -38,26 +38,25 @@ class PlansController < ApplicationController
   end
 
   def destroy
-    if @plan.destroy
-      flash[:notice] = '目標を削除しました'
-      redirect_to plans_path
-    else
-      flash[:notice] = '目標の削除に失敗しました'
-      redirect_to plans_path
-    end
+    flash[:notice] = if @plan.destroy
+                       '目標を削除しました'
+                     else
+                       '目標の削除に失敗しました'
+                     end
+    redirect_to plans_path
   end
 
   def create
     @plan = Plan.new(plan_params)
     if @plan.save
-      @report = Report.where(user_id:current_user.id,entry_on:plan_params[:start_on])
+      @report = Report.where(user_id: current_user.id, entry_on: plan_params[:start_on])
       if @report.present?
-        @report.update(weight:plan_params[:start_weight])
+        @report.update(weight: plan_params[:start_weight])
       else
         @report = Report.new(
-          weight:plan_params[:start_weight],
-          entry_on:plan_params[:start_on],
-          text:'今日からがんばります！',
+          weight: plan_params[:start_weight],
+          entry_on: plan_params[:start_on],
+          text: '今日からがんばります！',
           user_id: current_user.id
         )
         @report.save
@@ -76,5 +75,5 @@ def set_plan
 end
 
 def plan_params
-  params.require(:plan).permit(:start_weight,:target_weight,:start_on,:target_on,:method,:protein,:fat,:carbo).merge(user_id:current_user.id)
+  params.require(:plan).permit(:start_weight, :target_weight, :start_on, :target_on, :method, :protein, :fat, :carbo).merge(user_id: current_user.id)
 end

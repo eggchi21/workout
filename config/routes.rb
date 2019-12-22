@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
-    registrations: 'users/registrations' ,
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :users, only: [:index,:show,:edit,:update] do
+  resources :users, only: %i[edit update] do
     resources :reports
   end
   resources :plans
@@ -19,10 +18,7 @@ Rails.application.routes.draw do
       get "about"
     end
   end
-  resources :foods, only: [:index,:show,:new,:create] do
-    # member do
-    #   post 'upload'
-    # end
+  resources :foods, only: %i[index show new create] do
     collection do
       get "search"
       post "upload"

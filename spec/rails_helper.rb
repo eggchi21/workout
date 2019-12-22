@@ -28,16 +28,14 @@ require 'rspec/rails'
 module OmniauthMocks
   def facebook_mock
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(
-      {
-        provider: 'facebook',
-        uid: '12345',
-        info: {
-          name: 'mockuser',
-          email: 'sample@test.com'
-        },
-        credentials: {
-          token: 'hogefuga'
-        }
+      provider: 'facebook',
+      uid: '12345',
+      info: {
+        name: 'mockuser',
+        email: 'sample@test.com'
+      },
+      credentials: {
+        token: 'hogefuga'
       }
     )
   end
@@ -55,7 +53,7 @@ RSpec.configure do |config|
   config.include OmniauthMocks
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerMacros, type: :controller
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

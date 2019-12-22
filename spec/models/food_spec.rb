@@ -9,7 +9,7 @@ describe Food do
     end
     # --- 部分欠損
     it "is invalid without a name" do
-      food = build(:food , name: "")
+      food = build(:food, name: "")
       food.valid?
       expect(food.errors[:name]).to include("を入力してください")
     end
@@ -33,11 +33,6 @@ describe Food do
       food.valid?
       expect(food.errors[:unit]).to include("を入力してください")
     end
-    it "is invalid without a image_url" do
-      food = build(:food, image_url: "")
-      food.valid?
-      expect(food.errors[:image_url]).to include("を入力してください")
-    end
     it "is invalid without a gram" do
       food = build(:food, gram: "")
       food.valid?
@@ -49,9 +44,8 @@ describe Food do
       expect(food.errors[:kcal]).to include("を入力してください")
     end
     it "is valid without protein, fat, carbo, unit, gram, image_url, kcal, ancestry" do
-      food = build(:food, protein: "", fat:"", carbo:"", unit:"", gram:"", image_url:"", kcal:"",ancestry: nil)
+      food = build(:food, protein: "", fat: "", carbo: "", unit: "", gram: "", image_url: "", kcal: "", ancestry: nil)
       expect(food).to be_valid
     end
-
   end
 end

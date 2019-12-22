@@ -10,5 +10,5 @@ CSV.foreach('db/food.csv', headers: true) do |record|
     image_url: record[6],
     ancestry: record[7],
     kcal: record[8]
-    )
+  )
 end

@@ -2,8 +2,7 @@ class SignupController < ApplicationController
   before_action :validates_step2, only: :step3
   before_action :validates_step3, only: :create
 
-  def step1
-  end
+  def step1; end
 
   def reset
     session[:nickname] = nil
@@ -13,6 +12,7 @@ class SignupController < ApplicationController
     session[:password_confirmation] = nil
     redirect_to step2_signup_index_path
   end
+
   def step2
     @user = User.new
   end
@@ -24,19 +24,19 @@ class SignupController < ApplicationController
 
   def create
     @user = User.new(
-                      nickname: session[:nickname],
-                      email: session[:email],
-                      password: session[:password],
-                      password_confirmation: session[:password_confirmation]
-                    )
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation]
+    )
     @user.build_address(user_params[:address_attributes])
     if @user.save
-      if session[:provider] != nil
+      unless session[:provider].nil?
         SocialProfile.create(
           uid: session[:uid],
           provider: session[:provider],
           user_id: @user.id
-          )
+        )
       end
       session[:id] = @user.id
       redirect_to done_signup_index_path
@@ -49,7 +49,6 @@ class SignupController < ApplicationController
     sign_in User.find(session[:id]) unless user_signed_in?
     flash[:notice] = 'ようこそ' + session[:nickname] + 'さん! まずは「ユーザー情報」から身長や性別を登録しましょう!'
     redirect_to root_path
-
   end
 
   private
@@ -57,19 +56,19 @@ class SignupController < ApplicationController
   def validates_step2
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
-    if  session[:provider] != nil
+    if !session[:provider].nil?
       session[:password] = Devise.friendly_token.first(6)
-      session[:password_confirmation] =session[:password]
+      session[:password_confirmation] = session[:password]
     else
       session[:password] = user_params[:password]
       session[:password_confirmation] = user_params[:password_confirmation]
     end
     @user = User.new(
-                      nickname: session[:nickname],
-                      email: session[:email],
-                      password: session[:password],
-                      password_confirmation: session[:password_confirmation]
-                    )
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation]
+    )
     render step2_signup_index_path unless @user.valid?
   end
 
@@ -82,27 +81,26 @@ class SignupController < ApplicationController
     @user = User.new
     @user.build_address
     @address = Address.new(
-                            postcode: session[:postcode],
-                            prefecture_code: session[:prefecture_code],
-                            city: session[:city],
-                            address1: session[:address1]
-                          )
+      postcode: session[:postcode],
+      prefecture_code: session[:prefecture_code],
+      city: session[:city],
+      address1: session[:address1]
+    )
     render step3_signup_index_path unless @address.valid?
   end
 
   def user_params
     params.require(:user).permit(
-                                  :nickname,
-                                  :email,
-                                  :password,
-                                  :password_confirmation,
-                                  address_attributes: [:id,
-                                                        :postcode,
-                                                        :prefecture_code,
-                                                        :city,
-                                                        :address1,
-                                                        :address2]
-                                )
+      :nickname,
+      :email,
+      :password,
+      :password_confirmation,
+      address_attributes: %i[id
+                             postcode
+                             prefecture_code
+                             city
+                             address1
+                             address2]
+    )
   end
-
 end

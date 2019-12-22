@@ -1,4 +1,10 @@
 = form_with model: @food , data: { remote: false }, class: "common-form" do |food|
+  - if @food.errors.any?
+    .form__errors
+      %h2= "#{@food.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @food.errors.full_messages.each do |message|
+          %li= message
   .common-form__upload-image
     .common-form__upload-image--description 画像は4枚まで添付できます
     %input#image-upload.common-form__upload-image--input{name: "image", type: "file"}
@@ -10,6 +16,9 @@
     = food.text_field :name
     = food.label :name
   .plan-form__pfc
+    .common-form__select
+      = food.collection_select :ancestry, @food_groups , :id, :name, {prompt: "---"},{class: "common-form__select--option"}
+      = food.label :ancestry
     .plan-form__pfc--protein
       = food.number_field :protein, step:"0.1", min:0
       = food.label 'たんぱく質(g)'
@@ -22,4 +31,13 @@
       = food.number_field :carbo, step:"0.1", min:0
       = food.label '炭水化物(g)'
       .plan-form__pfc--carbo--description 画像を挿入すると自動で数値が入力されます。
+    .common-form__number
+      = food.number_field :kcal, step:"0.1", min:0
+      = food.label 'kcal'
+    .common-form__number
+      = food.number_field :gram, step:"0.1", min:0
+      = food.label 'グラム(g)'
+    .common-form__text
+      = food.text_field :unit, placeholder:"例: 1枚"
+      = food.label '単位'
   = food.submit '登録する' , class:'common-form__submit'
