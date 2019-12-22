@@ -50,6 +50,7 @@
 | 数学的処理 | 確率統計(最小二乗法,分散,共分散) |
 | DB | MySQL |
 | テスト | RSpec |
+| コードレビューツール | Rubocop |
 | 本番環境 | AWS EC2 |
 | 画像アップロード | Active Storage, AWS S3 |
 | 自動デプロイ | capistrano |

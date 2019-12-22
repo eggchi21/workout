@@ -1,8 +1,10 @@
 class HomesController < ApplicationController
   def index
     if user_signed_in?
-      @today_kcal = Diary.calc_kcal(@diary) if @diary = Diary.find_by(user_id: current_user.id, entry_on: Date.today)
-      @today_weight = @report.weight if @report = Report.find_by(user_id: current_user.id, entry_on: Date.today)
+      @diary = Diary.find_by(user_id: current_user.id, entry_on: Date.today)
+      @today_kcal = Diary.calc_kcal(@diary) if @diary
+      @report = Report.find_by(user_id: current_user.id, entry_on: Date.today)
+      @today_weight = @report.weight if @report
     else
       redirect_to about_homes_path
     end

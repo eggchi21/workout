@@ -33,11 +33,6 @@ describe Food do
       food.valid?
       expect(food.errors[:unit]).to include("を入力してください")
     end
-    it "is invalid without a image_url" do
-      food = build(:food, image_url: "")
-      food.valid?
-      expect(food.errors[:image_url]).to include("を入力してください")
-    end
     it "is invalid without a gram" do
       food = build(:food, gram: "")
       food.valid?

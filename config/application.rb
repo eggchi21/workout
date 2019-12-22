@@ -15,7 +15,7 @@ module Workout
       g.helper false
       g.test_framework false
     end
-    config.action_view.field_error_proc = proc do |html_tag, instance|
+    config.action_view.field_error_proc = proc do |html_tag, _instance|
       html_tag.to_s.html_safe
     end
     # Initialize configuration defaults for originally generated Rails version.

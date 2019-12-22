@@ -1,5 +1,4 @@
 (1..5).each do |n|
-  gimei = Gimei.new
   address = Gimei.address
   User.create!(email: "sample#{n}@sample.com",
                password: "password",
@@ -15,7 +14,6 @@
 end
 
 (6..10).each do |n|
-  gimei = Gimei.new
   address = Gimei.address
   @user = User.create!(email: "sample#{n}@sample.com",
                        password: "password",

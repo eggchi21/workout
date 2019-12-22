@@ -34,8 +34,8 @@ class Scraping
       end
       links = category_page.search('#pager a')
       @next_link = ""
-      links.each do |link|
-        @next_link = link if link.inner_text == '＞'
+      links.each do |link_url|
+        @next_link = link_url if link_url.inner_text == '＞'
       end
       break if @next_link == ""
 
@@ -60,7 +60,8 @@ class Scraping
            end
     gram = food_page.at('#serving_content').inner_text.to_f
     image_url = 'https:' + food_page.at('#foodImage')[:src]
-    if food = Food.find_by(name: name)
+    food = Food.find_by(name: name)
+    if food
       food.update(
         name: name,
         protein: protein,
@@ -72,7 +73,7 @@ class Scraping
         image_url: image_url
       )
     else
-      food = @category.children.create(
+      @category.children.create(
         name: name,
         protein: protein,
         fat: fat,

@@ -10,7 +10,7 @@ class Diary < ApplicationRecord
   validates :entry_on, uniqueness: { scope: :user_id }, date: true
   validate :date_cannot_be_in_the_future
   validate :calendar_valid?
-  validate :have_at_least_one_diaryfood
+  validate :at_least_one_diaryfood?
   validates :user_id, presence: true
   validates :user, presence: true, if: -> { user_id.present? }
 
@@ -28,7 +28,7 @@ class Diary < ApplicationRecord
     errors.add(:date, "カレンダーにない日付です") unless Date.valid_date?(y, m, d)
   end
 
-  def have_at_least_one_diaryfood
+  def at_least_one_diaryfood?
     errors.add(:diaryfood, "は最低1つ記録してください") if diaryfoods.blank?
   end
 

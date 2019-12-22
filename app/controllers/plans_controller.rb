@@ -38,13 +38,12 @@ class PlansController < ApplicationController
   end
 
   def destroy
-    if @plan.destroy
-      flash[:notice] = '目標を削除しました'
-      redirect_to plans_path
-    else
-      flash[:notice] = '目標の削除に失敗しました'
-      redirect_to plans_path
-    end
+    flash[:notice] = if @plan.destroy
+                       '目標を削除しました'
+                     else
+                       '目標の削除に失敗しました'
+                     end
+    redirect_to plans_path
   end
 
   def create

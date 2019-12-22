@@ -11,7 +11,8 @@ class DiariesController < ApplicationController
     gon.kcals = Diary.calc_kcals(@diaries)
     @plan_kcal = @plan.protein * 4 + @plan.fat * 9 + @plan.carbo * 4
     gon.plan_kcal = @plan_kcal
-    @today_kcal = Diary.calc_kcal(@diary) if @diary = Diary.find_by(user_id: current_user.id, entry_on: Date.today)
+    @diary = Diary.find_by(user_id: current_user.id, entry_on: Date.today)
+    @today_kcal = Diary.calc_kcal(@diary) if @diary
   end
 
   def show; end
@@ -46,13 +47,12 @@ class DiariesController < ApplicationController
   end
 
   def destroy
-    if @diary.destroy
-      flash[:notice] = '記録を削除しました'
-      redirect_to diaries_path
-    else
-      flash[:notice] = '記録の削除に失敗しました'
-      redirect_to diaries_path
-    end
+    flash[:notice] = if @diary.destroy
+                       '記録を削除しました'
+                     else
+                       '記録の削除に失敗しました'
+                     end
+    redirect_to diaries_path
   end
 end
 

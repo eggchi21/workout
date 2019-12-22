@@ -32,7 +32,7 @@ class Report < ApplicationRecord
     a = array.convariance.fdiv(xs.variance) # 回帰直線の傾き(a = XとYの共分散 / Xの分散)
     b = ys.average - a * xs.average # 回帰直線の切片(b = Yの平均 - 回帰直線の傾き * Xの平均)
 
-    week_after = (a * (xs.last + 7) + b).round(1)
+    (a * (xs.last + 7) + b).round(1)
   end
 
   def self.date_to_axis(array)
