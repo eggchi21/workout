@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :users, only: %i[index show edit update] do
+  resources :users, only: %i[edit update] do
     resources :reports
   end
   resources :plans
@@ -19,9 +19,6 @@ Rails.application.routes.draw do
     end
   end
   resources :foods, only: %i[index show new create] do
-    # member do
-    #   post 'upload'
-    # end
     collection do
       get "search"
       post "upload"
