@@ -15,13 +15,20 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @parent = Food.new(params.require(:food).permit(:ancestry))
-    @food_group = Food.find(@parent.ancestry)
-    @food = @food_group.children.new(food_params)
-    if @food.save
-      flash[:notice] = '登録しました'
-      redirect_to root_path
+    @parent = Food.new(ancestry_params)
+    if @parent.ancestry != ""
+      @food_group = Food.find(@parent.ancestry)
+      @food = @food_group.children.new(food_params)
+      if @food.save
+        flash[:notice] = '登録しました'
+        redirect_to root_path
+      else
+        @food_groups = Food.where(ancestry: nil)
+        render :new
+      end
     else
+      @food = Food.new(food_params)
+      @food_groups = Food.where(ancestry: nil)
       render :new
     end
   end
@@ -63,5 +70,9 @@ class FoodsController < ApplicationController
       :kcal,
       :gram
     )
+  end
+
+  def ancestry_params
+    params.require(:food).permit(:ancestry)
   end
 end

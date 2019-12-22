@@ -26,7 +26,6 @@ $(function(){
         contentType: false
       })
       .done(function(data){
-        console.log(data)
         $('#food_protein').val(data.data.protein)
         $('#food_fat').val(data.data.fat)
         $('#food_carbo').val(data.data.carbo)

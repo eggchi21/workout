@@ -1,4 +1,10 @@
 = form_with model: @food , data: { remote: false }, class: "common-form" do |food|
+  - if @food.errors.any?
+    .form__errors
+      %h2= "#{@food.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @food.errors.full_messages.each do |message|
+          %li= message
   .common-form__upload-image
     .common-form__upload-image--description 画像は4枚まで添付できます
     %input#image-upload.common-form__upload-image--input{name: "image", type: "file"}
@@ -10,9 +16,9 @@
     = food.text_field :name
     = food.label :name
   .plan-form__pfc
-    .sell-form-group__select-wrap.level1_category--form
-      %i.sell-form-group__select-wrap--icon.fas.fa-chevron-down
-      = food.collection_select :ancestry, @food_groups , :id, :name, {prompt: "---"}, {class: "sell-form-group__select-wrap--default",id: 'level1_category'}
+    .common-form__select
+      = food.collection_select :ancestry, @food_groups , :id, :name, {prompt: "---"},{class: "common-form__select--option"}
+      = food.label :ancestry
     .plan-form__pfc--protein
       = food.number_field :protein, step:"0.1", min:0
       = food.label 'たんぱく質(g)'
