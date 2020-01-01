@@ -87,7 +87,7 @@ $ rails server
 1. TOPページ中部の"Start This APP"をクリックしてください
 [![Image from Gyazo](https://i.gyazo.com/e2c5d65fba6398236363f77573a4e90c.gif)](https://gyazo.com/e2c5d65fba6398236363f77573a4e90c)
 2. テストユーザー(sample1@sample.com)が入力されているので、そのままログインボタンを選択してください
-※SNS経由でのログインはローカル環境のみで適用させてます
+※本番環境にてSNS経由でも可能です。
 [![Image from Gyazo](https://i.gyazo.com/e0210b75366139c7ac9b224d486d2798.gif)](https://gyazo.com/e0210b75366139c7ac9b224d486d2798)
 
 ## 体重を記録する

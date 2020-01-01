@@ -44,10 +44,10 @@ class FoodsController < ApplicationController
   def upload
     require 'google/cloud/vision'
     ENV["GOOGLE_CLOUD_PROJECT"] =  Rails.application.credentials.google[:GOOGLE_CLOUD_PROJECT]
-    if Rails.env.development? || Rails.env.test?
-      ENV["GOOGLE_CLOUD_KEYFILE"] =  Rails.application.credentials.google[:GOOGLE_CLOUD_KEYFILE_DEV]
-    else
+    if Rails.env.production?
       ENV["GOOGLE_CLOUD_KEYFILE"] =  Rails.application.credentials.google[:GOOGLE_CLOUD_KEYFILE_PRO]
+    else
+      ENV["GOOGLE_CLOUD_KEYFILE"] =  Rails.application.credentials.google[:GOOGLE_CLOUD_KEYFILE_DEV]
     end
     image = params[:image].path
     image_annotator_client = Google::Cloud::Vision::ImageAnnotator.new
