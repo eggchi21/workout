@@ -35,6 +35,7 @@
 - いいね機能
 - SNS(Facebook,Google)経由でユーザー新規登録機能/ログイン機能
 - [Google Cloud Vision API](https://cloud.google.com/vision/?hl=ja)を使用して商品パッケージ写真からPFCを識別する
+- csvで体重の記録を抽出する機能
 
 # アプリケーション内で使用している主な技術一覧
 | 種別 | 名称 |
@@ -60,7 +61,6 @@
 
 
 # 実装予定の機能
-- csvで体重の記録を抽出する機能
 - LINEBotから体重記録
 - 増量プランの追加
 - 重回帰分析の導入
@@ -82,6 +82,8 @@ $ rails db:migrate
 $ rails db:seed
 $ rails server
 ```
+
+# 基本操作
 
 ## ログイン
 1. TOPページ中部の"Start This APP"をクリックしてください
@@ -131,8 +133,9 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/40b4bf8057b98605032ed5772c5ff4b7.gif)](https://gyazo.com/40b4bf8057b98605032ed5772c5ff4b7)
 [![Image from Gyazo](https://i.gyazo.com/fbcc9d1d5860299cd051263248c1c0a3.gif)](https://gyazo.com/fbcc9d1d5860299cd051263248c1c0a3)
 
+# 特徴的な操作
+
 ## オリジナルのたべものを登録する
-※ローカル環境のみで適用させてます
 1. メニュー(画面左上の三本線)から"たべもの登録"を選択してください
 [![Image from Gyazo](https://i.gyazo.com/920630e25a258aca8ca7673c432ebe84.gif)](https://gyazo.com/920630e25a258aca8ca7673c432ebe84)
 2. "画像からPFCを取得する"を選択してください
@@ -140,6 +143,12 @@ $ rails server
 [![Image from Gyazo](https://i.gyazo.com/af959f2bd8c5c45dc00be9d6493be479.gif)](https://gyazo.com/af959f2bd8c5c45dc00be9d6493be479)
 3. 画像を解析して、たんぱく質/脂質/炭水化物の含有量(g)がフォームに入力されます
 [![Image from Gyazo](https://i.gyazo.com/66aa4bbbf4cbd8d892cdb26c6c77ce3a.gif)](https://gyazo.com/66aa4bbbf4cbd8d892cdb26c6c77ce3a)
+
+## 郵便番号から住所を自動入力する
+[![Image from Gyazo](https://i.gyazo.com/49fe2850e92ada79fa5709c1d2b73cfe.gif)](https://gyazo.com/49fe2850e92ada79fa5709c1d2b73cfe)
+
+## 体重をcsvで出力する
+[![Image from Gyazo](https://i.gyazo.com/a1ec83ec07467c7ae301171f32fdebe3.gif)](https://gyazo.com/a1ec83ec07467c7ae301171f32fdebe3)
 
 # 作者
 - Qiita: [@eggchi21](https://qiita.com/eggchi21)
