@@ -15,6 +15,10 @@ class ReportsController < ApplicationController
     gon.dates = @reports.map { |report| report.entry_on.strftime('%Y/%m/%d') }
     gon.user_id = current_user.id
     @week_after = Report.ols(@reports) if @reports.length >= 2
+    respond_to do |format|
+      format.html
+      format.csv
+    end
   end
 
   def new
