@@ -150,9 +150,6 @@ $ rails server
 ## 体重をcsvで出力する
 [![Image from Gyazo](https://i.gyazo.com/a1ec83ec07467c7ae301171f32fdebe3.gif)](https://gyazo.com/a1ec83ec07467c7ae301171f32fdebe3)
 
-# 作者
-- Qiita: [@eggchi21](https://qiita.com/eggchi21)
-- Mail: 52.eguchi.keita@mail.com
 
 # ライセンス
 The MIT License (MIT)
